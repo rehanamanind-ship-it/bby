@@ -51,53 +51,92 @@
             z-index: 1;
         }
 
-        /* Top Persistent Navigation System */
+        /* --- FULL SCREEN HERO HEADER --- */
         .global-header {
-            position: fixed;
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 20px 40px;
+            padding: 0 20px;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(2,6,23,0.9), rgba(2,6,23,0));
-            backdrop-filter: blur(4px);
+            background: transparent;
         }
 
         .brand-meta {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 95vw;
         }
 
         .brand-title {
-            font-size: 1.5rem;
+            font-size: clamp(2rem, 7vw, 7rem);
             font-weight: 800;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
             transition: font-family 0.3s ease;
+            color: #ffffff;
         }
-        
-        body.gaming-mode .brand-title {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.95rem;
-            line-height: 1.4;
+
+        .brand-title .name-highlight {
+            color: var(--matrix-green);
+            text-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+        }
+
+        .brand-subtitle {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(1.3rem, 4.5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 2vh;
+            color: #ffffff;
+            transition: color 0.35s ease, text-shadow 0.35s ease;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .brand-subtitle #typedRole {
+            transition: color 0.35s ease, text-shadow 0.35s ease;
+        }
+
+        .typer-cursor {
+            display: inline-block;
+            margin-left: 2px;
+            animation: cursorBlink 1s step-end infinite;
+            color: inherit;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50%      { opacity: 0; }
         }
 
         .brand-aka {
             font-family: 'Fira Code', monospace;
             color: var(--accent-primary);
-            font-size: 0.85rem;
+            font-size: 1.1rem;
             font-weight: bold;
+            margin-top: 3vh;
+            opacity: 0.8;
         }
 
+        /* Mode switcher - fixed at top right */
         .mode-switcher {
+            position: fixed;
+            top: 30px;
+            right: 40px;
             display: flex;
             background: rgba(30, 41, 59, 0.8);
             padding: 4px;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
+            z-index: 200;
+            backdrop-filter: blur(8px);
         }
 
         .mode-btn {
@@ -151,7 +190,6 @@
             transition: border-color 0.4s ease;
         }
 
-        /* Dev Mode Global Card Styles */
         #devEcosystem .content-card {
             font-family: 'Fira Code', monospace;
             border-color: rgba(57, 255, 20, 0.25);
@@ -350,16 +388,22 @@
 
     <canvas id="interactiveCanvas"></canvas>
 
+    <!-- HERO HEADER: Full screen, large text -->
     <header class="global-header">
         <div class="brand-meta">
-            <h1 class="brand-title">Rehan Aman</h1>
+            <h1 class="brand-title">Hi, I am <span class="name-highlight">Rehan Aman</span></h1>
+            <div class="brand-subtitle">
+                I am a <span id="typedRole"></span><span class="typer-cursor">|</span>
+            </div>
             <span class="brand-aka">mr.heuravox</span>
         </div>
-        <div class="mode-switcher" id="modeToggle">
-            <div class="mode-btn active" id="modeDev">💻 Core Dev</div>
-            <div class="mode-btn" id="modeGaming">🎮 Gaming Mode</div>
-        </div>
     </header>
+
+    <!-- Mode switcher fixed at top right -->
+    <div class="mode-switcher" id="modeToggle">
+        <div class="mode-btn active" id="modeDev">💻 Core Dev</div>
+        <div class="mode-btn" id="modeGaming">🎮 Gaming Mode</div>
+    </div>
 
     <div class="scroll-indicator" id="dotNav"></div>
 
@@ -489,9 +533,14 @@
                 <p class="narrative">
                     All my projects are coded natively, built with absolute structural clarity, and compiled to operate without third-party telemetry.
                 </p>
-                <a href="https://github.com/rehanamanind-ship-it" target="_blank" class="action-btn">
-                    ./visit_github.sh &rarr;
-                </a>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="https://github.com/rehanamanind-ship-it" target="_blank" class="action-btn">
+                        ./visit_github.sh &rarr;
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rehanamanind@gmail.com" target="_blank" class="action-btn">
+                        📧 contact_me.gmail &rarr;
+                    </a>
+                </div>
             </div>
         </section>
     </div>
@@ -716,6 +765,7 @@
         const softwareStars = [];
         const gamingRockets = [];
         const weaponsArray = [];
+        const impactSparks = []; // <-- sparks that fly off the laser impact point
 
         for (let i = 0; i < totalDensity; i++) {
             softwareStars.push({
@@ -738,6 +788,7 @@
         // --- RENDER REFRESH LOOP ---
         function runGraphicsExecutionLoop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const now = performance.now() * 0.001;
 
             if (currentActiveMode === 'dev') {
                 // --- SOFTWARE GRAPHICS LAYER ---
@@ -774,11 +825,14 @@
                     }
                 }
             } else {
-                // --- GAMING GRAPHICS LAYER ---
+                // ============================================
+                // --- GAMING GRAPHICS LAYER (DEATH STAR) ---
+                // ============================================
                 const dsX = canvas.width * 0.5;
                 const dsY = 160;
                 const dsRadius = 60;
 
+                // --- Death Star body ---
                 ctx.save();
                 ctx.beginPath();
                 ctx.arc(dsX, dsY, dsRadius, 0, Math.PI * 2);
@@ -795,29 +849,168 @@
                 ctx.stroke();
                 ctx.restore();
 
-                const dsDX = mousePos.x - dsX;
-                const dsDY = mousePos.y - dsY;
+                const dsDX = mousePos.x - (dsX - 20);
+                const dsDY = mousePos.y - (dsY - 20);
                 const dsDist = Math.sqrt(dsDX * dsDX + dsDY * dsDY);
 
-                if (dsDist < 450 && mousePos.x > 0) {
-                    ctx.strokeStyle = 'rgba(34, 197, 94, 0.4)';
-                    ctx.lineWidth = 1.5;
-                    ctx.beginPath();
-                    for (let a = 0; a < 6; a++) {
-                        let beamAngle = (Math.PI * 2 / 6) * a;
-                        ctx.moveTo(dsX - 20 + Math.cos(beamAngle) * 30, dsY - 20 + Math.sin(beamAngle) * 30);
-                        ctx.lineTo(dsX - 20, dsY - 20);
-                    }
-                    ctx.stroke();
+                // --- Beam firing range ---
+                const firingRange = 700;
+                const beamActive = dsDist < firingRange && mousePos.x > 0;
 
-                    ctx.strokeStyle = 'rgba(34, 197, 94, 0.85)';
-                    ctx.lineWidth = 7;
+                // ---- Impact Sparks ----
+                for (let s = impactSparks.length - 1; s >= 0; s--) {
+                    const sp = impactSparks[s];
+                    sp.x += sp.vx;
+                    sp.y += sp.vy;
+                    sp.vx *= 0.94;
+                    sp.vy *= 0.94;
+                    sp.life -= sp.decay;
+
+                    if (sp.life <= 0) {
+                        impactSparks.splice(s, 1);
+                        continue;
+                    }
+                    ctx.fillStyle = `hsla(${sp.hue}, 100%, 60%, ${sp.life})`;
                     ctx.beginPath();
-                    ctx.moveTo(dsX - 20, dsY - 20);
-                    ctx.lineTo(mousePos.x, mousePos.y);
-                    ctx.stroke();
+                    ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+                    ctx.fill();
                 }
 
+                if (beamActive) {
+                    // Emitter point on the death star's dish
+                    const startX = dsX - 20;
+                    const startY = dsY - 20;
+                    const endX = mousePos.x;
+                    const endY = mousePos.y;
+
+                    // Realistic flicker
+                    const flicker =
+                        0.85 +
+                        Math.sin(now * 41.3) * 0.06 +
+                        Math.sin(now * 23.7) * 0.05 +
+                        Math.sin(now * 87.1) * 0.03;
+
+                    // 1. WIDE OUTER AURA
+                    ctx.save();
+                    ctx.lineCap = 'round';
+                    ctx.shadowColor = 'rgba(57, 255, 20, 0.95)';
+                    ctx.shadowBlur = 45 * flicker;
+                    ctx.strokeStyle = `rgba(57, 255, 20, ${0.10 * flicker})`;
+                    ctx.lineWidth = 34;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+
+                    // 2. MID GLOW LAYER
+                    ctx.shadowBlur = 28 * flicker;
+                    ctx.strokeStyle = `rgba(80, 255, 40, ${0.28 * flicker})`;
+                    ctx.lineWidth = 18;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+
+                    // 3. BRIGHT GREEN BEAM
+                    ctx.shadowBlur = 16 * flicker;
+                    ctx.strokeStyle = `rgba(140, 255, 90, ${0.9 * flicker})`;
+                    ctx.lineWidth = 7;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+
+                    // 4. WHITE-HOT CORE
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = 'rgba(255, 255, 255, 0.95)';
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
+                    ctx.lineWidth = 2.2;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+                    ctx.restore();
+
+                    // 5. TRAVELING ENERGY PULSES
+                    const pulseCount = 5;
+                    for (let p = 0; p < pulseCount; p++) {
+                        const progress = ((now * 0.9 + p / pulseCount) % 1);
+                        const px = startX + (endX - startX) * progress;
+                        const py = startY + (endY - startY) * progress;
+                        const pulseR = 10 + Math.sin(progress * Math.PI) * 8;
+                        const grad = ctx.createRadialGradient(px, py, 0, px, py, pulseR * 3);
+                        grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+                        grad.addColorStop(0.25, 'rgba(160, 255, 100, 0.7)');
+                        grad.addColorStop(0.6, 'rgba(57, 255, 20, 0.25)');
+                        grad.addColorStop(1, 'rgba(57, 255, 20, 0)');
+                        ctx.fillStyle = grad;
+                        ctx.beginPath();
+                        ctx.arc(px, py, pulseR * 3, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    // 6. MUZZLE FLARE
+                    const muzzleR = 22 + Math.sin(now * 25) * 4;
+                    const muzzleGrad = ctx.createRadialGradient(startX, startY, 0, startX, startY, muzzleR * 2);
+                    muzzleGrad.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
+                    muzzleGrad.addColorStop(0.25, `rgba(160, 255, 100, ${0.75 * flicker})`);
+                    muzzleGrad.addColorStop(0.6, `rgba(57, 255, 20, ${0.35 * flicker})`);
+                    muzzleGrad.addColorStop(1, 'rgba(57, 255, 20, 0)');
+                    ctx.fillStyle = muzzleGrad;
+                    ctx.beginPath();
+                    ctx.arc(startX, startY, muzzleR * 2, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // 7. IMPACT POINT
+                    const impactR = 70 + Math.sin(now * 15) * 8;
+                    const impactGrad = ctx.createRadialGradient(endX, endY, 0, endX, endY, impactR);
+                    impactGrad.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
+                    impactGrad.addColorStop(0.12, `rgba(200, 255, 160, ${0.85 * flicker})`);
+                    impactGrad.addColorStop(0.35, `rgba(80, 255, 40, ${0.4 * flicker})`);
+                    impactGrad.addColorStop(0.7, `rgba(57, 255, 20, ${0.12 * flicker})`);
+                    impactGrad.addColorStop(1, 'rgba(57, 255, 20, 0)');
+                    ctx.fillStyle = impactGrad;
+                    ctx.beginPath();
+                    ctx.arc(endX, endY, impactR, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Hot core on impact
+                    ctx.fillStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
+                    ctx.beginPath();
+                    ctx.arc(endX, endY, 4 + Math.sin(now * 40) * 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Expanding shock rings
+                    for (let r = 0; r < 2; r++) {
+                        const ringPhase = ((now * 0.8 + r * 0.5) % 1);
+                        const ringR = 14 + ringPhase * 55;
+                        const ringAlpha = (1 - ringPhase) * 0.75 * flicker;
+                        ctx.strokeStyle = `rgba(140, 255, 90, ${ringAlpha})`;
+                        ctx.lineWidth = 2.5 * (1 - ringPhase) + 0.5;
+                        ctx.beginPath();
+                        ctx.arc(endX, endY, ringR, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+
+                    // Spawn impact sparks
+                    const sparksPerFrame = 2;
+                    for (let s = 0; s < sparksPerFrame; s++) {
+                        const ang = Math.random() * Math.PI * 2;
+                        const spd = 2 + Math.random() * 5;
+                        impactSparks.push({
+                            x: endX,
+                            y: endY,
+                            vx: Math.cos(ang) * spd,
+                            vy: Math.sin(ang) * spd,
+                            life: 1,
+                            decay: 0.02 + Math.random() * 0.03,
+                            size: 1 + Math.random() * 2.2,
+                            hue: Math.random() < 0.7 ? 110 : 60
+                        });
+                    }
+                }
+
+                // --- Weapons (bullets from ships) ---
                 for (let b = weaponsArray.length - 1; b >= 0; b--) {
                     const bullet = weaponsArray[b];
                     bullet.x += bullet.vx * bullet.speed;
@@ -834,6 +1027,7 @@
                     if (bullet.ttl <= 0) weaponsArray.splice(b, 1);
                 }
 
+                // --- Ships ---
                 const engagementRange = 250;
                 for (let i = 0; i < gamingRockets.length; i++) {
                     const ship = gamingRockets[i];
@@ -912,7 +1106,6 @@
             dotNav.innerHTML = '';
             const activePanelId = currentActiveMode === 'dev' ? 'devEcosystem' : 'gamingEcosystem';
             
-            // Set scroll indicator color styling class
             if (currentActiveMode === 'dev') {
                 dotNav.className = 'scroll-indicator dev-mode-indicator';
             } else {
@@ -977,6 +1170,66 @@
 
         // Initialize HUD setup
         rebuildNavigationFramework();
+
+        // --- TYPEWRITER SUBTITLE (only the role) ---
+        (function initTypewriter() {
+            const roleEl = document.getElementById('typedRole');
+            if (!roleEl) return;
+
+            const phrases = [
+                {
+                    text: 'python software developer',
+                    color: 'var(--matrix-green)',
+                    shadow: '0 0 20px rgba(57, 255, 20, 0.6)'
+                },
+                {
+                    text: 'gamer',
+                    color: '#d946ef',
+                    shadow: '0 0 20px rgba(217, 70, 239, 0.7)'
+                },
+                {
+                    text: 'hardware tinkerer',
+                    color: '#dc2626',
+                    shadow: '0 0 20px rgba(220, 38, 38, 0.7)'
+                }
+            ];
+
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let deleting = false;
+
+            function tick() {
+                const current = phrases[phraseIndex];
+
+                roleEl.style.color = current.color;
+                roleEl.style.textShadow = current.shadow;
+
+                if (!deleting) {
+                    charIndex++;
+                    roleEl.textContent = current.text.slice(0, charIndex);
+
+                    if (charIndex === current.text.length) {
+                        deleting = true;
+                        setTimeout(tick, 1600);
+                        return;
+                    }
+                    setTimeout(tick, 70 + Math.random() * 40);
+                } else {
+                    charIndex--;
+                    roleEl.textContent = current.text.slice(0, charIndex);
+
+                    if (charIndex === 0) {
+                        deleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        setTimeout(tick, 400);
+                        return;
+                    }
+                    setTimeout(tick, 40 + Math.random() * 20);
+                }
+            }
+
+            tick();
+        })();
     </script>
 </body>
 </html>
