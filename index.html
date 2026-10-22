@@ -4,33 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rehan Aman | mr.heuravox</title>
-    <!-- Importing specialized fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Press+Start+2P&family=Segoe+UI:wght@400;600;800&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --bg-base: #020617;
-            --accent-primary: #00f2fe; /* Dynamic Base Cyan */
+            --accent-primary: #00f2fe;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --card-bg: rgba(15, 23, 42, 0.75);
             --card-border: rgba(0, 242, 254, 0.4);
             --font-stack: 'Segoe UI', system-ui, sans-serif;
-            --matrix-green: #39ff14; /* Neon Matrix Green */
+            --matrix-green: #39ff14;
         }
 
         body.gaming-mode {
-            --accent-primary: #d946ef; /* Bright Violet-Pink */
+            --accent-primary: #d946ef;
             --card-border: rgba(217, 70, 239, 0.4);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-base);
@@ -40,43 +34,32 @@
             font-family: var(--font-stack);
         }
 
-        /* Fixed Background Canvas Layer */
         #interactiveCanvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* --- FULL SCREEN HERO HEADER --- */
         .global-header {
             position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 20px;
-            z-index: 100;
+            width: 100%; height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            padding: 0 20px; z-index: 100;
             background: transparent;
         }
 
         .brand-meta {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            display: flex; flex-direction: column;
+            align-items: center; text-align: center;
             max-width: 95vw;
         }
 
         .brand-title {
             font-size: clamp(2rem, 7vw, 7rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
+            font-weight: 800; letter-spacing: -0.02em;
             line-height: 1.1;
             transition: font-family 0.3s ease;
             color: #ffffff;
@@ -90,13 +73,10 @@
         .brand-subtitle {
             font-family: 'Fira Code', monospace;
             font-size: clamp(1.3rem, 4.5vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-top: 2vh;
-            color: #ffffff;
+            font-weight: 700; line-height: 1.2;
+            margin-top: 2vh; color: #ffffff;
             transition: color 0.35s ease, text-shadow 0.35s ease;
-            white-space: normal;
-            word-break: break-word;
+            white-space: normal; word-break: break-word;
         }
 
         .brand-subtitle #typedRole {
@@ -104,8 +84,7 @@
         }
 
         .typer-cursor {
-            display: inline-block;
-            margin-left: 2px;
+            display: inline-block; margin-left: 2px;
             animation: cursorBlink 1s step-end infinite;
             color: inherit;
         }
@@ -118,34 +97,23 @@
         .brand-aka {
             font-family: 'Fira Code', monospace;
             color: var(--accent-primary);
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: 3vh;
-            opacity: 0.8;
+            font-size: 1.1rem; font-weight: bold;
+            margin-top: 3vh; opacity: 0.8;
         }
 
-        /* Mode switcher - fixed at top right */
         .mode-switcher {
-            position: fixed;
-            top: 30px;
-            right: 40px;
-            display: flex;
-            background: rgba(30, 41, 59, 0.8);
-            padding: 4px;
-            border-radius: 30px;
+            position: fixed; top: 30px; right: 40px;
+            display: flex; background: rgba(30, 41, 59, 0.8);
+            padding: 4px; border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            z-index: 200;
+            cursor: pointer; z-index: 200;
             backdrop-filter: blur(8px);
         }
 
         .mode-btn {
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            padding: 8px 18px; border-radius: 25px;
+            font-weight: 600; font-size: 0.8rem;
+            letter-spacing: 0.5px; transition: all 0.3s ease;
             font-family: var(--font-stack);
         }
 
@@ -155,37 +123,25 @@
             box-shadow: 0 0 20px var(--accent-primary);
         }
 
-        /* Full Screen Section Setups */
-        .view-wrapper {
-            display: none;
-        }
-
-        .view-wrapper.active-view {
-            display: block;
-        }
+        .view-wrapper { display: none; }
+        .view-wrapper.active-view { display: block; }
 
         .fullscreen-section {
-            min-height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
+            min-height: 100vh; width: 100vw;
+            display: flex; justify-content: center;
             align-items: center;
             padding: 120px 40px 60px 40px;
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
             box-sizing: border-box;
         }
 
-        /* Card Elements */
         .content-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 50px;
-            width: 100%;
-            max-width: 900px;
+            border-radius: 24px; padding: 50px;
+            width: 100%; max-width: 900px;
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
             transition: border-color 0.4s ease;
         }
@@ -194,38 +150,29 @@
             font-family: 'Fira Code', monospace;
             border-color: rgba(57, 255, 20, 0.25);
         }
-        
+
         #devEcosystem .content-card:hover {
             border-color: var(--matrix-green);
             box-shadow: 0 30px 60px -15px rgba(57, 255, 20, 0.15);
         }
 
         .section-tag {
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--accent-primary);
-            font-family: monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-            font-weight: bold;
+            display: inline-block; font-size: 0.8rem;
+            color: var(--accent-primary); font-family: monospace;
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 16px; font-weight: bold;
         }
 
-        #devEcosystem .section-tag {
-            color: var(--matrix-green);
-        }
+        #devEcosystem .section-tag { color: var(--matrix-green); }
 
         #gamingEcosystem .section-tag {
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.65rem;
-            line-height: 1.4;
+            font-size: 0.65rem; line-height: 1.4;
         }
 
         h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: -0.5px;
+            font-size: 2.5rem; font-weight: 800;
+            margin-bottom: 24px; letter-spacing: -0.5px;
             transition: color 0.3s ease;
         }
 
@@ -238,8 +185,7 @@
 
         #gamingEcosystem h2 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.6rem;
-            line-height: 1.5;
+            font-size: 1.6rem; line-height: 1.5;
             color: #ffffff;
         }
 
@@ -249,61 +195,80 @@
         }
 
         p.narrative {
-            font-size: 1.25rem;
-            line-height: 1.75;
-            color: #e2e8f0;
-            margin-bottom: 24px;
+            font-size: 1.25rem; line-height: 1.75;
+            color: #e2e8f0; margin-bottom: 24px;
         }
 
         #devEcosystem p.narrative {
-            font-size: 1.1rem;
-            color: #a7f3d0;
+            font-size: 1.1rem; color: #a7f3d0;
             border-left: 2px solid rgba(57, 255, 20, 0.3);
             padding-left: 15px;
         }
 
-        p.narrative strong {
-            color: var(--accent-primary);
-        }
-        
+        p.narrative strong { color: var(--accent-primary); }
+
         #devEcosystem p.narrative strong {
             color: #ffffff;
             text-decoration: underline;
             text-underline-offset: 4px;
         }
 
+        .project-title-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease, text-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .project-title-link:hover {
+            border-bottom-color: var(--matrix-green);
+            text-shadow: 0 0 24px rgba(57, 255, 20, 0.9);
+        }
+
+        .project-title-link::after {
+            content: '▸';
+            font-family: 'Fira Code', monospace;
+            font-size: 0.6em;
+            color: var(--matrix-green);
+            opacity: 0.45;
+            transform: translateY(-1px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-title-link:hover::after {
+            opacity: 1;
+            transform: translateY(-1px) translateX(3px);
+        }
+
         .status-badge {
-            display: inline-block;
-            margin-top: 15px;
+            display: inline-block; margin-top: 15px;
             padding: 8px 16px;
             background: rgba(255, 255, 255, 0.05);
             border-left: 4px solid var(--accent-primary);
-            font-family: monospace;
-            font-size: 1.05rem;
+            font-family: monospace; font-size: 1.05rem;
             color: #f8fafc;
         }
-        
+
         #gamingEcosystem .status-badge {
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.65rem;
-            line-height: 1.6;
+            font-size: 0.65rem; line-height: 1.6;
             background: rgba(217, 70, 239, 0.1);
             border-left: 4px solid #d946ef;
             padding: 12px;
         }
 
         .project-meta-block {
-            display: flex;
-            gap: 12px;
-            margin-top: 30px;
+            display: flex; gap: 12px; margin-top: 30px;
+            flex-wrap: wrap;
         }
 
         .meta-pill {
-            font-size: 0.8rem;
-            font-family: monospace;
+            font-size: 0.8rem; font-family: monospace;
             background: rgba(255, 255, 255, 0.06);
-            padding: 6px 14px;
-            border-radius: 8px;
+            padding: 6px 14px; border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
         }
@@ -314,16 +279,11 @@
             background: rgba(57, 255, 20, 0.03);
         }
 
-        /* Action Button */
         .action-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 40px;
-            background: #ffffff;
-            color: #020617;
-            text-decoration: none;
-            border-radius: 50px;
+            display: inline-flex; align-items: center;
+            gap: 12px; padding: 16px 40px;
+            background: #ffffff; color: #020617;
+            text-decoration: none; border-radius: 50px;
             font-weight: 700;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
@@ -336,40 +296,31 @@
             box-shadow: 0 0 30px var(--accent-primary);
             transform: translateY(-2px);
         }
-        
+
         #devEcosystem .action-btn {
             font-family: 'Fira Code', monospace;
             background: transparent;
             color: var(--matrix-green);
             border: 1px solid var(--matrix-green);
-            border-radius: 8px;
-            box-shadow: none;
+            border-radius: 8px; box-shadow: none;
         }
-        
+
         #devEcosystem .action-btn:hover {
             background: rgba(57, 255, 20, 0.1);
             box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
         }
 
-        /* Scroll Indicators */
         .scroll-indicator {
-            position: fixed;
-            right: 40px;
-            top: 50%;
+            position: fixed; right: 40px; top: 50%;
             transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            z-index: 100;
+            display: flex; flex-direction: column;
+            gap: 16px; z-index: 100;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+            width: 10px; height: 10px; border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
+            cursor: pointer; transition: all 0.3s ease;
         }
 
         .dot.active-dot {
@@ -382,13 +333,574 @@
             background: var(--matrix-green);
             box-shadow: 0 0 10px var(--matrix-green);
         }
+
+        /* ============================================ */
+        /* FLOATING TERMINAL BUTTON                     */
+        /* ============================================ */
+        .cmd-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--accent-primary);
+            border-radius: 8px;
+            color: var(--accent-primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .cmd-toggle-btn:hover {
+            background: rgba(15, 23, 42, 1);
+            box-shadow: 0 0 24px var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .cmd-toggle-btn .cmd-toggle-prompt {
+            opacity: 0.75;
+        }
+
+        /* ============================================ */
+        /* COMMAND LINE OVERLAY                         */
+        /* ============================================ */
+        .cmdline-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.55);
+            z-index: 9000;
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 30px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            animation: cmdFadeIn 0.22s ease;
+        }
+
+        .cmdline-overlay.active { display: flex; }
+
+        @keyframes cmdFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cmdline-panel {
+            background: #0a0e1a;
+            border: 1px solid var(--accent-primary);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 720px;
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.85), 0 0 40px var(--accent-primary);
+            animation: cmdSlideUp 0.3s ease;
+        }
+
+        @keyframes cmdSlideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .cmdline-header {
+            background: #111827;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.8rem;
+            user-select: none;
+        }
+
+        .terminal-dots { display: flex; gap: 6px; margin-right: 10px; }
+        .terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
+        .terminal-dot.red { background: #ef4444; }
+        .terminal-dot.yellow { background: #eab308; }
+        .terminal-dot.green { background: #22c55e; }
+
+        .cmdline-title {
+            flex: 1;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--accent-primary);
+            opacity: 0.75;
+        }
+
+        .terminal-close {
+            background: transparent;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            width: 24px; height: 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .terminal-close:hover {
+            background: #ef4444;
+            color: #fff;
+            border-color: #ef4444;
+        }
+
+        .cmdline-body {
+            padding: 16px 22px 14px 22px;
+            max-height: 55vh;
+            overflow-y: auto;
+            color: #e2e8f0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .cmdline-body::-webkit-scrollbar { width: 6px; }
+        .cmdline-body::-webkit-scrollbar-track { background: #0a0e1a; }
+        .cmdline-body::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+        .cmdline-history { margin-bottom: 10px; }
+
+        .cmdline-history-item {
+            padding: 4px 0;
+            word-break: break-all;
+        }
+
+        .cmdline-history-cmd {
+            display: block;
+            color: #94a3b8;
+        }
+
+        .cmdline-history-cmd::before {
+            content: 'user@heuravox:~$ ';
+            color: var(--accent-primary);
+        }
+
+        .cmdline-history-out {
+            display: block;
+            padding-left: 12px;
+            color: #f43f5e;
+        }
+
+        .cmdline-history-out.ok { color: #22c55e; }
+
+        .cmdline-input-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 28px;
+        }
+
+        .cmdline-prompt {
+            color: var(--accent-primary);
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+        }
+
+        .cmdline-buffer {
+            color: #ffffff;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            word-break: break-all;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cmdline-cursor {
+            display: inline-block;
+            width: 9px;
+            height: 16px;
+            background: var(--accent-primary);
+            animation: cmdBlink 1s step-end infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes cmdBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cmdline-footer {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(148, 163, 184, 0.15);
+            color: #64748b;
+            font-size: 0.72rem;
+            font-style: italic;
+        }
+
+        /* ============================================ */
+        /* DEV REWARD TERMINAL                          */
+        /* ============================================ */
+        .terminal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: termFadeIn 0.25s ease;
+        }
+        .terminal-overlay.active { display: flex; }
+
+        @keyframes termFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .terminal-window {
+            background: #0a0e1a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 920px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.85);
+            font-family: 'Fira Code', monospace;
+            overflow: hidden;
+            animation: termSlideUp 0.3s ease;
+        }
+
+        @keyframes termSlideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .terminal-window.dev {
+            border-color: rgba(57, 255, 20, 0.4);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.85),
+                        0 0 60px rgba(57, 255, 20, 0.15);
+        }
+
+        .terminal-header {
+            background: #111827;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.8rem;
+            user-select: none;
+        }
+
+        .terminal-title {
+            color: #94a3b8; flex: 1; text-align: center;
+            font-size: 0.78rem;
+        }
+        .terminal-window.dev .terminal-title { color: rgba(57, 255, 20, 0.75); }
+
+        .terminal-body {
+            padding: 22px 26px;
+            overflow-y: auto;
+            flex: 1;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            color: #a7f3d0;
+        }
+        .terminal-body::-webkit-scrollbar { width: 8px; }
+        .terminal-body::-webkit-scrollbar-track { background: #0a0e1a; }
+        .terminal-body::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+        .terminal-prompt-line {
+            margin-bottom: 16px;
+            color: #64748b;
+        }
+        .terminal-prompt-line .prompt-user { color: var(--matrix-green); }
+        .terminal-prompt-line .prompt-path { color: #64748b; }
+
+        .hello-grid {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(57, 255, 20, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .hello-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+        }
+        .hello-row:last-child { border-bottom: none; }
+
+        .hello-lang {
+            background: rgba(57, 255, 20, 0.05);
+            padding: 12px 16px;
+            color: var(--matrix-green);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.6px;
+            border-right: 1px solid rgba(57, 255, 20, 0.1);
+            text-transform: uppercase;
+        }
+
+        .hello-code {
+            padding: 12px 16px;
+            color: #e2e8f0;
+            font-size: 0.8rem;
+            white-space: pre;
+            overflow-x: auto;
+            line-height: 1.55;
+        }
+        .hello-code::-webkit-scrollbar { height: 4px; }
+        .hello-code::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+
+        .terminal-outro {
+            color: #64748b;
+            font-size: 0.78rem;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* ============================================ */
+        /* EASTER EGG FULL SCREEN EFFECTS               */
+        /* ============================================ */
+        .effect-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            font-family: 'Fira Code', monospace;
+            cursor: pointer;
+            animation: effectFadeIn 0.3s ease;
+        }
+
+        .effect-overlay.active { display: flex; }
+
+        @keyframes effectFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ---- iddqd: DOOM mode ---- */
+        .iddqd-effect {
+            background: #000000;
+            color: #cc0000;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .iddqd-title {
+            font-size: clamp(2rem, 6vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: #ff0000;
+            text-shadow: 0 0 30px #ff0000, 0 0 60px #8b0000, 0 0 100px #8b0000;
+            animation: iddqdPulse 1.4s ease-in-out infinite;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.6;
+        }
+
+        .iddqd-sub {
+            font-size: clamp(1rem, 3vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #a50000;
+            text-shadow: 0 0 20px #cc0000, 0 0 40px #8b0000;
+            animation: iddqdPulse 1.4s ease-in-out infinite 0.2s;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.8;
+        }
+
+        .iddqd-hint {
+            font-size: 0.75rem;
+            color: #5c0000;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            animation: iddqdPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iddqdPulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.75; 
+                transform: scale(1.02);
+            }
+        }
+
+        /* ---- abacabb: Mortal Kombat god combo ---- */
+        .abacabb-effect {
+            background: radial-gradient(circle at center, #1a0000 0%, #000000 80%);
+            color: #ff3333;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .abacabb-line {
+            font-size: clamp(1rem, 3vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: #ff8800;
+            text-shadow: 0 0 20px #ff4400, 0 0 40px #aa0000;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.8;
+            animation: abacabbFlash 0.8s ease-in-out infinite;
+        }
+
+        .abacabb-countdown {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #ffcc00;
+            text-shadow: 0 0 30px #ff8800, 0 0 60px #ff4400, 0 0 100px #aa0000;
+            font-family: 'Press Start 2P', cursive;
+            margin-top: 30px;
+            animation: abacabbPulse 0.6s ease-in-out infinite;
+        }
+
+        .abacabb-boom {
+            font-size: clamp(4rem, 14vw, 12rem);
+            font-weight: 900;
+            letter-spacing: 10px;
+            color: #ffffff;
+            text-shadow: 0 0 40px #ff2200, 0 0 80px #ff8800, 0 0 150px #ffcc00;
+            font-family: 'Press Start 2P', cursive;
+            display: none;
+            animation: boomFlash 0.4s ease-in-out infinite;
+        }
+
+        @keyframes abacabbFlash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        @keyframes abacabbPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        @keyframes boomFlash {
+            0%, 100% { 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.06);
+                filter: brightness(1.5);
+            }
+        }
+
+        /* ---- rosebud: money mode ---- */
+        .rosebud-effect {
+            background: linear-gradient(135deg, #1a1200 0%, #2b1d00 50%, #1a1200 100%);
+            color: #ffd700;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .rosebud-label {
+            font-size: clamp(1.2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: #ffd700;
+            text-shadow: 0 0 20px #ffa500, 0 0 40px #ffcc00;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.8;
+        }
+
+        .rosebud-amount {
+            font-size: clamp(2.5rem, 9vw, 8rem);
+            font-weight: 900;
+            color: #ffd700;
+            text-shadow: 0 0 30px #ffd700, 0 0 60px #ffaa00, 0 0 120px #ff8800;
+            letter-spacing: 4px;
+            animation: goldShimmer 1.6s ease-in-out infinite;
+            line-height: 1.3;
+            word-break: break-all;
+        }
+
+        @keyframes goldShimmer {
+            0%, 100% {
+                color: #ffd700;
+                text-shadow: 0 0 30px #ffd700, 0 0 60px #ffaa00, 0 0 120px #ff8800;
+            }
+            50% {
+                color: #fff8b0;
+                text-shadow: 0 0 40px #ffeb3b, 0 0 80px #ffcc00, 0 0 150px #ffaa00;
+            }
+        }
+
+        /* ---- rocketman: San Andreas flight ---- */
+        .rocketman-effect {
+            background: radial-gradient(circle at 50% 120%, #0a1f44 0%, #020617 70%);
+            color: #00c8ff;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .rocketman-line {
+            font-size: clamp(1rem, 3vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: #00c8ff;
+            text-shadow: 0 0 20px #00a8e0, 0 0 40px #0066aa;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.8;
+            animation: rocketGlow 2s ease-in-out infinite;
+        }
+
+        .rocketman-countdown {
+            font-size: clamp(2rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #ffffff;
+            text-shadow: 0 0 30px #00c8ff, 0 0 60px #00a8e0, 0 0 100px #0066aa;
+            font-family: 'Press Start 2P', cursive;
+            margin-top: 20px;
+            animation: rocketGlow 1.2s ease-in-out infinite;
+        }
+
+        @keyframes rocketGlow {
+            0%, 100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 0.85;
+                transform: translateY(-6px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hello-row { grid-template-columns: 95px 1fr; }
+            .hello-lang { font-size: 0.65rem; padding: 10px 8px; }
+            .hello-code { font-size: 0.7rem; padding: 10px 8px; }
+            .terminal-body { padding: 16px; }
+            .cmdline-body { padding: 14px 16px; }
+            .cmdline-buffer { font-size: 0.9rem; letter-spacing: 1px; }
+            .cmd-toggle-btn { bottom: 20px; right: 20px; padding: 8px 12px; font-size: 0.78rem; }
+            .cmdline-overlay { padding: 16px; }
+        }
     </style>
 </head>
 <body>
 
     <canvas id="interactiveCanvas"></canvas>
 
-    <!-- HERO HEADER: Full screen, large text -->
     <header class="global-header">
         <div class="brand-meta">
             <h1 class="brand-title">Hi, I am <span class="name-highlight">Rehan Aman</span></h1>
@@ -399,7 +911,6 @@
         </div>
     </header>
 
-    <!-- Mode switcher fixed at top right -->
     <div class="mode-switcher" id="modeToggle">
         <div class="mode-btn active" id="modeDev">💻 Core Dev</div>
         <div class="mode-btn" id="modeGaming">🎮 Gaming Mode</div>
@@ -407,9 +918,8 @@
 
     <div class="scroll-indicator" id="dotNav"></div>
 
-    <!-- DEVELOPMENT PORTFOLIO LAYER -->
+    <!-- DEV LAYER -->
     <div class="view-wrapper active-view" id="devEcosystem">
-        
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">01 // Who am I</span>
@@ -439,14 +949,14 @@
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">03 // Active Production Terminal</span>
-                <h2>ANIOXAZ</h2>
+                <h2><a href="https://github.com/rehanamanind-ship-it/A-N-I-O-X-A-Z" target="_blank" class="project-title-link">ANIOXAZ</a></h2>
                 <p class="narrative">
-                    A completely free, fully localized offline alternative to expensive cloud-dependent workspace consoles. Designed to host sandboxed command execution setups and run production test pipelines natively within your machine, bypassing third-party servers entirely.
+                    A local-first, offline coding workspace built around a dual-model workflow. The Architect plans, diagnoses, and explains while the Coder writes code strictly from the Architect's plan — both powered by local GGUF models for fully private, air-gapped development. Ships with a Textual editor, save/open/new buffer operations, a persistent philosophy file, Python execution support, and an auto-heal repair loop.
                 </p>
                 <div class="project-meta-block">
-                    <span class="meta-pill">CLI Tool</span>
-                    <span class="meta-pill">Local Runtime</span>
-                    <span class="meta-pill">Sandbox Env</span>
+                    <span class="meta-pill">Dual-Model Workflow</span>
+                    <span class="meta-pill">Offline GGUF</span>
+                    <span class="meta-pill">Textual UI</span>
                 </div>
             </div>
         </section>
@@ -454,14 +964,14 @@
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">04 // Simulation System</span>
-                <h2>N.I.W.O.E.C.</h2>
+                <h2><a href="https://github.com/rehanamanind-ship-it/N.I.W.O.E.C." target="_blank" class="project-title-link">N.I.W.O.E.C.</a></h2>
                 <p class="narrative">
-                    Automated application cross-specification test array. Simulates varying performance architectures, throttling boundaries, and variable system specifications locally on your processor, using an internal AI execution engine to produce compact diagnostic summaries.
+                    A deterministic, offline CLI that checks whether your source code actually implements the requirements in a Functional Requirements Specification (FRS). It flags placeholder functions and maintainability issues without calling any LLM, downloading files, or sending telemetry. The same source, FRS, configuration, and rule version always produce the same output — built for local and air-gapped verification.
                 </p>
                 <div class="project-meta-block">
-                    <span class="meta-pill">CLI Tool</span>
-                    <span class="meta-pill">App Simulation</span>
-                    <span class="meta-pill">AI Diagnostic Engine</span>
+                    <span class="meta-pill">FRS Verification</span>
+                    <span class="meta-pill">Offline / Air-Gapped</span>
+                    <span class="meta-pill">Deterministic Output</span>
                 </div>
             </div>
         </section>
@@ -469,14 +979,14 @@
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">05 // Security Vector Check</span>
-                <h2>D.E.M.O.N.</h2>
+                <h2><a href="https://github.com/rehanamanind-ship-it/D.E.M.O.N." target="_blank" class="project-title-link">D.E.M.O.N.</a></h2>
                 <p class="narrative">
-                    Deep structural file security analyzer. Processes source code repositories and compiled executable blobs using advanced mathematical scanning heuristics and local AI behavior modeling to flag dangerous assembly hooks, system leaks, and malicious tracking patterns.
+                    A headless, git-style terminal CLI for static analysis of binaries and scripts. It inspects .exe files and more to reveal the intent behind the software, with optional local GGUF classification through llama-cpp-python. Models are configured once with <code>demon model set path/to/model.gguf</code>, and results are cached under <code>~/.cache/demon</code> for repeatable, offline threat assessment.
                 </p>
                 <div class="project-meta-block">
-                    <span class="meta-pill">CLI Tool</span>
-                    <span class="meta-pill">Malware Isolation</span>
-                    <span class="meta-pill">Heuristic Scanner</span>
+                    <span class="meta-pill">Binary Static Analysis</span>
+                    <span class="meta-pill">Local GGUF Classification</span>
+                    <span class="meta-pill">Git-Style CLI</span>
                 </div>
             </div>
         </section>
@@ -484,14 +994,14 @@
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">06 // Local Model Compiler</span>
-                <h2>AI creato</h2>
+                <h2><a href="https://github.com/rehanamanind-ship-it/AI_creato" target="_blank" class="project-title-link">AI creato</a></h2>
                 <p class="narrative">
-                    A native intelligence compiler that formats raw text files into exact <code>user_input = ai_answer</code> token pairs. Handles localized optimization matrix sets, manages file quantization directly on your computer hardware, and exports production-ready <strong>.gguf</strong> binaries.
+                    A terminal-first AI builder covering the entire model lifecycle — train small dataset models from simple <code>input = output</code> files, fine-tune Hugging Face checkpoints from conversation-style examples, export trained models to GGUF, quantize for smaller and faster deployment, and test saved models with direct terminal prompts. No notebooks, no GUI — just scriptable commands: <code>creato-ai train</code>, <code>fine-tune</code>, <code>export</code>, <code>quantize</code>, <code>test</code>.
                 </p>
                 <div class="project-meta-block">
-                    <span class="meta-pill">CLI Tool</span>
-                    <span class="meta-pill">LLM Tuning</span>
-                    <span class="meta-pill">GGUF Matrix Export</span>
+                    <span class="meta-pill">LLM / SLM Training</span>
+                    <span class="meta-pill">GGUF Export & Quantize</span>
+                    <span class="meta-pill">Terminal-First Workflow</span>
                 </div>
             </div>
         </section>
@@ -499,14 +1009,14 @@
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">07 // Binary Disassembler Matrix</span>
-                <h2>mr. reverse</h2>
+                <h2><a href="https://github.com/rehanamanind-ship-it/mr.-reverse" target="_blank" class="project-title-link">mr. reverse</a></h2>
                 <p class="narrative">
-                    A smart reverse engineering module written to break down compiled software configurations. Inspects system binaries across <strong>.exe</strong> execution frameworks and <strong>.elf</strong> architectures, parsing operational blocks using localized offline decoding models.
+                    A lightweight reverse-engineering and conversion CLI (internally HREA) that detects file type, architecture, packer markers, and purpose heuristically, then generates scaffolded conversion output for a target language. Supports optional GGUF model loading through llama-cpp-python, machine-readable JSON output for CI pipelines, and a built-in <code>hrea doctor</code> to check your runtime environment.
                 </p>
                 <div class="project-meta-block">
-                    <span class="meta-pill">CLI Tool</span>
-                    <span class="meta-pill">Binary Analysis</span>
-                    <span class="meta-pill">Decompiler Logic</span>
+                    <span class="meta-pill">Binary Intent Analysis</span>
+                    <span class="meta-pill">Scaffolded Conversion</span>
+                    <span class="meta-pill">JSON / CI-Friendly</span>
                 </div>
             </div>
         </section>
@@ -514,21 +1024,37 @@
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">08 // System Control Hook</span>
-                <h2>i gatekeep arch btw</h2>
+                <h2><a href="https://github.com/rehanamanind-ship-it/i-gatekeep-arch-btw" target="_blank" class="project-title-link">i gatekeep arch btw</a></h2>
                 <p class="narrative">
-                    A fail-safe protection framework tailored for Arch Linux environments. Automatically hooks into pacman update logs, intercepting unexpected version upgrades and blocking critical packages until the user verifies permissions inside an interactive terminal console.
+                    A smart wrapper for <code>pacman -Syu</code> that guards your Arch Linux system against dangerous updates. It flags critical packages (kernel, systemd, glibc, GRUB, and more) before upgrading, detects locally modified config files in <code>/etc/</code> that could cause .pacnew conflicts, and requires your explicit confirmation before applying anything. Full control over your rolling-release system — zero surprise breakage.
                 </p>
                 <div class="project-meta-block">
-                    <span class="meta-pill">CLI Tool</span>
-                    <span class="meta-pill">Arch Linux Hook</span>
-                    <span class="meta-pill">Package Gatekeeper</span>
+                    <span class="meta-pill">Pacman Wrapper</span>
+                    <span class="meta-pill">Critical Package Guard</span>
+                    <span class="meta-pill">.pacnew Conflict Detection</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="fullscreen-section">
+            <div class="content-card">
+                <span class="section-tag">09 // Monolith Refactoring Unit</span>
+                <h2><a href="https://github.com/rehanamanind-ship-it/monolith_splitter" target="_blank" class="project-title-link">monolith_splitter</a></h2>
+                <p class="narrative">
+                    A CLI utility that splits a large monolithic Python file into smaller, organized modules using a CSV-based section map. Designed for scripts that were intentionally sectioned with marker comments, it reads a <code>SECTION_NAME,START_LINE,END_LINE</code> config, generates predictable output files, restores import lines that were commented out for splitting, and warns about unassigned ranges. Packaged as an installable wheel with a simple terminal workflow — no GUI, no notebooks.
+                </p>
+                <div class="project-meta-block">
+                    <span class="meta-pill">CSV Section Map</span>
+                    <span class="meta-pill">Monolith Refactoring</span>
+                    <span class="meta-pill">CLI Splitting</span>
+                    <span class="meta-pill">Wheel Packaging</span>
                 </div>
             </div>
         </section>
 
         <section class="fullscreen-section">
             <div class="content-card" style="text-align: center;">
-                <span class="section-tag">09 // Network Hub</span>
+                <span class="section-tag">10 // Network Hub</span>
                 <h2>Source Terminal</h2>
                 <p class="narrative">
                     All my projects are coded natively, built with absolute structural clarity, and compiled to operate without third-party telemetry.
@@ -538,14 +1064,14 @@
                         ./visit_github.sh &rarr;
                     </a>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rehanamanind@gmail.com" target="_blank" class="action-btn">
-                        ./contact_me.gmail &rarr;
+                        contact_me.gmail &rarr;
                     </a>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- GAMING PORTFOLIO LAYER -->
+    <!-- GAMING LAYER -->
     <div class="view-wrapper" id="gamingEcosystem">
         <section class="fullscreen-section">
             <div class="content-card">
@@ -723,6 +1249,87 @@
         </section>
     </div>
 
+    <!-- FLOATING COMMAND LINE BUTTON -->
+    <button class="cmd-toggle-btn" id="cmdToggleBtn" aria-label="Open command line">
+        <span class="cmd-toggle-prompt">$</span>
+        <span>_</span>
+    </button>
+
+    <!-- COMMAND LINE OVERLAY -->
+    <div class="cmdline-overlay" id="cmdlineOverlay">
+        <div class="cmdline-panel">
+            <div class="cmdline-header">
+                <div class="terminal-dots">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <div class="cmdline-title">user@heuravox — bash — 80×24</div>
+                <button class="terminal-close" id="cmdlineClose">×</button>
+            </div>
+            <div class="cmdline-body">
+                <div class="cmdline-history" id="cmdlineHistory"></div>
+                <div class="cmdline-input-row">
+                    <span class="cmdline-prompt">user@heuravox:~$</span>
+                    <span class="cmdline-buffer" id="cmdlineBuffer"></span>
+                    <span class="cmdline-cursor"></span>
+                </div>
+                <div class="cmdline-footer">// ESC to close · ENTER to execute</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEV REWARD TERMINAL -->
+    <div class="terminal-overlay" id="devTerminalOverlay">
+        <div class="terminal-window dev">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <div class="terminal-title">hello_world.sh — bash — 100×30</div>
+                <button class="terminal-close" id="devTerminalClose">×</button>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-prompt-line">
+                    <span class="prompt-user">user@heuravox</span><span class="prompt-path">:~$</span> ./hello_world.sh
+                </div>
+                <div class="hello-grid" id="helloGrid"></div>
+                <div class="terminal-outro">// 20 languages. one message. press ESC or click outside to close.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- iddqd EFFECT -->
+    <div class="effect-overlay iddqd-effect" id="effectIddqd">
+        <div class="iddqd-title">DOOMGUY IS HERE</div>
+        <div class="iddqd-sub">RUN FOR YOUR LIVES!!!!!!</div>
+        <div class="iddqd-hint">// CLICK OR PRESS ESC TO FLEE</div>
+    </div>
+
+    <!-- abacabb EFFECT -->
+    <div class="effect-overlay abacabb-effect" id="effectAbacabb">
+        <div class="abacabb-line">ALL SET</div>
+        <div class="abacabb-line">POWER MODE REACHED</div>
+        <div class="abacabb-line">GOD COMBO</div>
+        <div class="abacabb-countdown" id="abacabbCountdown">3...</div>
+        <div class="abacabb-boom" id="abacabbBoom">BOOM!!</div>
+    </div>
+
+    <!-- rosebud EFFECT -->
+    <div class="effect-overlay rosebud-effect" id="effectRosebud">
+        <div class="rosebud-label">ACCOUNT BALANCE :</div>
+        <div class="rosebud-amount">$∞,∞,∞,∞,∞</div>
+    </div>
+
+    <!-- rocketman EFFECT -->
+    <div class="effect-overlay rocketman-effect" id="effectRocketman">
+        <div class="rocketman-line">STILL PLAYIN' SAN ANDREAS</div>
+        <div class="rocketman-line">WHATEVER LETS FLY</div>
+        <div class="rocketman-countdown" id="rocketmanCountdown">IN 3...</div>
+    </div>
+
     <script>
         const canvas = document.getElementById('interactiveCanvas');
         const ctx = canvas.getContext('2d');
@@ -735,22 +1342,17 @@
 
         let currentActiveMode = 'dev';
         let mousePos = { x: -5000, y: -5000 };
-
-        // Dynamic Color State Variables
-        let globalHueValue = 200; 
+        let globalHueValue = 200;
 
         function resizeDisplayCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
         resizeDisplayCanvas();
-        window.addEventListener('resize', resizeDisplayCanvas);
 
         window.addEventListener('mousemove', (e) => {
             mousePos.x = e.clientX;
             mousePos.y = e.clientY;
-
-            // Slowly shift the hue based on mouse X/Y positioning coordinates
             let rawCalculation = (e.clientX / window.innerWidth) * 180 + (e.clientY / window.innerHeight) * 180;
             globalHueValue = Math.round(rawCalculation);
         });
@@ -760,352 +1362,442 @@
             mousePos.y = -5000;
         });
 
-        // --- PARTICLE DENSITY ENGINE STRUCTS ---
-        const totalDensity = 200;
+        // ==========================================================
+        // RESPONSIVE DENSITY
+        // ==========================================================
+        const BASE_STARS = 260;
+        const BASE_SHIPS = 80;
+
+        function getDensityFactor() {
+            const area = window.innerWidth * window.innerHeight;
+            const reference = 1920 * 1080;
+            const raw = area / reference;
+            return Math.max(0.3, Math.min(2.6, raw));
+        }
+
+        let densityFactor = getDensityFactor();
+
         const softwareStars = [];
         const gamingRockets = [];
         const weaponsArray = [];
-        const impactSparks = []; // <-- sparks that fly off the laser impact point
+        const impactSparks = [];
 
-        for (let i = 0; i < totalDensity; i++) {
-            softwareStars.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                radius: Math.random() * 1.5 + 0.5,
-                pulse: Math.random() * Math.PI
-            });
-
-            gamingRockets.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                type: Math.random() > 0.82 ? 'destroyer' : 'fighter', 
-                size: Math.random() * 2 + 1.5,
-                cooldown: Math.random() * 50,
-                angle: Math.random() * Math.PI * 2
-            });
+        function spawnStars() {
+            softwareStars.length = 0;
+            const count = Math.max(70, Math.round(BASE_STARS * densityFactor));
+            for (let i = 0; i < count; i++) {
+                softwareStars.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    radius: Math.random() * 1.5 + 0.5,
+                    pulse: Math.random() * Math.PI
+                });
+            }
         }
 
-        // --- RENDER REFRESH LOOP ---
+        function spawnShips() {
+            gamingRockets.length = 0;
+            weaponsArray.length = 0;
+            const count = Math.max(22, Math.round(BASE_SHIPS * densityFactor));
+            for (let i = 0; i < count; i++) {
+                const r = Math.random();
+                let type, size, baseCooldown;
+                if (r < 0.5) {
+                    type = 'scout';
+                    size = 1.6;
+                    baseCooldown = 55;
+                } else if (r < 0.85) {
+                    type = 'fighter';
+                    size = 2.2;
+                    baseCooldown = 65;
+                } else {
+                    type = 'destroyer';
+                    size = 3.2;
+                    baseCooldown = 100;
+                }
+                gamingRockets.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    type: type,
+                    size: size,
+                    cooldown: Math.random() * baseCooldown,
+                    angle: Math.random() * Math.PI * 2,
+                    baseCooldown: baseCooldown,
+                    drift: (Math.random() - 0.5) * 0.004
+                });
+            }
+        }
+
+        spawnStars();
+        spawnShips();
+
+        let resizeTimer = null;
+        window.addEventListener('resize', () => {
+            resizeDisplayCanvas();
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                densityFactor = getDensityFactor();
+                spawnStars();
+                spawnShips();
+            }, 220);
+        });
+
         function runGraphicsExecutionLoop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             const now = performance.now() * 0.001;
 
             if (currentActiveMode === 'dev') {
-                // --- SOFTWARE GRAPHICS LAYER ---
-                const connectionLimit = 180;
-
-                for (let i = 0; i < softwareStars.length; i++) {
-                    const star = softwareStars[i];
-
-                    if (star.x > canvas.width) star.x = Math.random() * canvas.width;
-                    if (star.y > canvas.height) star.y = Math.random() * canvas.height;
-
-                    star.pulse += 0.02;
-                    let glowOpacity = 0.4 + Math.sin(star.pulse) * 0.2;
-
-                    ctx.fillStyle = `rgba(255, 255, 255, ${glowOpacity})`;
-                    ctx.beginPath();
-                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    const dx = mousePos.x - star.x;
-                    const dy = mousePos.y - star.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < connectionLimit) {
-                        let forceRatio = 1 - (dist / connectionLimit);
-                        
-                        // Dynamic Color Shift System (HSL tracks color spectra smoothly)
-                        ctx.strokeStyle = `hsla(${globalHueValue}, 95%, 55%, ${forceRatio * 0.85})`;
-                        ctx.lineWidth = forceRatio * 2.5;
-                        ctx.beginPath();
-                        ctx.moveTo(star.x, star.y);
-                        ctx.lineTo(mousePos.x, mousePos.y);
-                        ctx.stroke();
-                    }
-                }
+                drawDevMode();
             } else {
-                // ============================================
-                // --- GAMING GRAPHICS LAYER (DEATH STAR) ---
-                // ============================================
-                const dsX = canvas.width * 0.5;
-                const dsY = 160;
-                const dsRadius = 60;
-
-                // --- Death Star body ---
-                ctx.save();
-                ctx.beginPath();
-                ctx.arc(dsX, dsY, dsRadius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(30, 41, 59, 0.4)';
-                ctx.strokeStyle = 'rgba(217, 70, 239, 0.5)';
-                ctx.lineWidth = 4; 
-                ctx.fill();
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.arc(dsX - 20, dsY - 20, 14, 0, Math.PI * 2);
-                ctx.strokeStyle = 'rgba(217, 70, 239, 0.4)';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-                ctx.restore();
-
-                const dsDX = mousePos.x - (dsX - 20);
-                const dsDY = mousePos.y - (dsY - 20);
-                const dsDist = Math.sqrt(dsDX * dsDX + dsDY * dsDY);
-
-                // --- Beam firing range ---
-                const firingRange = 700;
-                const beamActive = dsDist < firingRange && mousePos.x > 0;
-
-                // ---- Impact Sparks ----
-                for (let s = impactSparks.length - 1; s >= 0; s--) {
-                    const sp = impactSparks[s];
-                    sp.x += sp.vx;
-                    sp.y += sp.vy;
-                    sp.vx *= 0.94;
-                    sp.vy *= 0.94;
-                    sp.life -= sp.decay;
-
-                    if (sp.life <= 0) {
-                        impactSparks.splice(s, 1);
-                        continue;
-                    }
-                    ctx.fillStyle = `hsla(${sp.hue}, 100%, 60%, ${sp.life})`;
-                    ctx.beginPath();
-                    ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
-                if (beamActive) {
-                    // Emitter point on the death star's dish
-                    const startX = dsX - 20;
-                    const startY = dsY - 20;
-                    const endX = mousePos.x;
-                    const endY = mousePos.y;
-
-                    // Realistic flicker
-                    const flicker =
-                        0.85 +
-                        Math.sin(now * 41.3) * 0.06 +
-                        Math.sin(now * 23.7) * 0.05 +
-                        Math.sin(now * 87.1) * 0.03;
-
-                    // 1. WIDE OUTER AURA
-                    ctx.save();
-                    ctx.lineCap = 'round';
-                    ctx.shadowColor = 'rgba(57, 255, 20, 0.95)';
-                    ctx.shadowBlur = 45 * flicker;
-                    ctx.strokeStyle = `rgba(57, 255, 20, ${0.10 * flicker})`;
-                    ctx.lineWidth = 34;
-                    ctx.beginPath();
-                    ctx.moveTo(startX, startY);
-                    ctx.lineTo(endX, endY);
-                    ctx.stroke();
-
-                    // 2. MID GLOW LAYER
-                    ctx.shadowBlur = 28 * flicker;
-                    ctx.strokeStyle = `rgba(80, 255, 40, ${0.28 * flicker})`;
-                    ctx.lineWidth = 18;
-                    ctx.beginPath();
-                    ctx.moveTo(startX, startY);
-                    ctx.lineTo(endX, endY);
-                    ctx.stroke();
-
-                    // 3. BRIGHT GREEN BEAM
-                    ctx.shadowBlur = 16 * flicker;
-                    ctx.strokeStyle = `rgba(140, 255, 90, ${0.9 * flicker})`;
-                    ctx.lineWidth = 7;
-                    ctx.beginPath();
-                    ctx.moveTo(startX, startY);
-                    ctx.lineTo(endX, endY);
-                    ctx.stroke();
-
-                    // 4. WHITE-HOT CORE
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = 'rgba(255, 255, 255, 0.95)';
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
-                    ctx.lineWidth = 2.2;
-                    ctx.beginPath();
-                    ctx.moveTo(startX, startY);
-                    ctx.lineTo(endX, endY);
-                    ctx.stroke();
-                    ctx.restore();
-
-                    // 5. TRAVELING ENERGY PULSES
-                    const pulseCount = 5;
-                    for (let p = 0; p < pulseCount; p++) {
-                        const progress = ((now * 0.9 + p / pulseCount) % 1);
-                        const px = startX + (endX - startX) * progress;
-                        const py = startY + (endY - startY) * progress;
-                        const pulseR = 10 + Math.sin(progress * Math.PI) * 8;
-                        const grad = ctx.createRadialGradient(px, py, 0, px, py, pulseR * 3);
-                        grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-                        grad.addColorStop(0.25, 'rgba(160, 255, 100, 0.7)');
-                        grad.addColorStop(0.6, 'rgba(57, 255, 20, 0.25)');
-                        grad.addColorStop(1, 'rgba(57, 255, 20, 0)');
-                        ctx.fillStyle = grad;
-                        ctx.beginPath();
-                        ctx.arc(px, py, pulseR * 3, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-
-                    // 6. MUZZLE FLARE
-                    const muzzleR = 22 + Math.sin(now * 25) * 4;
-                    const muzzleGrad = ctx.createRadialGradient(startX, startY, 0, startX, startY, muzzleR * 2);
-                    muzzleGrad.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
-                    muzzleGrad.addColorStop(0.25, `rgba(160, 255, 100, ${0.75 * flicker})`);
-                    muzzleGrad.addColorStop(0.6, `rgba(57, 255, 20, ${0.35 * flicker})`);
-                    muzzleGrad.addColorStop(1, 'rgba(57, 255, 20, 0)');
-                    ctx.fillStyle = muzzleGrad;
-                    ctx.beginPath();
-                    ctx.arc(startX, startY, muzzleR * 2, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // 7. IMPACT POINT
-                    const impactR = 70 + Math.sin(now * 15) * 8;
-                    const impactGrad = ctx.createRadialGradient(endX, endY, 0, endX, endY, impactR);
-                    impactGrad.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
-                    impactGrad.addColorStop(0.12, `rgba(200, 255, 160, ${0.85 * flicker})`);
-                    impactGrad.addColorStop(0.35, `rgba(80, 255, 40, ${0.4 * flicker})`);
-                    impactGrad.addColorStop(0.7, `rgba(57, 255, 20, ${0.12 * flicker})`);
-                    impactGrad.addColorStop(1, 'rgba(57, 255, 20, 0)');
-                    ctx.fillStyle = impactGrad;
-                    ctx.beginPath();
-                    ctx.arc(endX, endY, impactR, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Hot core on impact
-                    ctx.fillStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
-                    ctx.beginPath();
-                    ctx.arc(endX, endY, 4 + Math.sin(now * 40) * 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Expanding shock rings
-                    for (let r = 0; r < 2; r++) {
-                        const ringPhase = ((now * 0.8 + r * 0.5) % 1);
-                        const ringR = 14 + ringPhase * 55;
-                        const ringAlpha = (1 - ringPhase) * 0.75 * flicker;
-                        ctx.strokeStyle = `rgba(140, 255, 90, ${ringAlpha})`;
-                        ctx.lineWidth = 2.5 * (1 - ringPhase) + 0.5;
-                        ctx.beginPath();
-                        ctx.arc(endX, endY, ringR, 0, Math.PI * 2);
-                        ctx.stroke();
-                    }
-
-                    // Spawn impact sparks
-                    const sparksPerFrame = 2;
-                    for (let s = 0; s < sparksPerFrame; s++) {
-                        const ang = Math.random() * Math.PI * 2;
-                        const spd = 2 + Math.random() * 5;
-                        impactSparks.push({
-                            x: endX,
-                            y: endY,
-                            vx: Math.cos(ang) * spd,
-                            vy: Math.sin(ang) * spd,
-                            life: 1,
-                            decay: 0.02 + Math.random() * 0.03,
-                            size: 1 + Math.random() * 2.2,
-                            hue: Math.random() < 0.7 ? 110 : 60
-                        });
-                    }
-                }
-
-                // --- Weapons (bullets from ships) ---
-                for (let b = weaponsArray.length - 1; b >= 0; b--) {
-                    const bullet = weaponsArray[b];
-                    bullet.x += bullet.vx * bullet.speed;
-                    bullet.y += bullet.vy * bullet.speed;
-                    bullet.ttl--;
-
-                    ctx.strokeStyle = bullet.color;
-                    ctx.lineWidth = 2.5;
-                    ctx.beginPath();
-                    ctx.moveTo(bullet.x, bullet.y);
-                    ctx.lineTo(bullet.x - bullet.vx * 10, bullet.y - bullet.vy * 10);
-                    ctx.stroke();
-
-                    if (bullet.ttl <= 0) weaponsArray.splice(b, 1);
-                }
-
-                // --- Ships ---
-                const engagementRange = 250;
-                for (let i = 0; i < gamingRockets.length; i++) {
-                    const ship = gamingRockets[i];
-
-                    if (ship.x > canvas.width) ship.x = Math.random() * canvas.width;
-                    if (ship.y > canvas.height) ship.y = Math.random() * canvas.height;
-
-                    const sDX = mousePos.x - ship.x;
-                    const sDY = mousePos.y - ship.y;
-                    const sDist = Math.sqrt(sDX * sDX + sDY * sDY);
-
-                    if (sDist < engagementRange && mousePos.x > 0) {
-                        ship.angle = Math.atan2(sDY, sDX);
-                        ship.cooldown--;
-
-                        if (ship.cooldown <= 0) {
-                            const colorfulWeapons = ['#00f2fe', '#f43f5e', '#22c55e', '#ef4444', '#eab308', '#d946ef'];
-                            const selectedLaser = colorfulWeapons[Math.floor(Math.random() * colorfulWeapons.length)];
-
-                            weaponsArray.push({
-                                x: ship.x,
-                                y: ship.y,
-                                vx: Math.cos(ship.angle),
-                                vy: Math.sin(ship.angle),
-                                speed: ship.type === 'destroyer' ? 3.5 : 5.5,
-                                color: selectedLaser,
-                                ttl: 60
-                            });
-                            ship.cooldown = ship.type === 'destroyer' ? 100 + Math.random() * 50 : 60 + Math.random() * 40;
-                        }
-                    } else {
-                        ship.angle += 0.003;
-                    }
-
-                    ctx.save();
-                    ctx.translate(ship.x, ship.y);
-                    ctx.rotate(ship.angle);
-
-                    if (ship.type === 'destroyer') {
-                        ctx.fillStyle = 'rgba(71, 85, 105, 0.4)';
-                        ctx.strokeStyle = 'rgba(217, 70, 239, 0.4)';
-                        ctx.lineWidth = 1.5;
-                        ctx.beginPath();
-                        ctx.moveTo(18, 0);
-                        ctx.lineTo(-12, -9);
-                        ctx.lineTo(-6, 0);
-                        ctx.lineTo(-12, 9);
-                        ctx.closePath();
-                        ctx.fill();
-                        ctx.stroke();
-                    } else {
-                        ctx.fillStyle = 'rgba(148, 163, 184, 0.25)';
-                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(ship.size * 2, 0);
-                        ctx.lineTo(-ship.size, -ship.size * 1.2);
-                        ctx.lineTo(-ship.size, ship.size * 1.2);
-                        ctx.closePath();
-                        ctx.fill();
-                        ctx.stroke();
-                    }
-                    ctx.restore();
-                }
+                drawGamingMode(now);
             }
 
             requestAnimationFrame(runGraphicsExecutionLoop);
         }
-        runGraphicsExecutionLoop();
 
-        // --- SINGLE CONTAINER MANAGEMENT SYSTEM ---
+        function drawDevMode() {
+            const connectionLimit = 180;
+
+            for (let i = 0; i < softwareStars.length; i++) {
+                const star = softwareStars[i];
+
+                if (star.x > canvas.width) star.x = Math.random() * canvas.width;
+                if (star.y > canvas.height) star.y = Math.random() * canvas.height;
+
+                star.pulse += 0.02;
+                let glowOpacity = 0.4 + Math.sin(star.pulse) * 0.2;
+
+                ctx.fillStyle = `rgba(255, 255, 255, ${glowOpacity})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                const dx = mousePos.x - star.x;
+                const dy = mousePos.y - star.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < connectionLimit) {
+                    let forceRatio = 1 - (dist / connectionLimit);
+                    ctx.strokeStyle = `hsla(${globalHueValue}, 95%, 55%, ${forceRatio * 0.85})`;
+                    ctx.lineWidth = forceRatio * 2.5;
+                    ctx.beginPath();
+                    ctx.moveTo(star.x, star.y);
+                    ctx.lineTo(mousePos.x, mousePos.y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        function drawGamingMode(now) {
+            const mouseActive = mousePos.x > 0 && mousePos.y > 0;
+
+            drawDeathStar(now, mouseActive);
+
+            for (let s = impactSparks.length - 1; s >= 0; s--) {
+                const sp = impactSparks[s];
+                sp.x += sp.vx;
+                sp.y += sp.vy;
+                sp.vx *= 0.94;
+                sp.vy *= 0.94;
+                sp.life -= sp.decay;
+                if (sp.life <= 0) { impactSparks.splice(s, 1); continue; }
+                ctx.fillStyle = `hsla(${sp.hue}, 100%, 60%, ${sp.life})`;
+                ctx.beginPath();
+                ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            for (let b = weaponsArray.length - 1; b >= 0; b--) {
+                const bullet = weaponsArray[b];
+                bullet.x += bullet.vx * bullet.speed;
+                bullet.y += bullet.vy * bullet.speed;
+                bullet.ttl--;
+
+                ctx.strokeStyle = bullet.color;
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                ctx.moveTo(bullet.x, bullet.y);
+                ctx.lineTo(bullet.x - bullet.vx * 10, bullet.y - bullet.vy * 10);
+                ctx.stroke();
+
+                if (bullet.ttl <= 0) weaponsArray.splice(b, 1);
+            }
+
+            const engagementRange = 250;
+            for (let i = 0; i < gamingRockets.length; i++) {
+                const ship = gamingRockets[i];
+
+                if (ship.x > canvas.width) ship.x = Math.random() * canvas.width;
+                if (ship.y > canvas.height) ship.y = Math.random() * canvas.height;
+
+                const sDX = mousePos.x - ship.x;
+                const sDY = mousePos.y - ship.y;
+                const sDist = Math.sqrt(sDX * sDX + sDY * sDY);
+
+                if (sDist < engagementRange && mousePos.x > 0) {
+                    ship.angle = Math.atan2(sDY, sDX);
+                    ship.cooldown--;
+
+                    if (ship.cooldown <= 0) {
+                        const colorfulWeapons = ['#00f2fe', '#f43f5e', '#22c55e', '#ef4444', '#eab308', '#d946ef'];
+                        const selectedLaser = colorfulWeapons[Math.floor(Math.random() * colorfulWeapons.length)];
+
+                        weaponsArray.push({
+                            x: ship.x,
+                            y: ship.y,
+                            vx: Math.cos(ship.angle),
+                            vy: Math.sin(ship.angle),
+                            speed: ship.type === 'destroyer' ? 3.5 : (ship.type === 'fighter' ? 5.5 : 6.5),
+                            color: selectedLaser,
+                            ttl: 60
+                        });
+                        ship.cooldown = ship.baseCooldown + Math.random() * 40;
+                    }
+                } else {
+                    ship.angle += ship.drift;
+                }
+
+                drawScatteredShip(ship);
+            }
+
+            if (mouseActive) {
+                let underAttack = false;
+                for (let i = 0; i < gamingRockets.length; i++) {
+                    const s = gamingRockets[i];
+                    const ddx = mousePos.x - s.x;
+                    const ddy = mousePos.y - s.y;
+                    if (ddx * ddx + ddy * ddy < engagementRange * engagementRange) {
+                        underAttack = true; break;
+                    }
+                }
+                if (underAttack) {
+                    const pulse = 0.75 + Math.sin(now * 14) * 0.25;
+                    const grad = ctx.createRadialGradient(mousePos.x, mousePos.y, 0, mousePos.x, mousePos.y, 55);
+                    grad.addColorStop(0, `rgba(255, 90, 90, ${0.28 * pulse})`);
+                    grad.addColorStop(0.55, `rgba(217, 70, 239, ${0.13 * pulse})`);
+                    grad.addColorStop(1, 'rgba(217, 70, 239, 0)');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.arc(mousePos.x, mousePos.y, 55, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        const DS_Y = 180;
+        const DS_RADIUS = 82;
+
+        function drawDeathStar(now, mouseActive) {
+            const dsX = canvas.width * 0.5;
+            const dsY = DS_Y;
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(dsX, dsY, DS_RADIUS, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(30, 41, 59, 0.5)';
+            ctx.strokeStyle = 'rgba(217, 70, 239, 0.55)';
+            ctx.lineWidth = 5;
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(dsX - 28, dsY - 28, 20, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(dsX, dsY, DS_RADIUS * 0.7, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(217, 70, 239, 0.18)';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+            ctx.restore();
+
+            const startX = dsX - 28;
+            const startY = dsY - 28;
+            const dx = mousePos.x - startX;
+            const dy = mousePos.y - startY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (!mouseActive || dist > 820) return;
+
+            const endX = mousePos.x;
+            const endY = mousePos.y;
+            const flicker =
+                0.85 +
+                Math.sin(now * 41.3) * 0.06 +
+                Math.sin(now * 23.7) * 0.05 +
+                Math.sin(now * 87.1) * 0.03;
+
+            ctx.save();
+            ctx.lineCap = 'round';
+            ctx.shadowColor = 'rgba(57, 255, 20, 0.95)';
+            ctx.shadowBlur = 42 * flicker;
+            ctx.strokeStyle = `rgba(57, 255, 20, ${0.10 * flicker})`;
+            ctx.lineWidth = 32;
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
+
+            ctx.shadowBlur = 26 * flicker;
+            ctx.strokeStyle = `rgba(80, 255, 40, ${0.28 * flicker})`;
+            ctx.lineWidth = 17;
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
+
+            ctx.shadowBlur = 14 * flicker;
+            ctx.strokeStyle = `rgba(140, 255, 90, ${0.9 * flicker})`;
+            ctx.lineWidth = 6.5;
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
+
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.95)';
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
+            ctx.restore();
+
+            for (let p = 0; p < 5; p++) {
+                const progress = (now * 0.9 + p / 5) % 1;
+                const px = startX + (endX - startX) * progress;
+                const py = startY + (endY - startY) * progress;
+                const pulseR = 8 + Math.sin(progress * Math.PI) * 6;
+                const grad = ctx.createRadialGradient(px, py, 0, px, py, pulseR * 3);
+                grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+                grad.addColorStop(0.25, 'rgba(160, 255, 100, 0.7)');
+                grad.addColorStop(0.6, 'rgba(57, 255, 20, 0.25)');
+                grad.addColorStop(1, 'rgba(57, 255, 20, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(px, py, pulseR * 3, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            const muzzleR = 26 + Math.sin(now * 25) * 5;
+            const mg = ctx.createRadialGradient(startX, startY, 0, startX, startY, muzzleR * 2);
+            mg.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
+            mg.addColorStop(0.25, `rgba(160, 255, 100, ${0.75 * flicker})`);
+            mg.addColorStop(0.6, `rgba(57, 255, 20, ${0.35 * flicker})`);
+            mg.addColorStop(1, 'rgba(57, 255, 20, 0)');
+            ctx.fillStyle = mg;
+            ctx.beginPath();
+            ctx.arc(startX, startY, muzzleR * 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            const impactR = 65 + Math.sin(now * 15) * 7;
+            const ig = ctx.createRadialGradient(endX, endY, 0, endX, endY, impactR);
+            ig.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
+            ig.addColorStop(0.12, `rgba(200, 255, 160, ${0.85 * flicker})`);
+            ig.addColorStop(0.35, `rgba(80, 255, 40, ${0.4 * flicker})`);
+            ig.addColorStop(0.7, `rgba(57, 255, 20, ${0.12 * flicker})`);
+            ig.addColorStop(1, 'rgba(57, 255, 20, 0)');
+            ctx.fillStyle = ig;
+            ctx.beginPath();
+            ctx.arc(endX, endY, impactR, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
+            ctx.beginPath();
+            ctx.arc(endX, endY, 4 + Math.sin(now * 40) * 1.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            for (let r = 0; r < 2; r++) {
+                const phase = ((now * 0.85 + r * 0.5) % 1);
+                const rr = 14 + phase * 52;
+                const a = (1 - phase) * 0.7 * flicker;
+                ctx.strokeStyle = `rgba(140, 255, 90, ${a})`;
+                ctx.lineWidth = 2.4 * (1 - phase) + 0.5;
+                ctx.beginPath();
+                ctx.arc(endX, endY, rr, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            for (let s = 0; s < 2; s++) {
+                const ang = Math.random() * Math.PI * 2;
+                const spd = 2 + Math.random() * 5;
+                impactSparks.push({
+                    x: endX, y: endY,
+                    vx: Math.cos(ang) * spd,
+                    vy: Math.sin(ang) * spd,
+                    life: 1,
+                    decay: 0.025 + Math.random() * 0.03,
+                    size: 1 + Math.random() * 2,
+                    hue: Math.random() < 0.7 ? 110 : 60
+                });
+            }
+        }
+
+        function drawScatteredShip(ship) {
+            ctx.save();
+            ctx.translate(ship.x, ship.y);
+            ctx.rotate(ship.angle);
+
+            const size = ship.size;
+
+            if (ship.type === 'scout') {
+                ctx.fillStyle = 'rgba(148, 163, 184, 0.35)';
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(size * 2.2, 0);
+                ctx.lineTo(-size, -size * 1.1);
+                ctx.lineTo(-size * 0.5, 0);
+                ctx.lineTo(-size, size * 1.1);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+            } else if (ship.type === 'fighter') {
+                ctx.fillStyle = 'rgba(148, 163, 184, 0.28)';
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(size * 2, 0);
+                ctx.lineTo(-size, -size * 1.2);
+                ctx.lineTo(-size * 0.4, 0);
+                ctx.lineTo(-size, size * 1.2);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+            } else {
+                ctx.fillStyle = 'rgba(71, 85, 105, 0.45)';
+                ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(size * 3, 0);
+                ctx.lineTo(size * 1.6, -size * 1.4);
+                ctx.lineTo(-size * 2, -size * 1.1);
+                ctx.lineTo(-size * 2.6, 0);
+                ctx.lineTo(-size * 2, size * 1.1);
+                ctx.lineTo(size * 1.6, size * 1.4);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = 'rgba(217, 70, 239, 0.5)';
+                ctx.beginPath();
+                ctx.arc(0, 0, size * 0.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.restore();
+        }
+
         let sections = [];
         let activeSectionIndex = 0;
 
         function rebuildNavigationFramework() {
             dotNav.innerHTML = '';
             const activePanelId = currentActiveMode === 'dev' ? 'devEcosystem' : 'gamingEcosystem';
-            
+
             if (currentActiveMode === 'dev') {
                 dotNav.className = 'scroll-indicator dev-mode-indicator';
             } else {
@@ -1113,7 +1805,7 @@
             }
 
             sections = Array.from(document.querySelectorAll(`#${activePanelId} .fullscreen-section`));
-            
+
             sections.forEach((sec, idx) => {
                 const dot = document.createElement('div');
                 dot.className = `dot ${idx === 0 ? 'active-dot' : ''}`;
@@ -1168,46 +1860,28 @@
             rebuildNavigationFramework();
         });
 
-        // Initialize HUD setup
         rebuildNavigationFramework();
 
-        // --- TYPEWRITER SUBTITLE (only the role) ---
         (function initTypewriter() {
             const roleEl = document.getElementById('typedRole');
             if (!roleEl) return;
 
             const phrases = [
-                {
-                    text: 'python software developer',
-                    color: 'var(--matrix-green)',
-                    shadow: '0 0 20px rgba(57, 255, 20, 0.6)'
-                },
-                {
-                    text: 'gamer',
-                    color: '#d946ef',
-                    shadow: '0 0 20px rgba(217, 70, 239, 0.7)'
-                },
-                {
-                    text: 'hardware tinkerer',
-                    color: '#dc2626',
-                    shadow: '0 0 20px rgba(220, 38, 38, 0.7)'
-                }
+                { text: 'python software developer', color: 'var(--matrix-green)', shadow: '0 0 20px rgba(57, 255, 20, 0.6)' },
+                { text: 'gamer', color: '#d946ef', shadow: '0 0 20px rgba(217, 70, 239, 0.7)' },
+                { text: 'hardware tinkerer', color: '#dc2626', shadow: '0 0 20px rgba(220, 38, 38, 0.7)' }
             ];
 
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let deleting = false;
+            let phraseIndex = 0, charIndex = 0, deleting = false;
 
             function tick() {
                 const current = phrases[phraseIndex];
-
                 roleEl.style.color = current.color;
                 roleEl.style.textShadow = current.shadow;
 
                 if (!deleting) {
                     charIndex++;
                     roleEl.textContent = current.text.slice(0, charIndex);
-
                     if (charIndex === current.text.length) {
                         deleting = true;
                         setTimeout(tick, 1600);
@@ -1217,7 +1891,6 @@
                 } else {
                     charIndex--;
                     roleEl.textContent = current.text.slice(0, charIndex);
-
                     if (charIndex === 0) {
                         deleting = false;
                         phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -1227,9 +1900,394 @@
                     setTimeout(tick, 40 + Math.random() * 20);
                 }
             }
-
             tick();
         })();
+
+        runGraphicsExecutionLoop();
+
+        // ==========================================================
+        // HELLO WORLD SAMPLES (20 LANGUAGES)
+        // ==========================================================
+        const HELLO_SAMPLES = [
+            { lang: 'python', code: 'print("Hello, World!")' },
+            { lang: 'javascript', code: 'console.log("Hello, World!");' },
+            { lang: 'typescript', code: 'console.log("Hello, World!");' },
+            { lang: 'c', code: '#include <stdio.h>\nint main() {\n    printf("Hello, World!\\n");\n    return 0;\n}' },
+            { lang: 'c++', code: '#include <iostream>\nint main() {\n    std::cout << "Hello, World!" << std::endl;\n    return 0;\n}' },
+            { lang: 'java', code: 'public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}' },
+            { lang: 'go', code: 'package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello, World!")\n}' },
+            { lang: 'rust', code: 'fn main() {\n    println!("Hello, World!");\n}' },
+            { lang: 'ruby', code: 'puts "Hello, World!"' },
+            { lang: 'php', code: '<?php echo "Hello, World!"; ?>' },
+            { lang: 'swift', code: 'print("Hello, World!")' },
+            { lang: 'kotlin', code: 'fun main() {\n    println("Hello, World!")\n}' },
+            { lang: 'lua', code: 'print("Hello, World!")' },
+            { lang: 'haskell', code: 'main = putStrLn "Hello, World!"' },
+            { lang: 'bash', code: 'echo "Hello, World!"' },
+            { lang: 'html', code: '<h1>Hello, World!</h1>' },
+            { lang: 'sql', code: "SELECT 'Hello, World!';" },
+            { lang: 'fortran', code: "program hello\n  print *, 'Hello, World!'\nend program hello" },
+            { lang: 'assembly', code: 'global _start\n_start:\n    mov eax, 4\n    mov ebx, 1\n    mov ecx, msg\n    mov edx, 13\n    int 0x80\n    mov eax, 1\n    xor ebx, ebx\n    int 0x80\nmsg: db \'Hello, World!\'' },
+            { lang: 'binary', code: '01001000 01100101 01101100 01101100 01101111\n00101100 00100000 01010111 01101111 01110010\n01101100 01100100 00100001' }
+        ];
+
+        (function populateHelloGrid() {
+            const grid = document.getElementById('helloGrid');
+            if (!grid) return;
+            HELLO_SAMPLES.forEach(sample => {
+                const row = document.createElement('div');
+                row.className = 'hello-row';
+                const langEl = document.createElement('div');
+                langEl.className = 'hello-lang';
+                langEl.textContent = sample.lang;
+                const codeEl = document.createElement('div');
+                codeEl.className = 'hello-code';
+                codeEl.textContent = sample.code;
+                row.appendChild(langEl);
+                row.appendChild(codeEl);
+                grid.appendChild(row);
+            });
+        })();
+
+        // ==========================================================
+        // COMMAND LINE + EASTER EGGS
+        // ==========================================================
+        const cmdToggleBtn = document.getElementById('cmdToggleBtn');
+        const cmdlineOverlay = document.getElementById('cmdlineOverlay');
+        const cmdlineClose = document.getElementById('cmdlineClose');
+        const cmdlineBufferEl = document.getElementById('cmdlineBuffer');
+        const cmdlineHistory = document.getElementById('cmdlineHistory');
+
+        const devTerminalOverlay = document.getElementById('devTerminalOverlay');
+        const devTerminalCloseBtn = document.getElementById('devTerminalClose');
+
+        const effectIddqd = document.getElementById('effectIddqd');
+        const effectAbacabb = document.getElementById('effectAbacabb');
+        const effectRosebud = document.getElementById('effectRosebud');
+        const effectRocketman = document.getElementById('effectRocketman');
+
+        const abacabbCountdown = document.getElementById('abacabbCountdown');
+        const abacabbBoom = document.getElementById('abacabbBoom');
+        const rocketmanCountdown = document.getElementById('rocketmanCountdown');
+
+        let cmdTokens = [];
+        const KONAMI_SEQ = ['↑','↑','↓','↓','←','→','←','→','b','a'];
+
+        let effectTimers = [];
+
+        function clearEffectTimers() {
+            effectTimers.forEach(t => clearTimeout(t));
+            effectTimers = [];
+        }
+
+        function updateCmdDisplay() {
+            if (cmdlineBufferEl) {
+                cmdlineBufferEl.textContent = cmdTokens.join('');
+            }
+        }
+
+        function escapeHtml(s) {
+            return String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        function addCmdHistory(cmdArr, output, isOk) {
+            const div = document.createElement('div');
+            div.className = 'cmdline-history-item';
+            const cmdText = cmdArr.join('') || '(empty)';
+            div.innerHTML =
+                '<span class="cmdline-history-cmd">' + escapeHtml(cmdText) + '</span>' +
+                '<span class="cmdline-history-out' + (isOk ? ' ok' : '') + '">' + escapeHtml(output) + '</span>';
+            cmdlineHistory.appendChild(div);
+            const body = cmdlineOverlay.querySelector('.cmdline-body');
+            if (body) body.scrollTop = body.scrollHeight;
+        }
+
+        function openCmdLine() {
+            cmdlineOverlay.classList.add('active');
+            cmdTokens = [];
+            updateCmdDisplay();
+        }
+
+        function closeCmdLine() {
+            cmdlineOverlay.classList.remove('active');
+            cmdTokens = [];
+        }
+
+        function openDevTerminal() {
+            devTerminalOverlay.classList.add('active');
+        }
+        function closeDevTerminal() {
+            devTerminalOverlay.classList.remove('active');
+        }
+
+        function closeAllEffects() {
+            clearEffectTimers();
+            effectIddqd.classList.remove('active');
+            effectAbacabb.classList.remove('active');
+            effectRosebud.classList.remove('active');
+            effectRocketman.classList.remove('active');
+            abacabbCountdown.style.display = 'block';
+            abacabbBoom.style.display = 'none';
+            rocketmanCountdown.textContent = 'IN 3...';
+        }
+
+        // ---- Effect triggers ----
+        function triggerIddqd() {
+            closeAllEffects();
+            effectIddqd.classList.add('active');
+        }
+
+        function triggerAbacabb() {
+            closeAllEffects();
+            effectAbacabb.classList.add('active');
+            abacabbCountdown.style.display = 'block';
+            abacabbBoom.style.display = 'none';
+            abacabbCountdown.textContent = '3...';
+
+            effectTimers.push(setTimeout(() => { abacabbCountdown.textContent = '2...'; }, 800));
+            effectTimers.push(setTimeout(() => { abacabbCountdown.textContent = '1...'; }, 1600));
+            effectTimers.push(setTimeout(() => {
+                abacabbCountdown.style.display = 'none';
+                abacabbBoom.style.display = 'block';
+            }, 2400));
+            effectTimers.push(setTimeout(() => {
+                effectAbacabb.classList.remove('active');
+            }, 6500));
+        }
+
+        function triggerRosebud() {
+            closeAllEffects();
+            effectRosebud.classList.add('active');
+            effectTimers.push(setTimeout(() => {
+                effectRosebud.classList.remove('active');
+            }, 6000));
+        }
+
+        function triggerRocketman() {
+            closeAllEffects();
+            effectRocketman.classList.add('active');
+            rocketmanCountdown.textContent = 'IN 3...';
+
+            effectTimers.push(setTimeout(() => { rocketmanCountdown.textContent = 'IN 2...'; }, 800));
+            effectTimers.push(setTimeout(() => { rocketmanCountdown.textContent = 'IN 1...'; }, 1600));
+            effectTimers.push(setTimeout(() => {
+                rocketmanCountdown.textContent = '✈ LIFT OFF ✈';
+            }, 2400));
+            effectTimers.push(setTimeout(() => {
+                effectRocketman.classList.remove('active');
+            }, 6000));
+        }
+
+        // ---- Command submission ----
+        function submitCmd() {
+            if (cmdTokens.length === 0) return;
+
+            const joinedLower = cmdTokens.join('').toLowerCase();
+
+            // ---- git → hello world terminal ----
+            if (joinedLower === 'git') {
+                addCmdHistory(cmdTokens, '> opening hello_world.sh...', true);
+                cmdTokens = [];
+                updateCmdDisplay();
+                setTimeout(() => {
+                    closeCmdLine();
+                    openDevTerminal();
+                }, 400);
+                return;
+            }
+
+            // ---- iddqd → DOOM mode ----
+            if (joinedLower === 'iddqd') {
+                addCmdHistory(cmdTokens, '> initiating DOOM protocol...', true);
+                cmdTokens = [];
+                updateCmdDisplay();
+                setTimeout(() => {
+                    closeCmdLine();
+                    triggerIddqd();
+                }, 300);
+                return;
+            }
+
+            // ---- abacabb → Mortal Kombat god combo ----
+            if (joinedLower === 'abacabb') {
+                addCmdHistory(cmdTokens, '> arming god combo...', true);
+                cmdTokens = [];
+                updateCmdDisplay();
+                setTimeout(() => {
+                    closeCmdLine();
+                    triggerAbacabb();
+                }, 300);
+                return;
+            }
+
+            // ---- rosebud → money mode ----
+            if (joinedLower === 'rosebud') {
+                addCmdHistory(cmdTokens, '> crediting account...', true);
+                cmdTokens = [];
+                updateCmdDisplay();
+                setTimeout(() => {
+                    closeCmdLine();
+                    triggerRosebud();
+                }, 300);
+                return;
+            }
+
+            // ---- rocketman → San Andreas flight ----
+            if (joinedLower === 'rocketman') {
+                addCmdHistory(cmdTokens, '> preparing jetpack...', true);
+                cmdTokens = [];
+                updateCmdDisplay();
+                setTimeout(() => {
+                    closeCmdLine();
+                    triggerRocketman();
+                }, 300);
+                return;
+            }
+
+            // ---- Konami sequence ----
+            if (cmdTokens.length === KONAMI_SEQ.length) {
+                let matches = true;
+                for (let i = 0; i < KONAMI_SEQ.length; i++) {
+                    if (cmdTokens[i].toLowerCase() !== KONAMI_SEQ[i].toLowerCase()) {
+                        matches = false;
+                        break;
+                    }
+                }
+                if (matches) {
+                    addCmdHistory(cmdTokens, '> konami sequence accepted. decoding...', true);
+                    cmdTokens = [];
+                    updateCmdDisplay();
+                    setTimeout(() => {
+                        closeCmdLine();
+                        triggerIddqd(); // fallback to iddqd style — or replace with a dedicated konami effect if desired
+                    }, 400);
+                    return;
+                }
+            }
+
+            // ---- clear ----
+            if (joinedLower === 'clear') {
+                cmdlineHistory.innerHTML = '';
+                cmdTokens = [];
+                updateCmdDisplay();
+                return;
+            }
+
+            // ---- unknown ----
+            addCmdHistory(cmdTokens, 'command not found: ' + (joinedLower || '(empty)'), false);
+            cmdTokens = [];
+            updateCmdDisplay();
+        }
+
+        // ---- Wiring ----
+        cmdToggleBtn.addEventListener('click', () => {
+            if (cmdlineOverlay.classList.contains('active')) {
+                closeCmdLine();
+            } else {
+                openCmdLine();
+            }
+        });
+
+        cmdlineClose.addEventListener('click', closeCmdLine);
+        cmdlineOverlay.addEventListener('click', (e) => {
+            if (e.target === cmdlineOverlay) closeCmdLine();
+        });
+
+        devTerminalCloseBtn.addEventListener('click', closeDevTerminal);
+        devTerminalOverlay.addEventListener('click', (e) => {
+            if (e.target === devTerminalOverlay) closeDevTerminal();
+        });
+
+        // Effect dismiss handlers
+        [effectIddqd, effectAbacabb, effectRosebud, effectRocketman].forEach(el => {
+            el.addEventListener('click', closeAllEffects);
+        });
+
+        // ---- Key handling ----
+        document.addEventListener('keydown', (e) => {
+            // Any effect open → ESC closes
+            if (effectIddqd.classList.contains('active') ||
+                effectAbacabb.classList.contains('active') ||
+                effectRosebud.classList.contains('active') ||
+                effectRocketman.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeAllEffects();
+                }
+                return;
+            }
+
+            // Dev terminal open → ESC closes
+            if (devTerminalOverlay.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeDevTerminal();
+                }
+                return;
+            }
+
+            // Command line open → capture input
+            if (cmdlineOverlay.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeCmdLine();
+                    return;
+                }
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitCmd();
+                    return;
+                }
+                if (e.key === 'Backspace') {
+                    e.preventDefault();
+                    cmdTokens.pop();
+                    updateCmdDisplay();
+                    return;
+                }
+                if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    cmdTokens.push('↑');
+                    updateCmdDisplay();
+                    return;
+                }
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    cmdTokens.push('↓');
+                    updateCmdDisplay();
+                    return;
+                }
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    cmdTokens.push('←');
+                    updateCmdDisplay();
+                    return;
+                }
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    cmdTokens.push('→');
+                    updateCmdDisplay();
+                    return;
+                }
+                if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                    e.preventDefault();
+                    cmdTokens.push(e.key);
+                    updateCmdDisplay();
+                    return;
+                }
+                return;
+            }
+
+            // Ignore typing in form fields
+            const activeEl = document.activeElement;
+            if (activeEl && (activeEl.tagName === 'INPUT' ||
+                activeEl.tagName === 'TEXTAREA' ||
+                activeEl.isContentEditable)) {
+                return;
+            }
+        });
     </script>
 </body>
 </html>
