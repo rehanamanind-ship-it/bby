@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Rehan Aman | mr.heuravox</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,14 +18,11 @@
             --font-stack: 'Segoe UI', system-ui, sans-serif;
             --matrix-green: #39ff14;
         }
-
         body.gaming-mode {
             --accent-primary: #d946ef;
             --card-border: rgba(217, 70, 239, 0.4);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
@@ -33,15 +30,11 @@
             position: relative;
             font-family: var(--font-stack);
         }
-
         #interactiveCanvas {
-            position: fixed;
-            top: 0; left: 0;
+            position: fixed; top: 0; left: 0;
             width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 1;
+            pointer-events: none; z-index: 1;
         }
-
         .global-header {
             position: relative;
             width: 100%; height: 100vh;
@@ -50,13 +43,11 @@
             padding: 0 20px; z-index: 100;
             background: transparent;
         }
-
         .brand-meta {
             display: flex; flex-direction: column;
             align-items: center; text-align: center;
             max-width: 95vw;
         }
-
         .brand-title {
             font-size: clamp(2rem, 7vw, 7rem);
             font-weight: 800; letter-spacing: -0.02em;
@@ -64,43 +55,36 @@
             transition: font-family 0.3s ease;
             color: #ffffff;
         }
-
         .brand-title .name-highlight {
             color: var(--matrix-green);
             text-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
         }
-
         .brand-subtitle {
             font-family: 'Fira Code', monospace;
             font-size: clamp(1.3rem, 4.5vw, 4.5rem);
             font-weight: 700; line-height: 1.2;
             margin-top: 2vh; color: #ffffff;
             transition: color 0.35s ease, text-shadow 0.35s ease;
-            white-space: normal; word-break: break-word;
+            word-break: break-word;
         }
-
         .brand-subtitle #typedRole {
             transition: color 0.35s ease, text-shadow 0.35s ease;
         }
-
         .typer-cursor {
             display: inline-block; margin-left: 2px;
             animation: cursorBlink 1s step-end infinite;
             color: inherit;
         }
-
         @keyframes cursorBlink {
             0%, 100% { opacity: 1; }
-            50%      { opacity: 0; }
+            50% { opacity: 0; }
         }
-
         .brand-aka {
             font-family: 'Fira Code', monospace;
             color: var(--accent-primary);
             font-size: 1.1rem; font-weight: bold;
             margin-top: 3vh; opacity: 0.8;
         }
-
         .mode-switcher {
             position: fixed; top: 30px; right: 40px;
             display: flex; background: rgba(30, 41, 59, 0.8);
@@ -109,23 +93,19 @@
             cursor: pointer; z-index: 200;
             backdrop-filter: blur(8px);
         }
-
         .mode-btn {
             padding: 8px 18px; border-radius: 25px;
             font-weight: 600; font-size: 0.8rem;
             letter-spacing: 0.5px; transition: all 0.3s ease;
             font-family: var(--font-stack);
         }
-
         .mode-btn.active {
             background: var(--accent-primary);
             color: #020617;
             box-shadow: 0 0 20px var(--accent-primary);
         }
-
         .view-wrapper { display: none; }
         .view-wrapper.active-view { display: block; }
-
         .fullscreen-section {
             min-height: 100vh; width: 100vw;
             display: flex; justify-content: center;
@@ -134,7 +114,6 @@
             position: relative; z-index: 2;
             box-sizing: border-box;
         }
-
         .content-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -145,104 +124,72 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
             transition: border-color 0.4s ease;
         }
-
         #devEcosystem .content-card {
             font-family: 'Fira Code', monospace;
             border-color: rgba(57, 255, 20, 0.25);
         }
-
         #devEcosystem .content-card:hover {
             border-color: var(--matrix-green);
             box-shadow: 0 30px 60px -15px rgba(57, 255, 20, 0.15);
         }
-
         .section-tag {
             display: inline-block; font-size: 0.8rem;
             color: var(--accent-primary); font-family: monospace;
             text-transform: uppercase; letter-spacing: 2px;
             margin-bottom: 16px; font-weight: bold;
         }
-
         #devEcosystem .section-tag { color: var(--matrix-green); }
-
         #gamingEcosystem .section-tag {
             font-family: 'Press Start 2P', cursive;
             font-size: 0.65rem; line-height: 1.4;
         }
-
         h2 {
             font-size: 2.5rem; font-weight: 800;
             margin-bottom: 24px; letter-spacing: -0.5px;
-            transition: color 0.3s ease;
         }
-
         #devEcosystem h2 {
             color: var(--matrix-green);
             text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
-            font-weight: 700;
             animation: matrixPulse 3s infinite ease-in-out;
         }
-
         #gamingEcosystem h2 {
             font-family: 'Press Start 2P', cursive;
             font-size: 1.6rem; line-height: 1.5;
             color: #ffffff;
         }
-
         @keyframes matrixPulse {
             0%, 100% { text-shadow: 0 0 8px rgba(57, 255, 20, 0.3); }
             50% { text-shadow: 0 0 20px rgba(57, 255, 20, 0.7); }
         }
-
         p.narrative {
             font-size: 1.25rem; line-height: 1.75;
             color: #e2e8f0; margin-bottom: 24px;
         }
-
         #devEcosystem p.narrative {
             font-size: 1.1rem; color: #a7f3d0;
             border-left: 2px solid rgba(57, 255, 20, 0.3);
             padding-left: 15px;
         }
-
         p.narrative strong { color: var(--accent-primary); }
-
         #devEcosystem p.narrative strong {
-            color: #ffffff;
-            text-decoration: underline;
-            text-underline-offset: 4px;
+            color: #ffffff; text-decoration: underline; text-underline-offset: 4px;
         }
-
         .project-title-link {
-            color: inherit;
-            text-decoration: none;
+            color: inherit; text-decoration: none;
             border-bottom: 2px solid transparent;
             transition: border-color 0.3s ease, text-shadow 0.3s ease;
-            display: inline-flex;
-            align-items: baseline;
-            gap: 6px;
+            display: inline-flex; align-items: baseline; gap: 6px;
         }
-
         .project-title-link:hover {
             border-bottom-color: var(--matrix-green);
             text-shadow: 0 0 24px rgba(57, 255, 20, 0.9);
         }
-
         .project-title-link::after {
-            content: '▸';
-            font-family: 'Fira Code', monospace;
-            font-size: 0.6em;
-            color: var(--matrix-green);
-            opacity: 0.45;
-            transform: translateY(-1px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            content: '▸'; font-family: 'Fira Code', monospace;
+            font-size: 0.6em; color: var(--matrix-green);
+            opacity: 0.45; transition: opacity 0.3s ease, transform 0.3s ease;
         }
-
-        .project-title-link:hover::after {
-            opacity: 1;
-            transform: translateY(-1px) translateX(3px);
-        }
-
+        .project-title-link:hover::after { opacity: 1; transform: translateX(3px); }
         .status-badge {
             display: inline-block; margin-top: 15px;
             padding: 8px 16px;
@@ -251,20 +198,13 @@
             font-family: monospace; font-size: 1.05rem;
             color: #f8fafc;
         }
-
         #gamingEcosystem .status-badge {
             font-family: 'Press Start 2P', cursive;
             font-size: 0.65rem; line-height: 1.6;
             background: rgba(217, 70, 239, 0.1);
-            border-left: 4px solid #d946ef;
-            padding: 12px;
+            border-left: 4px solid #d946ef; padding: 12px;
         }
-
-        .project-meta-block {
-            display: flex; gap: 12px; margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
+        .project-meta-block { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
         .meta-pill {
             font-size: 0.8rem; font-family: monospace;
             background: rgba(255, 255, 255, 0.06);
@@ -272,628 +212,1215 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
         }
-
         #devEcosystem .meta-pill {
             border-color: rgba(57, 255, 20, 0.2);
             color: rgba(57, 255, 20, 0.7);
             background: rgba(57, 255, 20, 0.03);
         }
-
         .action-btn {
             display: inline-flex; align-items: center;
             gap: 12px; padding: 16px 40px;
             background: #ffffff; color: #020617;
             text-decoration: none; border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            font-family: var(--font-stack);
+            font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease; margin-top: 20px;
         }
-
         .action-btn:hover {
             background: var(--accent-primary);
             box-shadow: 0 0 30px var(--accent-primary);
             transform: translateY(-2px);
         }
-
         #devEcosystem .action-btn {
             font-family: 'Fira Code', monospace;
-            background: transparent;
-            color: var(--matrix-green);
+            background: transparent; color: var(--matrix-green);
             border: 1px solid var(--matrix-green);
             border-radius: 8px; box-shadow: none;
         }
-
         #devEcosystem .action-btn:hover {
             background: rgba(57, 255, 20, 0.1);
             box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
         }
-
         .scroll-indicator {
             position: fixed; right: 40px; top: 50%;
             transform: translateY(-50%);
-            display: flex; flex-direction: column;
-            gap: 16px; z-index: 100;
+            display: flex; flex-direction: column; gap: 16px; z-index: 100;
         }
-
         .dot {
             width: 10px; height: 10px; border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             cursor: pointer; transition: all 0.3s ease;
         }
-
         .dot.active-dot {
             background: var(--accent-primary);
             transform: scale(1.3);
             box-shadow: 0 0 10px var(--accent-primary);
         }
 
-        #devEcosystem-indicator.scroll-indicator .dot.active-dot {
-            background: var(--matrix-green);
-            box-shadow: 0 0 10px var(--matrix-green);
-        }
-
-        /* ============================================ */
-        /* FLOATING TERMINAL BUTTON                     */
-        /* ============================================ */
+        /* ============ FLOATING BUTTON ============ */
         .cmd-toggle-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
+            bottom: max(24px, env(safe-area-inset-bottom));
+            right: 24px; z-index: 500;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 20px;
             background: rgba(15, 23, 42, 0.9);
             border: 1px solid var(--accent-primary);
-            border-radius: 8px;
-            color: var(--accent-primary);
+            border-radius: 10px; color: var(--accent-primary);
             font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.9rem; font-weight: 700;
             cursor: pointer;
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            letter-spacing: 1px;
+            -webkit-tap-highlight-color: transparent;
         }
-
-        .cmd-toggle-btn:hover {
-            background: rgba(15, 23, 42, 1);
+        .cmd-toggle-btn:hover, .cmd-toggle-btn:active {
             box-shadow: 0 0 24px var(--accent-primary);
             transform: translateY(-2px);
         }
 
-        .cmd-toggle-btn .cmd-toggle-prompt {
-            opacity: 0.75;
-        }
-
-        /* ============================================ */
-        /* COMMAND LINE OVERLAY                         */
-        /* ============================================ */
+        /* ============ COMMAND LINE ============ */
         .cmdline-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(2, 6, 23, 0.55);
-            z-index: 9000;
-            display: none;
-            justify-content: center;
-            align-items: flex-end;
-            padding: 30px;
+            position: fixed; inset: 0;
+            background: rgba(2, 6, 23, 0.65);
+            z-index: 9000; display: none;
+            justify-content: center; align-items: flex-end;
+            padding: 20px;
             backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
             animation: cmdFadeIn 0.22s ease;
         }
-
         .cmdline-overlay.active { display: flex; }
-
-        @keyframes cmdFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
+        @keyframes cmdFadeIn { from { opacity: 0; } to { opacity: 1; } }
         .cmdline-panel {
             background: #0a0e1a;
             border: 1px solid var(--accent-primary);
-            border-radius: 12px;
-            width: 100%;
-            max-width: 720px;
-            overflow: hidden;
-            font-family: 'Fira Code', monospace;
+            border-radius: 12px; width: 100%; max-width: 720px;
+            overflow: hidden; font-family: 'Fira Code', monospace;
             box-shadow: 0 20px 80px rgba(0, 0, 0, 0.85), 0 0 40px var(--accent-primary);
             animation: cmdSlideUp 0.3s ease;
+            display: flex; flex-direction: column; max-height: 80vh;
         }
-
         @keyframes cmdSlideUp {
             from { transform: translateY(40px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
         .cmdline-header {
-            background: #111827;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            background: #111827; padding: 10px 16px;
+            display: flex; align-items: center; gap: 8px;
             border-bottom: 1px solid #1e293b;
-            font-size: 0.8rem;
-            user-select: none;
+            font-size: 0.8rem; flex-shrink: 0;
         }
-
         .terminal-dots { display: flex; gap: 6px; margin-right: 10px; }
         .terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
         .terminal-dot.red { background: #ef4444; }
         .terminal-dot.yellow { background: #eab308; }
         .terminal-dot.green { background: #22c55e; }
-
         .cmdline-title {
-            flex: 1;
-            text-align: center;
-            font-size: 0.78rem;
-            color: var(--accent-primary);
-            opacity: 0.75;
+            flex: 1; text-align: center; font-size: 0.78rem;
+            color: var(--accent-primary); opacity: 0.75;
         }
-
         .terminal-close {
-            background: transparent;
-            border: 1px solid #334155;
-            color: #94a3b8;
-            width: 24px; height: 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
+            background: transparent; border: 1px solid #334155;
+            color: #94a3b8; width: 28px; height: 28px;
+            border-radius: 6px; cursor: pointer; font-size: 0.95rem;
             display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s;
-            font-family: inherit;
         }
-        .terminal-close:hover {
-            background: #ef4444;
-            color: #fff;
-            border-color: #ef4444;
+        .terminal-close:hover, .terminal-close:active {
+            background: #ef4444; color: #fff; border-color: #ef4444;
         }
-
         .cmdline-body {
-            padding: 16px 22px 14px 22px;
-            max-height: 55vh;
-            overflow-y: auto;
-            color: #e2e8f0;
-            font-size: 0.85rem;
-            line-height: 1.6;
+            padding: 16px 22px; overflow-y: auto; color: #e2e8f0;
+            font-size: 0.85rem; line-height: 1.6; flex: 1; min-height: 0;
         }
-
         .cmdline-body::-webkit-scrollbar { width: 6px; }
         .cmdline-body::-webkit-scrollbar-track { background: #0a0e1a; }
         .cmdline-body::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-
         .cmdline-history { margin-bottom: 10px; }
-
-        .cmdline-history-item {
-            padding: 4px 0;
-            word-break: break-all;
-        }
-
-        .cmdline-history-cmd {
-            display: block;
-            color: #94a3b8;
-        }
-
+        .cmdline-history-item { padding: 4px 0; word-break: break-all; }
+        .cmdline-history-cmd { display: block; color: #94a3b8; }
         .cmdline-history-cmd::before {
-            content: 'user@heuravox:~$ ';
-            color: var(--accent-primary);
+            content: 'user@heuravox:~$ '; color: var(--accent-primary);
         }
-
         .cmdline-history-out {
-            display: block;
-            padding-left: 12px;
-            color: #f43f5e;
+            display: block; padding-left: 12px; color: #f43f5e;
         }
-
         .cmdline-history-out.ok { color: #22c55e; }
-
+        .cmdline-history-out.fail {
+            color: #f43f5e; font-size: 0.92rem;
+            padding: 8px 12px; background: rgba(244, 63, 94, 0.08);
+            border-left: 3px solid #f43f5e; border-radius: 4px;
+            margin-top: 4px; animation: failShake 0.4s ease;
+        }
+        @keyframes failShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
         .cmdline-input-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            min-height: 28px;
+            display: flex; align-items: center; gap: 8px; min-height: 34px;
         }
-
         .cmdline-prompt {
-            color: var(--accent-primary);
-            font-weight: 700;
-            flex-shrink: 0;
-            font-size: 0.85rem;
+            color: var(--accent-primary); font-weight: 700;
+            flex-shrink: 0; font-size: 0.85rem;
         }
-
-        .cmdline-buffer {
-            color: #ffffff;
-            letter-spacing: 2px;
-            font-size: 1rem;
-            word-break: break-all;
-            flex: 1;
-            min-width: 0;
+        .cmdline-input {
+            flex: 1; min-width: 0; background: transparent;
+            border: none; outline: none; color: #ffffff;
+            font-family: 'Fira Code', monospace;
+            font-size: 16px; letter-spacing: 2px;
+            padding: 4px 0; caret-color: var(--accent-primary);
         }
-
-        .cmdline-cursor {
-            display: inline-block;
-            width: 9px;
-            height: 16px;
-            background: var(--accent-primary);
-            animation: cmdBlink 1s step-end infinite;
-            flex-shrink: 0;
+        .cmdline-input::placeholder { color: #475569; letter-spacing: 0; }
+        .virtual-keys { display: flex; gap: 6px; margin-top: 10px; flex-shrink: 0; }
+        .vkey {
+            flex: 1; padding: 10px 0;
+            background: rgba(148, 163, 184, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 8px; color: var(--accent-primary);
+            font-size: 1.15rem; font-family: 'Fira Code', monospace;
+            cursor: pointer; transition: all 0.15s;
+            -webkit-tap-highlight-color: transparent;
         }
-
-        @keyframes cmdBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .vkey:hover, .vkey:active {
+            background: rgba(148, 163, 184, 0.25);
+            border-color: var(--accent-primary); color: #ffffff;
         }
-
         .cmdline-footer {
-            margin-top: 12px;
-            padding-top: 10px;
+            margin-top: 10px; padding-top: 10px;
             border-top: 1px dashed rgba(148, 163, 184, 0.15);
-            color: #64748b;
-            font-size: 0.72rem;
-            font-style: italic;
+            color: #64748b; font-size: 0.7rem;
+            font-style: italic; flex-shrink: 0;
         }
 
-        /* ============================================ */
-        /* DEV REWARD TERMINAL                          */
-        /* ============================================ */
+        /* ============ DEV TERMINAL ============ */
         .terminal-overlay {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: rgba(2, 6, 23, 0.92);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 9999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            animation: termFadeIn 0.25s ease;
+            z-index: 9999; display: none;
+            justify-content: center; align-items: center;
+            padding: 20px; animation: effectFadeIn 0.25s ease;
         }
         .terminal-overlay.active { display: flex; }
-
-        @keyframes termFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
+        @keyframes effectFadeIn { from { opacity: 0; } to { opacity: 1; } }
         .terminal-window {
             background: #0a0e1a;
-            border: 1px solid #1e293b;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 920px;
-            max-height: 88vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.85);
-            font-family: 'Fira Code', monospace;
-            overflow: hidden;
-            animation: termSlideUp 0.3s ease;
+            border: 1px solid rgba(57, 255, 20, 0.4);
+            border-radius: 10px; width: 100%; max-width: 920px;
+            max-height: 88vh; display: flex; flex-direction: column;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.85), 0 0 60px rgba(57, 255, 20, 0.15);
+            font-family: 'Fira Code', monospace; overflow: hidden;
         }
-
-        @keyframes termSlideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .terminal-window.dev {
-            border-color: rgba(57, 255, 20, 0.4);
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.85),
-                        0 0 60px rgba(57, 255, 20, 0.15);
-        }
-
         .terminal-header {
-            background: #111827;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            background: #111827; padding: 10px 16px;
+            display: flex; align-items: center; gap: 8px;
             border-bottom: 1px solid #1e293b;
-            font-size: 0.8rem;
-            user-select: none;
+            font-size: 0.8rem; flex-shrink: 0;
         }
-
         .terminal-title {
-            color: #94a3b8; flex: 1; text-align: center;
-            font-size: 0.78rem;
+            color: rgba(57, 255, 20, 0.75);
+            flex: 1; text-align: center; font-size: 0.78rem;
         }
-        .terminal-window.dev .terminal-title { color: rgba(57, 255, 20, 0.75); }
-
         .terminal-body {
-            padding: 22px 26px;
-            overflow-y: auto;
-            flex: 1;
-            font-size: 0.85rem;
-            line-height: 1.65;
-            color: #a7f3d0;
+            padding: 22px 26px; overflow-y: auto; flex: 1;
+            font-size: 0.85rem; line-height: 1.65; color: #a7f3d0;
         }
         .terminal-body::-webkit-scrollbar { width: 8px; }
         .terminal-body::-webkit-scrollbar-track { background: #0a0e1a; }
         .terminal-body::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-
-        .terminal-prompt-line {
-            margin-bottom: 16px;
-            color: #64748b;
-        }
+        .terminal-prompt-line { margin-bottom: 16px; color: #64748b; }
         .terminal-prompt-line .prompt-user { color: var(--matrix-green); }
-        .terminal-prompt-line .prompt-path { color: #64748b; }
-
         .hello-grid {
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
             border: 1px solid rgba(57, 255, 20, 0.15);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 16px;
+            border-radius: 8px; overflow: hidden; margin-bottom: 16px;
         }
-
         .hello-row {
-            display: grid;
-            grid-template-columns: 140px 1fr;
+            display: grid; grid-template-columns: 140px 1fr;
             border-bottom: 1px solid rgba(57, 255, 20, 0.1);
         }
         .hello-row:last-child { border-bottom: none; }
-
         .hello-lang {
             background: rgba(57, 255, 20, 0.05);
-            padding: 12px 16px;
-            color: var(--matrix-green);
-            font-weight: 700;
-            font-size: 0.78rem;
-            letter-spacing: 0.6px;
+            padding: 12px 16px; color: var(--matrix-green);
+            font-weight: 700; font-size: 0.78rem; letter-spacing: 0.6px;
             border-right: 1px solid rgba(57, 255, 20, 0.1);
             text-transform: uppercase;
         }
-
         .hello-code {
-            padding: 12px 16px;
-            color: #e2e8f0;
-            font-size: 0.8rem;
-            white-space: pre;
-            overflow-x: auto;
-            line-height: 1.55;
+            padding: 12px 16px; color: #e2e8f0;
+            font-size: 0.8rem; white-space: pre;
+            overflow-x: auto; line-height: 1.55;
         }
-        .hello-code::-webkit-scrollbar { height: 4px; }
-        .hello-code::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
-
         .terminal-outro {
-            color: #64748b;
-            font-size: 0.78rem;
-            margin-top: 16px;
-            font-style: italic;
+            color: #64748b; font-size: 0.78rem;
+            margin-top: 16px; font-style: italic;
         }
 
-        /* ============================================ */
-        /* EASTER EGG FULL SCREEN EFFECTS               */
-        /* ============================================ */
+        /* ============ EFFECT BASE ============ */
         .effect-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 10000;
-            display: none;
-            justify-content: center;
+            position: fixed; inset: 0;
+            z-index: 10000; display: none;
+            flex-direction: column; justify-content: center;
             align-items: center;
-            padding: 30px;
+            padding: 40px 20px 100px 20px;
             text-align: center;
-            font-family: 'Fira Code', monospace;
+            font-family: 'Press Start 2P', 'Fira Code', monospace;
             cursor: pointer;
             animation: effectFadeIn 0.3s ease;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
-
         .effect-overlay.active { display: flex; }
-
-        @keyframes effectFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .effect-overlay.shake { animation: screenShake 0.4s ease; }
+        @keyframes screenShake {
+            0%, 100% { transform: translate(0, 0); }
+            20% { transform: translate(-8px, 4px); }
+            40% { transform: translate(8px, -4px); }
+            60% { transform: translate(-5px, -2px); }
+            80% { transform: translate(5px, 2px); }
         }
 
-        /* ---- iddqd: DOOM mode ---- */
-        .iddqd-effect {
-            background: #000000;
-            color: #cc0000;
-            flex-direction: column;
-            gap: 24px;
+        .effect-content {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 14px;
+            max-width: 95vw; z-index: 2;
+            position: relative;
+        }
+        .effect-title {
+            font-size: clamp(1.3rem, 6vw, 4rem);
+            font-weight: 700; letter-spacing: 4px;
+            line-height: 1.5; word-break: break-word;
+        }
+        .effect-sub {
+            font-size: clamp(0.85rem, 2.8vw, 1.8rem);
+            font-weight: 700; letter-spacing: 2.5px;
+            line-height: 1.7; word-break: break-word;
+        }
+        .effect-quote {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(0.75rem, 2vw, 1.1rem);
+            font-style: italic; letter-spacing: 0.5px;
+            opacity: 0.85; margin-top: 6px;
+            max-width: 720px; line-height: 1.6;
+        }
+        .effect-sub-small {
+            font-size: clamp(0.7rem, 1.9vw, 1.2rem);
+            margin-top: 6px; opacity: 0.85;
+        }
+        .effect-credits {
+            position: absolute;
+            bottom: max(24px, env(safe-area-inset-bottom));
+            left: 0; right: 0; text-align: center;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem; letter-spacing: 1.2px;
+            opacity: 0.65; padding: 0 20px;
+            line-height: 1.6; z-index: 2;
         }
 
-        .iddqd-title {
-            font-size: clamp(2rem, 6vw, 5rem);
-            font-weight: 700;
-            letter-spacing: 6px;
+        /* ============ THEME COLORS ============ */
+        .theme-doom { background: #000; }
+        .theme-doom .effect-title {
             color: #ff0000;
-            text-shadow: 0 0 30px #ff0000, 0 0 60px #8b0000, 0 0 100px #8b0000;
-            animation: iddqdPulse 1.4s ease-in-out infinite;
-            font-family: 'Press Start 2P', cursive;
-            line-height: 1.6;
+            text-shadow: 0 0 30px #ff0000, 0 0 60px #8b0000;
+            animation: doomPulse 1.4s ease-in-out infinite;
         }
-
-        .iddqd-sub {
-            font-size: clamp(1rem, 3vw, 2.4rem);
-            font-weight: 700;
-            letter-spacing: 4px;
-            color: #a50000;
-            text-shadow: 0 0 20px #cc0000, 0 0 40px #8b0000;
-            animation: iddqdPulse 1.4s ease-in-out infinite 0.2s;
-            font-family: 'Press Start 2P', cursive;
-            line-height: 1.8;
+        .theme-doom .effect-sub { color: #a50000; text-shadow: 0 0 20px #cc0000; }
+        .theme-doom .effect-quote { color: #880000; }
+        .theme-doom .effect-credits { color: #660000; }
+        @keyframes doomPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.75; transform: scale(1.02); }
         }
-
-        .iddqd-hint {
-            font-size: 0.75rem;
-            color: #5c0000;
-            letter-spacing: 3px;
-            margin-top: 20px;
-            animation: iddqdPulse 2s ease-in-out infinite;
+        .theme-arsenal { background: radial-gradient(circle at center, #1a0000 0%, #000 75%); }
+        .theme-arsenal .effect-title { color: #ff8800; text-shadow: 0 0 30px #ff4400, 0 0 60px #aa2200; }
+        .theme-arsenal .effect-sub { color: #ffcc00; text-shadow: 0 0 15px #ff8800; }
+        .theme-arsenal .effect-quote { color: #cc7700; }
+        .theme-arsenal .effect-credits { color: #883300; }
+        .theme-konami { background: radial-gradient(circle at center, #1a0033 0%, #0a0015 80%); }
+        .theme-konami .effect-title {
+            color: #ff00ff;
+            text-shadow: 0 0 30px #ff00ff, 0 0 60px #8800ff;
+            animation: konamiPulse 1.2s ease-in-out infinite;
         }
-
-        @keyframes iddqdPulse {
-            0%, 100% { 
-                opacity: 1; 
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 0.75; 
-                transform: scale(1.02);
-            }
+        .theme-konami .effect-sub { color: #ff88ff; text-shadow: 0 0 20px #ff00ff; letter-spacing: 8px; }
+        .theme-konami .effect-quote { color: #cc66cc; }
+        .theme-konami .effect-credits { color: #880088; }
+        @keyframes konamiPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
-
-        /* ---- abacabb: Mortal Kombat god combo ---- */
-        .abacabb-effect {
-            background: radial-gradient(circle at center, #1a0000 0%, #000000 80%);
-            color: #ff3333;
-            flex-direction: column;
-            gap: 20px;
+        .theme-money { background: linear-gradient(135deg, #1a1200 0%, #2b1d00 50%, #1a1200 100%); }
+        .theme-money .effect-title {
+            color: #ffd700;
+            text-shadow: 0 0 30px #ffd700, 0 0 60px #ffaa00;
         }
-
-        .abacabb-line {
-            font-size: clamp(1rem, 3vw, 2.5rem);
-            font-weight: 700;
-            letter-spacing: 6px;
+        .theme-money .effect-sub {
+            color: #ffd700; text-shadow: 0 0 20px #ffaa00;
+            font-size: clamp(1.8rem, 8vw, 6rem);
+        }
+        .theme-money .effect-quote { color: #ccaa33; }
+        .theme-money .effect-credits { color: #886600; }
+        .theme-sims { background: linear-gradient(135deg, #002a00 0%, #004d00 50%, #002a00 100%); }
+        .theme-sims .effect-title { color: #00ff41; text-shadow: 0 0 20px #00ff41, 0 0 40px #008800; }
+        .theme-sims .effect-sub { color: #88ff88; text-shadow: 0 0 15px #00ff41; }
+        .theme-sims .effect-quote { color: #66dd66; }
+        .theme-sims .effect-credits { color: #006600; }
+        .theme-warcraft { background: radial-gradient(circle at center, #1a1500 0%, #000 80%); }
+        .theme-warcraft .effect-title { color: #ffcc00; text-shadow: 0 0 30px #ffcc00, 0 0 60px #cc6600; }
+        .theme-warcraft .effect-sub { color: #ffdd66; text-shadow: 0 0 15px #ffaa00; }
+        .theme-warcraft .effect-quote { color: #cc9900; }
+        .theme-warcraft .effect-credits { color: #886600; }
+        .theme-starcraft { background: radial-gradient(circle at center, #001a2b 0%, #000 80%); }
+        .theme-starcraft .effect-title { color: #00b0ff; text-shadow: 0 0 30px #00b0ff, 0 0 60px #0066aa; }
+        .theme-starcraft .effect-sub { color: #66ccff; text-shadow: 0 0 15px #00b0ff; }
+        .theme-starcraft .effect-quote { color: #3388cc; }
+        .theme-starcraft .effect-credits { color: #0066aa; }
+        .theme-diablo { background: #ffffff; }
+        .theme-diablo .effect-title { color: #000000; text-shadow: 3px 3px 0 #ff0000; }
+        .theme-diablo .effect-sub { color: #333333; }
+        .theme-diablo .effect-quote { color: #666666; }
+        .theme-diablo .effect-credits { color: #666666; }
+        .theme-mk { background: radial-gradient(circle at center, #1a0000 0%, #000 80%); }
+        .theme-mk .effect-title {
             color: #ff8800;
             text-shadow: 0 0 20px #ff4400, 0 0 40px #aa0000;
-            font-family: 'Press Start 2P', cursive;
-            line-height: 1.8;
             animation: abacabbFlash 0.8s ease-in-out infinite;
         }
-
-        .abacabb-countdown {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #ffcc00;
-            text-shadow: 0 0 30px #ff8800, 0 0 60px #ff4400, 0 0 100px #aa0000;
-            font-family: 'Press Start 2P', cursive;
-            margin-top: 30px;
-            animation: abacabbPulse 0.6s ease-in-out infinite;
-        }
-
-        .abacabb-boom {
-            font-size: clamp(4rem, 14vw, 12rem);
-            font-weight: 900;
-            letter-spacing: 10px;
-            color: #ffffff;
-            text-shadow: 0 0 40px #ff2200, 0 0 80px #ff8800, 0 0 150px #ffcc00;
-            font-family: 'Press Start 2P', cursive;
-            display: none;
-            animation: boomFlash 0.4s ease-in-out infinite;
-        }
-
+        .theme-mk .effect-sub { color: #ffcc00; text-shadow: 0 0 15px #ff8800; }
+        .theme-mk .effect-quote { color: #cc6600; }
+        .theme-mk .effect-credits { color: #880000; }
         @keyframes abacabbFlash {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.85; }
         }
-
-        @keyframes abacabbPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
-
-        @keyframes boomFlash {
-            0%, 100% { 
-                transform: scale(1);
-                filter: brightness(1);
-            }
-            50% { 
-                transform: scale(1.06);
-                filter: brightness(1.5);
-            }
-        }
-
-        /* ---- rosebud: money mode ---- */
-        .rosebud-effect {
-            background: linear-gradient(135deg, #1a1200 0%, #2b1d00 50%, #1a1200 100%);
-            color: #ffd700;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .rosebud-label {
-            font-size: clamp(1.2rem, 3.5vw, 2.8rem);
-            font-weight: 700;
-            letter-spacing: 8px;
-            color: #ffd700;
-            text-shadow: 0 0 20px #ffa500, 0 0 40px #ffcc00;
-            font-family: 'Press Start 2P', cursive;
-            line-height: 1.8;
-        }
-
-        .rosebud-amount {
-            font-size: clamp(2.5rem, 9vw, 8rem);
-            font-weight: 900;
-            color: #ffd700;
-            text-shadow: 0 0 30px #ffd700, 0 0 60px #ffaa00, 0 0 120px #ff8800;
-            letter-spacing: 4px;
-            animation: goldShimmer 1.6s ease-in-out infinite;
-            line-height: 1.3;
-            word-break: break-all;
-        }
-
-        @keyframes goldShimmer {
-            0%, 100% {
-                color: #ffd700;
-                text-shadow: 0 0 30px #ffd700, 0 0 60px #ffaa00, 0 0 120px #ff8800;
-            }
-            50% {
-                color: #fff8b0;
-                text-shadow: 0 0 40px #ffeb3b, 0 0 80px #ffcc00, 0 0 150px #ffaa00;
-            }
-        }
-
-        /* ---- rocketman: San Andreas flight ---- */
-        .rocketman-effect {
-            background: radial-gradient(circle at 50% 120%, #0a1f44 0%, #020617 70%);
-            color: #00c8ff;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .rocketman-line {
-            font-size: clamp(1rem, 3vw, 2.4rem);
-            font-weight: 700;
-            letter-spacing: 5px;
+        .theme-gtasa { background: radial-gradient(circle at 50% 120%, #0a1f44 0%, #020617 70%); }
+        .theme-gtasa .effect-title {
             color: #00c8ff;
             text-shadow: 0 0 20px #00a8e0, 0 0 40px #0066aa;
-            font-family: 'Press Start 2P', cursive;
-            line-height: 1.8;
             animation: rocketGlow 2s ease-in-out infinite;
         }
-
-        .rocketman-countdown {
-            font-size: clamp(2rem, 7vw, 5rem);
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #ffffff;
-            text-shadow: 0 0 30px #00c8ff, 0 0 60px #00a8e0, 0 0 100px #0066aa;
-            font-family: 'Press Start 2P', cursive;
-            margin-top: 20px;
-            animation: rocketGlow 1.2s ease-in-out infinite;
-        }
-
+        .theme-gtasa .effect-sub { color: #66d9ff; text-shadow: 0 0 15px #00c8ff; }
+        .theme-gtasa .effect-quote { color: #3388cc; }
+        .theme-gtasa .effect-credits { color: #0066aa; }
         @keyframes rocketGlow {
-            0%, 100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            50% {
-                opacity: 0.85;
-                transform: translateY(-6px);
-            }
+            0%, 100% { opacity: 1; transform: translateY(0); }
+            50% { opacity: 0.85; transform: translateY(-4px); }
+        }
+        .theme-magic { background: radial-gradient(circle at center, #1a001a 0%, #000 80%); }
+        .theme-magic .effect-title {
+            color: #ff00ff;
+            text-shadow: 0 0 30px #ff00ff, 0 0 60px #880088;
+        }
+        .theme-magic .effect-sub { color: #ff88ff; text-shadow: 0 0 15px #ff00ff; }
+        .theme-magic .effect-quote { color: #cc66cc; }
+        .theme-magic .effect-credits { color: #660066; }
+        .theme-teapot { background: radial-gradient(circle at 30% 40%, #3d1e00 0%, #1a0d00 100%); }
+        .theme-teapot .effect-title {
+            color: #ff9944;
+            text-shadow: 0 0 30px #ff6600, 0 0 60px #883300;
+            animation: teapotWobble 2s ease-in-out infinite;
+        }
+        .theme-teapot .effect-sub { color: #ffbb77; text-shadow: 0 0 15px #ff9944; }
+        .theme-teapot .effect-quote { color: #cc8844; }
+        .theme-teapot .effect-credits { color: #885522; }
+        @keyframes teapotWobble {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .theme-enlightenment { background: radial-gradient(circle at center, #1a0050 0%, #000010 80%); }
+        .theme-enlightenment .effect-title {
+            color: #c78aff;
+            text-shadow: 0 0 30px #aa44ff, 0 0 80px #6600aa;
+            animation: enlightenPulse 2s ease-in-out infinite;
+        }
+        .theme-enlightenment .effect-sub {
+            color: #ddaaff; font-family: 'Fira Code', monospace;
+            font-size: clamp(0.8rem, 2.4vw, 1.4rem);
+            letter-spacing: 1.5px; text-align: left;
+            max-width: 600px; text-shadow: 0 0 10px #8844cc;
+        }
+        .theme-enlightenment .effect-quote { color: #9966cc; }
+        .theme-enlightenment .effect-credits { color: #6633aa; }
+        @keyframes enlightenPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        .theme-sandwich { background: linear-gradient(135deg, #2a1a00 0%, #1a0f00 100%); }
+        .theme-sandwich .effect-title { color: #ffcc00; text-shadow: 0 0 30px #ff9944; }
+        .theme-sandwich .effect-sub { color: #ffdd66; text-shadow: 0 0 15px #ffaa00; }
+        .theme-sandwich .effect-quote { color: #ccaa44; }
+        .theme-sandwich .effect-credits { color: #886633; }
+        .theme-woimm { background: linear-gradient(135deg, #001a00 0%, #000a1a 100%); }
+        .theme-woimm .effect-title { color: #22c55e; text-shadow: 0 0 30px #22c55e, 0 0 60px #0f7a3a; }
+        .theme-woimm .effect-sub { color: #88ff88; text-shadow: 0 0 15px #22c55e; }
+        .theme-woimm .effect-quote { color: #66bb66; }
+        .theme-woimm .effect-credits { color: #0f7a3a; }
+        .theme-hello-human { background: linear-gradient(135deg, #0a0a2e 0%, #1a0a2e 50%, #0a1a2e 100%); }
+        .theme-hello-human .effect-title {
+            color: #ffffff;
+            text-shadow: 0 0 20px #00f2fe, 0 0 40px #0088cc;
+            font-size: clamp(1.2rem, 4.5vw, 2.6rem);
+            letter-spacing: 3px; margin-bottom: 20px;
+        }
+        .theme-hello-human .effect-credits { color: #6677aa; }
+        .theme-zen { background: #0a0e1a; }
+        .theme-zen .effect-title {
+            color: #ffd43b; text-shadow: 0 0 20px #ffd43b, 0 0 40px #ffaa00;
+            font-family: 'Fira Code', monospace; letter-spacing: 2px;
+            font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+        }
+        .theme-zen .effect-credits { color: #667799; }
+
+        /* ============ DOOM BLOOD DRIPS ============ */
+        .blood-drip {
+            position: absolute; top: 0;
+            width: 5px; height: 0;
+            background: linear-gradient(180deg, #dd0000, #7a0000);
+            box-shadow: 0 0 12px #ff0000;
+            animation: bloodFlow 3s ease-in forwards;
+            z-index: 1;
+        }
+        .blood-drip::after {
+            content: '';
+            position: absolute; bottom: -14px; left: -5px;
+            width: 15px; height: 15px;
+            background: #cc0000; border-radius: 50%;
+            box-shadow: 0 0 15px #ff0000;
+        }
+        @keyframes bloodFlow {
+            0% { height: 0; opacity: 1; }
+            100% { height: 100vh; opacity: 0.95; }
         }
 
-        @media (max-width: 600px) {
+        /* ============ CROSSHAIR ============ */
+        .crosshair {
+            position: fixed;
+            width: 32px; height: 32px;
+            border: 2px solid #ff0000;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px #ff0000, inset 0 0 8px #ff0000;
+            z-index: 100;
+            transition: transform 0.05s linear;
+        }
+        .crosshair::before, .crosshair::after {
+            content: '';
+            position: absolute;
+            background: #ff0000;
+            box-shadow: 0 0 6px #ff0000;
+        }
+        .crosshair::before {
+            width: 2px; height: 46px; top: -8px; left: 50%;
+            transform: translateX(-50%);
+        }
+        .crosshair::after {
+            height: 2px; width: 46px; left: -8px; top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* ============ COIN RAIN ============ */
+        .coin {
+            position: absolute;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff9c4, #ffd700 40%, #b8860b);
+            box-shadow: 0 0 15px #ffd700;
+            animation: coinFall 3s linear forwards;
+            display: flex; align-items: center; justify-content: center;
+            color: #8b6914; font-family: serif; font-weight: 900;
+            font-size: 20px; z-index: 1;
+        }
+        .coin::before { content: '$'; }
+        @keyframes coinFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(900deg); opacity: 0; }
+        }
+        .cash-rain {
+            position: absolute;
+            font-size: 28px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 900;
+            animation: cashFall 3s linear forwards;
+            z-index: 1;
+        }
+        @keyframes cashFall {
+            0% { transform: translateY(-100px) rotate(-15deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(25deg); opacity: 0; }
+        }
+
+        /* ============ KONAMI KEY ROW ============ */
+        .konami-keys {
+            display: flex; gap: 10px; justify-content: center;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        .konami-key {
+            width: 54px; height: 54px;
+            border: 2px solid #880088;
+            border-radius: 10px;
+            display: inline-flex; align-items: center; justify-content: center;
+            color: #880088; font-size: 1.5rem;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(136, 0, 136, 0.05);
+        }
+        .konami-key.active {
+            background: #ff00ff; color: #fff;
+            box-shadow: 0 0 25px #ff00ff, 0 0 50px #ff00ff;
+            transform: scale(1.15);
+            border-color: #ff88ff;
+        }
+        .konami-counter {
+            font-family: 'Press Start 2P', monospace;
+            font-size: clamp(1.4rem, 4vw, 2.5rem);
+            color: #ff88ff;
+            text-shadow: 0 0 20px #ff00ff;
+            margin-top: 20px;
+            letter-spacing: 3px;
+        }
+        .lives-pips {
+            display: flex; gap: 6px; flex-wrap: wrap;
+            justify-content: center; margin-top: 16px;
+            max-width: 90vw;
+        }
+        .life-pip {
+            width: 18px; height: 18px;
+            background: #ff88ff;
+            border-radius: 3px;
+            box-shadow: 0 0 10px #ff00ff;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .life-pip.pop { opacity: 1; transform: scale(1); }
+
+        /* ============ COUNTER ============ */
+        .counter-display {
+            font-family: 'Press Start 2P', monospace;
+            font-size: clamp(1.5rem, 6vw, 3.5rem);
+            margin-top: 20px;
+            letter-spacing: 4px;
+        }
+        .theme-sims .counter-display { color: #00ff41; text-shadow: 0 0 25px #00ff41; }
+        .theme-warcraft .counter-display { color: #ffcc00; text-shadow: 0 0 25px #ffcc00; }
+        .theme-starcraft .counter-display { color: #00b0ff; text-shadow: 0 0 25px #00b0ff; }
+
+        /* ============ COUNTER ROWS (warcraft etc) ============ */
+        .counter-row {
+            display: flex; align-items: center; gap: 15px;
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(0.9rem, 2.4vw, 1.4rem);
+            margin: 10px 0;
+            opacity: 0; transform: translateY(15px);
+            transition: all 0.4s ease;
+            color: inherit;
+        }
+        .counter-row.visible { opacity: 1; transform: translateY(0); }
+        .counter-row-icon {
+            font-size: 1.4rem;
+        }
+        .counter-row-num {
+            font-weight: 700;
+            color: inherit;
+            min-width: 120px; text-align: right;
+        }
+
+        /* ============ COWS MARCHING ============ */
+        .cow {
+            position: absolute;
+            font-size: clamp(2rem, 6vw, 4rem);
+            bottom: 15%;
+            animation: cowWalk 8s linear infinite;
+            z-index: 1;
+        }
+        .cow::after {
+            content: 'MOO';
+            position: absolute;
+            top: -20px; left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.55rem;
+            color: #333;
+            background: #ffffff;
+            padding: 4px 8px;
+            border-radius: 12px;
+            opacity: 0;
+            animation: mooPop 2s ease-in-out infinite;
+            white-space: nowrap;
+            border: 2px solid #333;
+        }
+        @keyframes cowWalk {
+            0% { transform: translateX(-15vw) translateY(0); }
+            50% { transform: translateX(50vw) translateY(-6px); }
+            100% { transform: translateX(110vw) translateY(0); }
+        }
+        @keyframes mooPop {
+            0%, 40% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1); }
+            90% { opacity: 0; transform: translateX(-50%) scale(0.7); }
+            100% { opacity: 0; }
+        }
+
+        /* ============ CROWN DROP ============ */
+        .crown-drop {
+            position: absolute;
+            font-size: clamp(3rem, 12vw, 6rem);
+            top: -150px;
+            left: 50%; transform: translateX(-50%);
+            animation: crownFall 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            z-index: 3;
+        }
+        @keyframes crownFall {
+            0% { top: -150px; transform: translateX(-50%) rotate(-30deg); }
+            60% { top: 20%; transform: translateX(-50%) rotate(10deg); }
+            80% { top: 15%; transform: translateX(-50%) rotate(-5deg); }
+            100% { top: 18%; transform: translateX(-50%) rotate(0deg); }
+        }
+        .character-figure {
+            font-size: clamp(3rem, 10vw, 5rem);
+            position: absolute;
+            bottom: 30%;
+            left: 50%; transform: translateX(-50%);
+            z-index: 2;
+            filter: drop-shadow(0 0 20px #ffcc00);
+        }
+        .lightning-bolt {
+            position: absolute;
+            font-size: 3rem;
+            animation: lightningStrike 1.5s ease-out forwards;
+            z-index: 4;
+            opacity: 0;
+            filter: drop-shadow(0 0 15px #ffee00);
+        }
+        @keyframes lightningStrike {
+            0% { opacity: 0; transform: scale(0.3); }
+            20% { opacity: 1; transform: scale(1.3); }
+            40% { opacity: 0; transform: scale(0.9); }
+            60% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+
+        /* ============ SHIELD EXPAND ============ */
+        .shield-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100px; height: 100px;
+            border: 4px solid #00b0ff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 40px #00b0ff, inset 0 0 40px #00b0ff;
+            animation: shieldExpand 2s ease-out forwards;
+            z-index: 1;
+        }
+        @keyframes shieldExpand {
+            0% { width: 100px; height: 100px; opacity: 1; }
+            100% { width: 220vw; height: 220vw; opacity: 0; }
+        }
+        .shield-ring.delayed {
+            animation-delay: 0.5s;
+        }
+        .power-bar {
+            width: 70%; max-width: 500px;
+            height: 22px;
+            border: 2px solid #00b0ff;
+            border-radius: 11px;
+            overflow: hidden;
+            margin-top: 20px;
+            background: rgba(0, 176, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 176, 255, 0.4);
+        }
+        .power-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00b0ff, #00e5ff);
+            width: 0%;
+            transition: width 1.5s ease;
+            box-shadow: 0 0 15px #00b0ff;
+        }
+
+        /* ============ MONEY BURST ============ */
+        .money-burst {
+            position: absolute;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            pointer-events: none;
+            z-index: 3;
+            animation: moneyFly 1.8s ease-out forwards;
+        }
+        @keyframes moneyFly {
+            0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--dx), var(--dy)) scale(1.2) rotate(var(--rot)); opacity: 0; }
+        }
+        .briefcase {
+            font-size: clamp(4rem, 15vw, 8rem);
+            animation: briefcaseShake 1s ease-in-out infinite;
+        }
+        @keyframes briefcaseShake {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        /* ============ FOG CLEAR ============ */
+        .fog-layer {
+            position: absolute; inset: 0;
+            background: rgba(100, 100, 100, 0.5);
+            backdrop-filter: blur(15px);
+            animation: fogClear 3s ease-out forwards;
+            z-index: 1;
+        }
+        @keyframes fogClear {
+            0% { opacity: 1; backdrop-filter: blur(15px); }
+            100% { opacity: 0; backdrop-filter: blur(0px); }
+        }
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+            width: min(90vw, 600px);
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .map-tile {
+            aspect-ratio: 1;
+            background: rgba(0, 176, 255, 0.15);
+            border: 1px solid rgba(0, 176, 255, 0.4);
+            border-radius: 3px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s ease;
+        }
+        .map-tile.visible {
+            opacity: 1;
+            transform: scale(1);
+            background: rgba(0, 176, 255, 0.35);
+            box-shadow: 0 0 10px #00b0ff;
+        }
+
+        /* ============ TYPEWRITER ============ */
+        .typewriter-text {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(1.1rem, 3.5vw, 2rem);
+            color: #ff88ff;
+            text-shadow: 0 0 15px #ff00ff;
+            letter-spacing: 2px;
+            min-height: 1.6em;
+        }
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px; height: 1.1em;
+            background: #ff88ff;
+            vertical-align: middle;
+            margin-left: 4px;
+            animation: cursorBlink 0.8s step-end infinite;
+        }
+
+        /* ============ ROCKET LIFTOFF ============ */
+        .rocket-character {
+            font-size: clamp(4rem, 15vw, 8rem);
+            position: relative;
+            animation: rocketLiftoff 4s ease-in-out forwards;
+            z-index: 2;
+            display: inline-block;
+        }
+        @keyframes rocketLiftoff {
+            0% { transform: translateY(0); }
+            60% { transform: translateY(-40vh); }
+            100% { transform: translateY(-120vh); }
+        }
+        .jet-flames {
+            position: absolute;
+            bottom: -20px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: flamesFlicker 0.15s infinite;
+            z-index: -1;
+        }
+        @keyframes flamesFlicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-5deg); opacity: 1; }
+            50% { transform: translateX(-50%) scale(1.2) rotate(5deg); opacity: 0.85; }
+            100% { transform: translateX(-50%) scale(1) rotate(-5deg); opacity: 1; }
+        }
+        .speed-line {
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #00c8ff);
+            animation: speedLineMove 0.8s linear infinite;
+            z-index: 1;
+            opacity: 0.7;
+        }
+        @keyframes speedLineMove {
+            0% { transform: translateY(-50vh); opacity: 0; }
+            50% { opacity: 0.9; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        /* ============ TEAPOT STEAM ============ */
+        .teapot-container {
+            position: relative;
+            display: inline-block;
+        }
+        .steam {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: steamRise 2.5s ease-out infinite;
+            opacity: 0;
+            z-index: 1;
+        }
+        @keyframes steamRise {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            20% { opacity: 0.7; }
+            100% { opacity: 0; transform: translateY(-120px) scale(1.6); }
+        }
+
+        /* ============ STAGED LOG ============ */
+        .stage-log {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(0.72rem, 1.8vw, 1rem);
+            letter-spacing: 0.5px;
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+            line-height: 1.7;
+            margin-top: 20px;
+        }
+        .stage-log-line {
+            padding: 4px 0;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+        .stage-log-line.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============ SANDWICH BUILD ============ */
+        .sandwich-stack {
+            position: relative;
+            height: 220px;
+            width: 220px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0;
+        }
+        .sandwich-layer {
+            width: 160px;
+            height: 22px;
+            opacity: 0;
+            transform: translateY(60px) scale(0.5);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .sandwich-layer.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .sandwich-layer.bread { background: linear-gradient(180deg, #d4a056, #b8803a); border-radius: 20px 20px 4px 4px; height: 30px; }
+        .sandwich-layer.lettuce { background: #7fbf4a; border-radius: 10px; }
+        .sandwich-layer.cheese { background: #ffd700; border-radius: 4px; }
+        .sandwich-layer.tomato { background: #e63946; border-radius: 10px; }
+        .sandwich-layer.bread-bottom { background: linear-gradient(180deg, #b8803a, #8a5528); border-radius: 4px 4px 20px 20px; height: 26px; }
+        .sandwich-binary-fly {
+            position: absolute;
+            font-family: 'Fira Code', monospace;
+            color: #ffcc00;
+            opacity: 0;
+            font-size: 0.85rem;
+            animation: binaryFly 1.6s ease-out forwards;
+            z-index: 1;
+        }
+        @keyframes binaryFly {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            60% { opacity: 0.7; }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
+        }
+        .wheel-stamp {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            padding: 12px 22px;
+            border-radius: 8px;
+            margin-top: 22px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-shadow: 0 0 15px #22c55e;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+        }
+        .wheel-stamp.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ============ WOIMM ============ */
+        .woimm-split {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 12px;
+            align-items: center;
+            width: 100%;
+            max-width: 720px;
+            margin-top: 20px;
+        }
+        .woimm-panel {
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid;
+            border-radius: 12px;
+            padding: 24px 16px;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 12px;
+            opacity: 0; transform: scale(0.7);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .woimm-panel.visible {
+            opacity: 1; transform: scale(1);
+        }
+        .woimm-panel.origin { border-color: #22c55e; box-shadow: 0 0 30px rgba(34, 197, 94, 0.4); }
+        .woimm-panel.other { border-color: #ef4444; box-shadow: 0 0 30px rgba(239, 68, 68, 0.4); }
+        .woimm-panel-title {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem; letter-spacing: 1.5px; opacity: 0.7;
+            color: #94a3b8;
+        }
+        .woimm-panel-emoji { font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1; }
+        .woimm-panel-status {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 1px;
+        }
+        .woimm-panel.origin .woimm-panel-status { color: #22c55e; }
+        .woimm-panel.other .woimm-panel-status { color: #ef4444; }
+        .woimm-panel.other .woimm-panel-emoji { animation: errorShake 0.6s ease infinite; }
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .woimm-arrow {
+            font-size: 2rem;
+            color: #94a3b8;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: arrowPulse 1.5s ease-in-out infinite;
+        }
+        .woimm-arrow.visible { opacity: 1; transform: scale(1); }
+        @keyframes arrowPulse {
+            0%, 100% { filter: drop-shadow(0 0 5px #94a3b8); }
+            50% { filter: drop-shadow(0 0 20px #ffffff); }
+        }
+        .error-digits {
+            position: absolute;
+            font-family: 'Press Start 2P', monospace;
+            color: #ef4444;
+            font-size: 1rem;
+            animation: errorFloat 1.5s ease-out forwards;
+            pointer-events: none;
+            z-index: 3;
+        }
+        @keyframes errorFloat {
+            0% { opacity: 1; transform: translate(0, 0) scale(0.5); }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.5); }
+        }
+
+        /* ============ HELLO HUMAN ============ */
+        .hello-human-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            width: 100%; max-width: 900px;
+            margin: 20px 0;
+        }
+        .hello-human-card {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 10px; padding: 14px 12px;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 6px;
+            opacity: 0; transform: rotateY(90deg);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: center;
+        }
+        .hello-human-card.visible {
+            opacity: 1; transform: rotateY(0deg);
+        }
+        .hello-human-lang {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.68rem; letter-spacing: 1.5px;
+            color: #00f2fe; text-transform: uppercase; opacity: 0.8;
+        }
+        .hello-human-text {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem; font-weight: 600;
+            color: #ffffff; text-align: center;
+            line-height: 1.4;
+        }
+
+        /* ============ ZEN WINDOW ============ */
+        .zen-window {
+            background: #0f1621;
+            border: 1px solid #2a3a52;
+            border-radius: 10px;
+            width: 100%; max-width: 760px;
+            max-height: 82vh; display: flex; flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 212, 59, 0.15);
+        }
+        .zen-tab-bar {
+            background: #1a2332; padding: 8px 12px;
+            display: flex; align-items: center; gap: 8px;
+            border-bottom: 1px solid #2a3a52; flex-shrink: 0;
+        }
+        .zen-tab {
+            background: #0f1621; border: 1px solid #2a3a52;
+            border-bottom: none; border-radius: 8px 8px 0 0;
+            padding: 8px 14px; font-family: 'Fira Code', monospace;
+            font-size: 0.72rem; color: #ffd43b;
+            display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px;
+        }
+        .zen-tab-dot {
+            width: 10px; height: 10px;
+            background: #ffd43b; border-radius: 50%;
+            box-shadow: 0 0 10px #ffd43b;
+        }
+        .zen-window-close {
+            margin-left: auto;
+            background: transparent; border: 1px solid #334155;
+            color: #94a3b8; width: 26px; height: 26px;
+            border-radius: 6px; cursor: pointer; font-size: 0.9rem;
+        }
+        .zen-window-close:hover { background: #ef4444; color: #fff; border-color: #ef4444; }
+        .zen-body {
+            padding: 26px 30px; overflow-y: auto; flex: 1;
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(0.78rem, 1.6vw, 0.95rem);
+            line-height: 1.85; color: #cbd5e1;
+        }
+        .zen-body::-webkit-scrollbar { width: 8px; }
+        .zen-body::-webkit-scrollbar-track { background: #0f1621; }
+        .zen-body::-webkit-scrollbar-thumb { background: #2a3a52; border-radius: 4px; }
+        .zen-header {
+            color: #ffd43b; font-weight: 700; letter-spacing: 1px;
+            margin-bottom: 16px; padding-bottom: 12px;
+            border-bottom: 1px dashed rgba(255, 212, 59, 0.3);
+        }
+        .zen-line {
+            padding: 3px 0;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.35s ease;
+        }
+        .zen-line.visible { opacity: 1; transform: translateX(0); }
+        .zen-footer {
+            margin-top: 20px; padding-top: 12px;
+            border-top: 1px dashed rgba(255, 212, 59, 0.3);
+            color: #8899aa; font-size: 0.78rem; font-style: italic;
+        }
+
+        /* ============ DINO GAME ============ */
+        .dino-overlay {
+            position: fixed; inset: 0; z-index: 10001;
+            display: none; background: #f7f7f7;
+            animation: effectFadeIn 0.3s ease;
+            cursor: pointer; touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .dino-overlay.active { display: block; }
+        #dinoCanvas { display: block; width: 100%; height: 100%; }
+        .dino-hud {
+            position: absolute;
+            top: max(24px, env(safe-area-inset-top));
+            left: 24px; right: 24px;
+            display: flex; justify-content: space-between;
+            align-items: flex-start; pointer-events: none; gap: 12px;
+        }
+        .dino-score-wrap { display: flex; flex-direction: column; gap: 4px; }
+        .dino-score {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.6rem; font-weight: 700;
+            color: #535353; letter-spacing: 5px;
+        }
+        .dino-speed {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem; color: #888; letter-spacing: 2px;
+        }
+        .dino-exit {
+            pointer-events: auto; background: #535353; color: #fff;
+            border: none; padding: 10px 18px; border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            cursor: pointer; letter-spacing: 2px;
+            -webkit-tap-highlight-color: transparent; flex-shrink: 0;
+        }
+        .dino-exit:hover, .dino-exit:active { background: #333; }
+        .dino-credit {
+            position: absolute;
+            bottom: max(20px, env(safe-area-inset-bottom));
+            left: 0; right: 0; text-align: center;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem; color: #888; letter-spacing: 1.2px;
+            pointer-events: none; padding: 0 20px;
+        }
+        .dino-gameover {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            display: none; flex-direction: column;
+            align-items: center; gap: 14px;
+            pointer-events: none; text-align: center; padding: 0 20px;
+        }
+        .dino-gameover-title {
+            font-family: 'Press Start 2P', 'Fira Code', monospace;
+            font-size: clamp(1.6rem, 6vw, 4rem);
+            color: #535353; letter-spacing: 4px; line-height: 1.5;
+        }
+        .dino-gameover-sub {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem; color: #888; letter-spacing: 2px; line-height: 1.6;
+        }
+
+        /* ============ MOBILE ============ */
+        @media (max-width: 768px) {
+            .mode-switcher { top: 16px; right: 16px; padding: 3px; }
+            .mode-btn { padding: 7px 13px; font-size: 0.72rem; }
+            .scroll-indicator { right: 16px; gap: 12px; }
+            .content-card { padding: 30px 24px; }
+            .fullscreen-section { padding: 100px 20px 40px 20px; }
             .hello-row { grid-template-columns: 95px 1fr; }
             .hello-lang { font-size: 0.65rem; padding: 10px 8px; }
             .hello-code { font-size: 0.7rem; padding: 10px 8px; }
             .terminal-body { padding: 16px; }
+            .cmd-toggle-btn {
+                bottom: max(16px, env(safe-area-inset-bottom));
+                right: 16px; padding: 12px 16px; font-size: 0.82rem;
+            }
+            .cmdline-overlay {
+                align-items: flex-start; padding: 16px;
+                padding-top: max(16px, env(safe-area-inset-top));
+            }
+            .cmdline-panel { max-height: 75dvh; animation: cmdSlideDown 0.3s ease; }
+            @keyframes cmdSlideDown {
+                from { transform: translateY(-30px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
             .cmdline-body { padding: 14px 16px; }
-            .cmdline-buffer { font-size: 0.9rem; letter-spacing: 1px; }
-            .cmd-toggle-btn { bottom: 20px; right: 20px; padding: 8px 12px; font-size: 0.78rem; }
-            .cmdline-overlay { padding: 16px; }
+            .cmdline-title { font-size: 0.68rem; }
+            .vkey { padding: 14px 0; font-size: 1.35rem; }
+            .effect-credits { font-size: 0.62rem; letter-spacing: 0.7px; }
+            .woimm-split { grid-template-columns: 1fr; }
+            .woimm-arrow { transform: rotate(90deg); }
+            .hello-human-grid { grid-template-columns: repeat(2, 1fr); }
+            .hello-human-text { font-size: 0.85rem; }
+            .zen-body { padding: 20px 18px; }
+            .dino-hud { top: max(16px, env(safe-area-inset-top)); left: 16px; right: 16px; }
+            .dino-score { font-size: 1.2rem; }
+            .dino-speed { font-size: 0.68rem; }
+            .konami-key { width: 42px; height: 42px; font-size: 1.2rem; }
+            .konami-keys { gap: 6px; }
         }
     </style>
 </head>
@@ -918,7 +1445,6 @@
 
     <div class="scroll-indicator" id="dotNav"></div>
 
-    <!-- DEV LAYER -->
     <div class="view-wrapper active-view" id="devEcosystem">
         <section class="fullscreen-section">
             <div class="content-card">
@@ -932,7 +1458,6 @@
                 </p>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">02 // Operational Directive</span>
@@ -945,7 +1470,6 @@
                 </p>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">03 // Active Production Terminal</span>
@@ -960,13 +1484,12 @@
                 </div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">04 // Simulation System</span>
                 <h2><a href="https://github.com/rehanamanind-ship-it/N.I.W.O.E.C." target="_blank" class="project-title-link">N.I.W.O.E.C.</a></h2>
                 <p class="narrative">
-                    A deterministic, offline CLI that checks whether your source code actually implements the requirements in a Functional Requirements Specification (FRS). It flags placeholder functions and maintainability issues without calling any LLM, downloading files, or sending telemetry. The same source, FRS, configuration, and rule version always produce the same output — built for local and air-gapped verification.
+                    A deterministic, offline CLI that checks whether your source code actually implements the requirements in a Functional Requirements Specification (FRS). It flags placeholder functions and maintainability issues without calling any LLM, downloading files, or sending telemetry.
                 </p>
                 <div class="project-meta-block">
                     <span class="meta-pill">FRS Verification</span>
@@ -975,13 +1498,12 @@
                 </div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">05 // Security Vector Check</span>
                 <h2><a href="https://github.com/rehanamanind-ship-it/D.E.M.O.N." target="_blank" class="project-title-link">D.E.M.O.N.</a></h2>
                 <p class="narrative">
-                    A headless, git-style terminal CLI for static analysis of binaries and scripts. It inspects .exe files and more to reveal the intent behind the software, with optional local GGUF classification through llama-cpp-python. Models are configured once with <code>demon model set path/to/model.gguf</code>, and results are cached under <code>~/.cache/demon</code> for repeatable, offline threat assessment.
+                    A headless, git-style terminal CLI for static analysis of binaries and scripts. It inspects .exe files and more to reveal the intent behind the software, with optional local GGUF classification through llama-cpp-python.
                 </p>
                 <div class="project-meta-block">
                     <span class="meta-pill">Binary Static Analysis</span>
@@ -990,13 +1512,12 @@
                 </div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">06 // Local Model Compiler</span>
                 <h2><a href="https://github.com/rehanamanind-ship-it/AI_creato" target="_blank" class="project-title-link">AI creato</a></h2>
                 <p class="narrative">
-                    A terminal-first AI builder covering the entire model lifecycle — train small dataset models from simple <code>input = output</code> files, fine-tune Hugging Face checkpoints from conversation-style examples, export trained models to GGUF, quantize for smaller and faster deployment, and test saved models with direct terminal prompts. No notebooks, no GUI — just scriptable commands: <code>creato-ai train</code>, <code>fine-tune</code>, <code>export</code>, <code>quantize</code>, <code>test</code>.
+                    A terminal-first AI builder covering the entire model lifecycle — train small dataset models from simple <code>input = output</code> files, fine-tune Hugging Face checkpoints, export trained models to GGUF, quantize for smaller deployment, and test saved models with direct terminal prompts.
                 </p>
                 <div class="project-meta-block">
                     <span class="meta-pill">LLM / SLM Training</span>
@@ -1005,13 +1526,12 @@
                 </div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">07 // Binary Disassembler Matrix</span>
                 <h2><a href="https://github.com/rehanamanind-ship-it/mr.-reverse" target="_blank" class="project-title-link">mr. reverse</a></h2>
                 <p class="narrative">
-                    A lightweight reverse-engineering and conversion CLI (internally HREA) that detects file type, architecture, packer markers, and purpose heuristically, then generates scaffolded conversion output for a target language. Supports optional GGUF model loading through llama-cpp-python, machine-readable JSON output for CI pipelines, and a built-in <code>hrea doctor</code> to check your runtime environment.
+                    A lightweight reverse-engineering and conversion CLI (internally HREA) that detects file type, architecture, packer markers, and purpose heuristically, then generates scaffolded conversion output for a target language.
                 </p>
                 <div class="project-meta-block">
                     <span class="meta-pill">Binary Intent Analysis</span>
@@ -1020,13 +1540,12 @@
                 </div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">08 // System Control Hook</span>
                 <h2><a href="https://github.com/rehanamanind-ship-it/i-gatekeep-arch-btw" target="_blank" class="project-title-link">i gatekeep arch btw</a></h2>
                 <p class="narrative">
-                    A smart wrapper for <code>pacman -Syu</code> that guards your Arch Linux system against dangerous updates. It flags critical packages (kernel, systemd, glibc, GRUB, and more) before upgrading, detects locally modified config files in <code>/etc/</code> that could cause .pacnew conflicts, and requires your explicit confirmation before applying anything. Full control over your rolling-release system — zero surprise breakage.
+                    A smart wrapper for <code>pacman -Syu</code> that guards your Arch Linux system against dangerous updates. It flags critical packages before upgrading, detects locally modified config files that could cause .pacnew conflicts, and requires explicit confirmation.
                 </p>
                 <div class="project-meta-block">
                     <span class="meta-pill">Pacman Wrapper</span>
@@ -1035,13 +1554,12 @@
                 </div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">09 // Monolith Refactoring Unit</span>
                 <h2><a href="https://github.com/rehanamanind-ship-it/monolith_splitter" target="_blank" class="project-title-link">monolith_splitter</a></h2>
                 <p class="narrative">
-                    A CLI utility that splits a large monolithic Python file into smaller, organized modules using a CSV-based section map. Designed for scripts that were intentionally sectioned with marker comments, it reads a <code>SECTION_NAME,START_LINE,END_LINE</code> config, generates predictable output files, restores import lines that were commented out for splitting, and warns about unassigned ranges. Packaged as an installable wheel with a simple terminal workflow — no GUI, no notebooks.
+                    A CLI utility that splits a large monolithic Python file into smaller, organized modules using a CSV-based section map. Restores import lines, warns about unassigned ranges, and is packaged as an installable wheel.
                 </p>
                 <div class="project-meta-block">
                     <span class="meta-pill">CSV Section Map</span>
@@ -1051,7 +1569,6 @@
                 </div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card" style="text-align: center;">
                 <span class="section-tag">10 // Network Hub</span>
@@ -1071,7 +1588,6 @@
         </section>
     </div>
 
-    <!-- GAMING LAYER -->
     <div class="view-wrapper" id="gamingEcosystem">
         <section class="fullscreen-section">
             <div class="content-card">
@@ -1082,161 +1598,146 @@
                 </p>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Simulation Sandbox // Active</span>
                 <h2>Hitman WOA</h2>
                 <p class="narrative">
-                    My absolute favorite simulation sandbox. The puzzle-like layouts, stealth maps, and absolute creative freedom to plan assassination routes align perfectly with how I solve complex programming bugs. It is a masterclass in silent tactical execution.
+                    My absolute favorite simulation sandbox. The puzzle-like layouts, stealth maps, and absolute creative freedom to plan assassination routes align perfectly with how I solve complex programming bugs.
                 </p>
                 <div class="status-badge">MISSION RESULT: everyone assassinated</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Stealth Simulation // Active</span>
                 <h2>Assassin's Creed Mirage</h2>
                 <p class="narrative">
-                    Navigating through the old hidden rooftops and alleyways required rigorous crowd-blending, perfect movement pacing, and deliberate target tracking. Moving undetected through the shadows to strike from above is pure strategy.
+                    Navigating through the old hidden rooftops and alleyways required rigorous crowd-blending, perfect movement pacing, and deliberate target tracking.
                 </p>
                 <div class="status-badge">MISSION RESULT: infiltrated and became assassin</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Sci-Fi Underworld // Active</span>
                 <h2>Star Wars Outlaws</h2>
                 <p class="narrative">
-                    Surviving the criminal underworld required careful faction balancing, slicing encrypted terminals, and outsmarting local security structures. Every job was about navigating volatile risks and managing syndicate politics.
+                    Surviving the criminal underworld required careful faction balancing, slicing encrypted terminals, and outsmarting local security structures.
                 </p>
                 <div class="status-badge">MISSION RESULT: pyke's righthand</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Narrative Adventure // Active</span>
                 <h2>Star Wars Jedi Survivor</h2>
                 <p class="narrative">
-                    An incredible journey filled with intense lightsaber combat choreography, complex platforming loops, and deep exploration across untamed worlds. The story maps out a powerful path of resilience.
+                    An incredible journey filled with intense lightsaber combat choreography, complex platforming loops, and deep exploration across untamed worlds.
                 </p>
                 <div class="status-badge">MISSION RESULT: living retired jedi life peacefully at 23</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Open Racing Sandbox // Active</span>
                 <h2>Forza Horizon 5</h2>
                 <p class="narrative">
-                    Pure speed combined with beautiful world tracking. Drifting through massive sandstorms, mapping handling physics across open dirt tracks, and opening up high-performance engines across long highway straightaways.
+                    Pure speed combined with beautiful world tracking. Drifting through massive sandstorms, mapping handling physics across open dirt tracks.
                 </p>
                 <div class="status-badge">MISSION RESULT: explored the roads of mexico</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Next-Gen Racing Sandbox // Active</span>
                 <h2>Forza Horizon 6</h2>
                 <p class="narrative">
-                    Pushing newer automotive physics engines to the limit. Mastering complex street cornering lines through tight urban sectors and matching transmission variables to adapt instantly to harsh environmental drops.
+                    Pushing newer automotive physics engines to the limit. Mastering complex street cornering lines through tight urban sectors.
                 </p>
                 <div class="status-badge">MISSION RESULT: explored the city and going to explore the snow</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Sci-Fi Combat Sandbox // Active</span>
                 <h2>Halo Infinite</h2>
                 <p class="narrative">
-                    Combining the fluid vertical mechanics of the grapple-shot with precise battle-rifle precision. Tearing down fortified enemy outposts and controlling massive tactical skirmishes on an open alien ring ecosystem.
+                    Combining the fluid vertical mechanics of the grapple-shot with precise battle-rifle precision. Tearing down fortified enemy outposts.
                 </p>
                 <div class="status-badge">MISSION RESULT: all banished neutralized 2 times</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Fantasy Open World // Active</span>
                 <h2>Hogwarts Legacy</h2>
                 <p class="narrative">
-                    A magical sandbox full of challenging ancient duel casting and exploring dark dungeons. The magical combat requires great reflex timing to shield, parry, and chain curses together smoothly under pressure.
+                    A magical sandbox full of challenging ancient duel casting and exploring dark dungeons. The magical combat requires great reflex timing.
                 </p>
                 <div class="status-badge">MISSION RESULT: sad for professor's death and angry he didn't come to help me with the dragon</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Survival Battle Royale // Active</span>
                 <h2>Fortnite</h2>
                 <p class="narrative">
-                    An absolute endless test of quick reflex tracking, adapting to massive seasonal map adjustments, changing weapon metas, and climbing through difficult tier rankings over hours of mechanical combat.
+                    An absolute endless test of quick reflex tracking, adapting to massive seasonal map adjustments, changing weapon metas, and climbing through difficult tier rankings.
                 </p>
                 <div class="status-badge">MISSION RESULT: at level 700</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Atmospheric Survival // Active</span>
                 <h2>Stalker 2</h2>
                 <p class="narrative">
-                    Brutal, uncompromising survival mechanics inside a radioactive exclusion zone. Every step requires managing inventory weight, monitoring radiation levels, dodging anomalies, and fighting hostile factions in tense firefights.
+                    Brutal, uncompromising survival mechanics inside a radioactive exclusion zone. Every step requires managing inventory weight, monitoring radiation levels.
                 </p>
                 <div class="status-badge">MISSION RESULT: still finding solder ...</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Tactical Marksman Simulation // Active</span>
                 <h2>Sniper Elite 5</h2>
                 <p class="narrative">
-                    Calculating complex ballistics parameters including wind velocity, bullet drop, and heartbeat monitoring. Infiltrating expansive sandbox strongholds to execute high-value targets cleanly from long distance.
+                    Calculating complex ballistics parameters including wind velocity, bullet drop, and heartbeat monitoring. Infiltrating expansive sandbox strongholds.
                 </p>
                 <div class="status-badge">MISSION RESULT: nazis dead</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Tactical Infiltration Simulation // Active</span>
                 <h2>Sniper Elite Resistance</h2>
                 <p class="narrative">
-                    Operating directly behind enemy fortification walls alongside the underground resistance networks. Managing tight ammo resources and coordinating guerrilla ambush strikes under intense searchlight sweeps.
+                    Operating directly behind enemy fortification walls alongside the underground resistance networks. Managing tight ammo resources.
                 </p>
                 <div class="status-badge">MISSION RESULT: das' nuts</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Cooperative Narrative Escape // Active</span>
                 <h2>A Way Out</h2>
                 <p class="narrative">
-                    A cinematic breakout story requiring constant, synchronized co-op execution. Managing chaotic getaway drivers, dodging guards in intense chase sequences, and building a path of trust that leads to an unforgettable final twist.
+                    A cinematic breakout story requiring constant, synchronized co-op execution. Managing chaotic getaway drivers, dodging guards in intense chase sequences.
                 </p>
                 <div class="status-badge">MISSION RESULT: escaped...together... why didn't the game end?</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Cooperative Fantasy Sandbox // Active</span>
                 <h2>It Takes Two</h2>
                 <p class="narrative">
-                    An endless variety of rapidly changing puzzle mechanics and wild levels. Every single room introduces a completely unique toolset that forces split-second cooperative timing to survive.
+                    An endless variety of rapidly changing puzzle mechanics and wild levels. Every single room introduces a completely unique toolset.
                 </p>
                 <div class="status-badge">MISSION RESULT: still together poking each other...</div>
             </div>
         </section>
-
         <section class="fullscreen-section">
             <div class="content-card">
                 <span class="section-tag">Experimental Mechanics Beta // Active</span>
@@ -1249,13 +1750,10 @@
         </section>
     </div>
 
-    <!-- FLOATING COMMAND LINE BUTTON -->
     <button class="cmd-toggle-btn" id="cmdToggleBtn" aria-label="Open command line">
-        <span class="cmd-toggle-prompt">$</span>
-        <span>_</span>
+        <span>$</span><span>_</span>
     </button>
 
-    <!-- COMMAND LINE OVERLAY -->
     <div class="cmdline-overlay" id="cmdlineOverlay">
         <div class="cmdline-panel">
             <div class="cmdline-header">
@@ -1264,73 +1762,30 @@
                     <span class="terminal-dot yellow"></span>
                     <span class="terminal-dot green"></span>
                 </div>
-                <div class="cmdline-title">user@heuravox — bash — 80×24</div>
+                <div class="cmdline-title">user@heuravox — bash</div>
                 <button class="terminal-close" id="cmdlineClose">×</button>
             </div>
             <div class="cmdline-body">
                 <div class="cmdline-history" id="cmdlineHistory"></div>
                 <div class="cmdline-input-row">
                     <span class="cmdline-prompt">user@heuravox:~$</span>
-                    <span class="cmdline-buffer" id="cmdlineBuffer"></span>
-                    <span class="cmdline-cursor"></span>
+                    <input type="text" class="cmdline-input" id="cmdlineInput"
+                        autocomplete="off" autocorrect="off" autocapitalize="off"
+                        spellcheck="false" inputmode="text" placeholder="type a command...">
                 </div>
-                <div class="cmdline-footer">// ESC to close · ENTER to execute</div>
+                <div class="virtual-keys">
+                    <button class="vkey" data-key="↑" type="button">↑</button>
+                    <button class="vkey" data-key="↓" type="button">↓</button>
+                    <button class="vkey" data-key="←" type="button">←</button>
+                    <button class="vkey" data-key="→" type="button">→</button>
+                </div>
+                <div class="cmdline-footer">// ENTER to execute · ESC to close</div>
             </div>
         </div>
-    </div>
-
-    <!-- DEV REWARD TERMINAL -->
-    <div class="terminal-overlay" id="devTerminalOverlay">
-        <div class="terminal-window dev">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                </div>
-                <div class="terminal-title">hello_world.sh — bash — 100×30</div>
-                <button class="terminal-close" id="devTerminalClose">×</button>
-            </div>
-            <div class="terminal-body">
-                <div class="terminal-prompt-line">
-                    <span class="prompt-user">user@heuravox</span><span class="prompt-path">:~$</span> ./hello_world.sh
-                </div>
-                <div class="hello-grid" id="helloGrid"></div>
-                <div class="terminal-outro">// 20 languages. one message. press ESC or click outside to close.</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- iddqd EFFECT -->
-    <div class="effect-overlay iddqd-effect" id="effectIddqd">
-        <div class="iddqd-title">DOOMGUY IS HERE</div>
-        <div class="iddqd-sub">RUN FOR YOUR LIVES!!!!!!</div>
-        <div class="iddqd-hint">// CLICK OR PRESS ESC TO FLEE</div>
-    </div>
-
-    <!-- abacabb EFFECT -->
-    <div class="effect-overlay abacabb-effect" id="effectAbacabb">
-        <div class="abacabb-line">ALL SET</div>
-        <div class="abacabb-line">POWER MODE REACHED</div>
-        <div class="abacabb-line">GOD COMBO</div>
-        <div class="abacabb-countdown" id="abacabbCountdown">3...</div>
-        <div class="abacabb-boom" id="abacabbBoom">BOOM!!</div>
-    </div>
-
-    <!-- rosebud EFFECT -->
-    <div class="effect-overlay rosebud-effect" id="effectRosebud">
-        <div class="rosebud-label">ACCOUNT BALANCE :</div>
-        <div class="rosebud-amount">$∞,∞,∞,∞,∞</div>
-    </div>
-
-    <!-- rocketman EFFECT -->
-    <div class="effect-overlay rocketman-effect" id="effectRocketman">
-        <div class="rocketman-line">STILL PLAYIN' SAN ANDREAS</div>
-        <div class="rocketman-line">WHATEVER LETS FLY</div>
-        <div class="rocketman-countdown" id="rocketmanCountdown">IN 3...</div>
     </div>
 
     <script>
+        // ==================== CANVAS BACKGROUND ====================
         const canvas = document.getElementById('interactiveCanvas');
         const ctx = canvas.getContext('2d');
         const modeToggle = document.getElementById('modeToggle');
@@ -1356,25 +1811,18 @@
             let rawCalculation = (e.clientX / window.innerWidth) * 180 + (e.clientY / window.innerHeight) * 180;
             globalHueValue = Math.round(rawCalculation);
         });
-
         window.addEventListener('mouseout', () => {
             mousePos.x = -5000;
             mousePos.y = -5000;
         });
 
-        // ==========================================================
-        // RESPONSIVE DENSITY
-        // ==========================================================
         const BASE_STARS = 260;
         const BASE_SHIPS = 80;
-
         function getDensityFactor() {
             const area = window.innerWidth * window.innerHeight;
             const reference = 1920 * 1080;
-            const raw = area / reference;
-            return Math.max(0.3, Math.min(2.6, raw));
+            return Math.max(0.3, Math.min(2.6, area / reference));
         }
-
         let densityFactor = getDensityFactor();
 
         const softwareStars = [];
@@ -1394,7 +1842,6 @@
                 });
             }
         }
-
         function spawnShips() {
             gamingRockets.length = 0;
             weaponsArray.length = 0;
@@ -1402,34 +1849,21 @@
             for (let i = 0; i < count; i++) {
                 const r = Math.random();
                 let type, size, baseCooldown;
-                if (r < 0.5) {
-                    type = 'scout';
-                    size = 1.6;
-                    baseCooldown = 55;
-                } else if (r < 0.85) {
-                    type = 'fighter';
-                    size = 2.2;
-                    baseCooldown = 65;
-                } else {
-                    type = 'destroyer';
-                    size = 3.2;
-                    baseCooldown = 100;
-                }
+                if (r < 0.5) { type = 'scout'; size = 1.6; baseCooldown = 55; }
+                else if (r < 0.85) { type = 'fighter'; size = 2.2; baseCooldown = 65; }
+                else { type = 'destroyer'; size = 3.2; baseCooldown = 100; }
                 gamingRockets.push({
                     x: Math.random() * window.innerWidth,
                     y: Math.random() * window.innerHeight,
-                    type: type,
-                    size: size,
+                    type, size,
                     cooldown: Math.random() * baseCooldown,
                     angle: Math.random() * Math.PI * 2,
-                    baseCooldown: baseCooldown,
+                    baseCooldown,
                     drift: (Math.random() - 0.5) * 0.004
                 });
             }
         }
-
-        spawnStars();
-        spawnShips();
+        spawnStars(); spawnShips();
 
         let resizeTimer = null;
         window.addEventListener('resize', () => {
@@ -1437,45 +1871,33 @@
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
                 densityFactor = getDensityFactor();
-                spawnStars();
-                spawnShips();
+                spawnStars(); spawnShips();
             }, 220);
         });
 
         function runGraphicsExecutionLoop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             const now = performance.now() * 0.001;
-
-            if (currentActiveMode === 'dev') {
-                drawDevMode();
-            } else {
-                drawGamingMode(now);
-            }
-
+            if (currentActiveMode === 'dev') drawDevMode();
+            else drawGamingMode(now);
             requestAnimationFrame(runGraphicsExecutionLoop);
         }
 
         function drawDevMode() {
             const connectionLimit = 180;
-
             for (let i = 0; i < softwareStars.length; i++) {
                 const star = softwareStars[i];
-
                 if (star.x > canvas.width) star.x = Math.random() * canvas.width;
                 if (star.y > canvas.height) star.y = Math.random() * canvas.height;
-
                 star.pulse += 0.02;
                 let glowOpacity = 0.4 + Math.sin(star.pulse) * 0.2;
-
                 ctx.fillStyle = `rgba(255, 255, 255, ${glowOpacity})`;
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
                 ctx.fill();
-
                 const dx = mousePos.x - star.x;
                 const dy = mousePos.y - star.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-
                 if (dist < connectionLimit) {
                     let forceRatio = 1 - (dist / connectionLimit);
                     ctx.strokeStyle = `hsla(${globalHueValue}, 95%, 55%, ${forceRatio * 0.85})`;
@@ -1490,15 +1912,11 @@
 
         function drawGamingMode(now) {
             const mouseActive = mousePos.x > 0 && mousePos.y > 0;
-
             drawDeathStar(now, mouseActive);
-
             for (let s = impactSparks.length - 1; s >= 0; s--) {
                 const sp = impactSparks[s];
-                sp.x += sp.vx;
-                sp.y += sp.vy;
-                sp.vx *= 0.94;
-                sp.vy *= 0.94;
+                sp.x += sp.vx; sp.y += sp.vy;
+                sp.vx *= 0.94; sp.vy *= 0.94;
                 sp.life -= sp.decay;
                 if (sp.life <= 0) { impactSparks.splice(s, 1); continue; }
                 ctx.fillStyle = `hsla(${sp.hue}, 100%, 60%, ${sp.life})`;
@@ -1506,243 +1924,101 @@
                 ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
                 ctx.fill();
             }
-
             for (let b = weaponsArray.length - 1; b >= 0; b--) {
                 const bullet = weaponsArray[b];
                 bullet.x += bullet.vx * bullet.speed;
                 bullet.y += bullet.vy * bullet.speed;
                 bullet.ttl--;
-
                 ctx.strokeStyle = bullet.color;
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
                 ctx.moveTo(bullet.x, bullet.y);
                 ctx.lineTo(bullet.x - bullet.vx * 10, bullet.y - bullet.vy * 10);
                 ctx.stroke();
-
                 if (bullet.ttl <= 0) weaponsArray.splice(b, 1);
             }
-
             const engagementRange = 250;
             for (let i = 0; i < gamingRockets.length; i++) {
                 const ship = gamingRockets[i];
-
                 if (ship.x > canvas.width) ship.x = Math.random() * canvas.width;
                 if (ship.y > canvas.height) ship.y = Math.random() * canvas.height;
-
                 const sDX = mousePos.x - ship.x;
                 const sDY = mousePos.y - ship.y;
                 const sDist = Math.sqrt(sDX * sDX + sDY * sDY);
-
                 if (sDist < engagementRange && mousePos.x > 0) {
                     ship.angle = Math.atan2(sDY, sDX);
                     ship.cooldown--;
-
                     if (ship.cooldown <= 0) {
-                        const colorfulWeapons = ['#00f2fe', '#f43f5e', '#22c55e', '#ef4444', '#eab308', '#d946ef'];
-                        const selectedLaser = colorfulWeapons[Math.floor(Math.random() * colorfulWeapons.length)];
-
+                        const colors = ['#00f2fe', '#f43f5e', '#22c55e', '#ef4444', '#eab308', '#d946ef'];
+                        const sel = colors[Math.floor(Math.random() * colors.length)];
                         weaponsArray.push({
-                            x: ship.x,
-                            y: ship.y,
+                            x: ship.x, y: ship.y,
                             vx: Math.cos(ship.angle),
                             vy: Math.sin(ship.angle),
                             speed: ship.type === 'destroyer' ? 3.5 : (ship.type === 'fighter' ? 5.5 : 6.5),
-                            color: selectedLaser,
-                            ttl: 60
+                            color: sel, ttl: 60
                         });
                         ship.cooldown = ship.baseCooldown + Math.random() * 40;
                     }
-                } else {
-                    ship.angle += ship.drift;
-                }
-
+                } else ship.angle += ship.drift;
                 drawScatteredShip(ship);
-            }
-
-            if (mouseActive) {
-                let underAttack = false;
-                for (let i = 0; i < gamingRockets.length; i++) {
-                    const s = gamingRockets[i];
-                    const ddx = mousePos.x - s.x;
-                    const ddy = mousePos.y - s.y;
-                    if (ddx * ddx + ddy * ddy < engagementRange * engagementRange) {
-                        underAttack = true; break;
-                    }
-                }
-                if (underAttack) {
-                    const pulse = 0.75 + Math.sin(now * 14) * 0.25;
-                    const grad = ctx.createRadialGradient(mousePos.x, mousePos.y, 0, mousePos.x, mousePos.y, 55);
-                    grad.addColorStop(0, `rgba(255, 90, 90, ${0.28 * pulse})`);
-                    grad.addColorStop(0.55, `rgba(217, 70, 239, ${0.13 * pulse})`);
-                    grad.addColorStop(1, 'rgba(217, 70, 239, 0)');
-                    ctx.fillStyle = grad;
-                    ctx.beginPath();
-                    ctx.arc(mousePos.x, mousePos.y, 55, 0, Math.PI * 2);
-                    ctx.fill();
-                }
             }
         }
 
         const DS_Y = 180;
         const DS_RADIUS = 82;
-
         function drawDeathStar(now, mouseActive) {
             const dsX = canvas.width * 0.5;
             const dsY = DS_Y;
-
             ctx.save();
             ctx.beginPath();
             ctx.arc(dsX, dsY, DS_RADIUS, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(30, 41, 59, 0.5)';
             ctx.strokeStyle = 'rgba(217, 70, 239, 0.55)';
             ctx.lineWidth = 5;
-            ctx.fill();
-            ctx.stroke();
-
+            ctx.fill(); ctx.stroke();
             ctx.beginPath();
             ctx.arc(dsX - 28, dsY - 28, 20, 0, Math.PI * 2);
             ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
             ctx.lineWidth = 2.5;
             ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(dsX, dsY, DS_RADIUS * 0.7, 0, Math.PI * 2);
-            ctx.strokeStyle = 'rgba(217, 70, 239, 0.18)';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
             ctx.restore();
-
-            const startX = dsX - 28;
-            const startY = dsY - 28;
-            const dx = mousePos.x - startX;
-            const dy = mousePos.y - startY;
+            const startX = dsX - 28, startY = dsY - 28;
+            const dx = mousePos.x - startX, dy = mousePos.y - startY;
             const dist = Math.sqrt(dx * dx + dy * dy);
-
             if (!mouseActive || dist > 820) return;
-
-            const endX = mousePos.x;
-            const endY = mousePos.y;
-            const flicker =
-                0.85 +
-                Math.sin(now * 41.3) * 0.06 +
-                Math.sin(now * 23.7) * 0.05 +
-                Math.sin(now * 87.1) * 0.03;
-
+            const endX = mousePos.x, endY = mousePos.y;
+            const flicker = 0.85 + Math.sin(now * 41.3) * 0.06 + Math.sin(now * 23.7) * 0.05 + Math.sin(now * 87.1) * 0.03;
             ctx.save();
             ctx.lineCap = 'round';
             ctx.shadowColor = 'rgba(57, 255, 20, 0.95)';
             ctx.shadowBlur = 42 * flicker;
             ctx.strokeStyle = `rgba(57, 255, 20, ${0.10 * flicker})`;
             ctx.lineWidth = 32;
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-            ctx.lineTo(endX, endY);
-            ctx.stroke();
-
+            ctx.beginPath(); ctx.moveTo(startX, startY); ctx.lineTo(endX, endY); ctx.stroke();
             ctx.shadowBlur = 26 * flicker;
             ctx.strokeStyle = `rgba(80, 255, 40, ${0.28 * flicker})`;
             ctx.lineWidth = 17;
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-            ctx.lineTo(endX, endY);
-            ctx.stroke();
-
+            ctx.beginPath(); ctx.moveTo(startX, startY); ctx.lineTo(endX, endY); ctx.stroke();
             ctx.shadowBlur = 14 * flicker;
             ctx.strokeStyle = `rgba(140, 255, 90, ${0.9 * flicker})`;
             ctx.lineWidth = 6.5;
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-            ctx.lineTo(endX, endY);
-            ctx.stroke();
-
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = 'rgba(255, 255, 255, 0.95)';
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-            ctx.lineTo(endX, endY);
-            ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(startX, startY); ctx.lineTo(endX, endY); ctx.stroke();
             ctx.restore();
-
-            for (let p = 0; p < 5; p++) {
-                const progress = (now * 0.9 + p / 5) % 1;
-                const px = startX + (endX - startX) * progress;
-                const py = startY + (endY - startY) * progress;
-                const pulseR = 8 + Math.sin(progress * Math.PI) * 6;
-                const grad = ctx.createRadialGradient(px, py, 0, px, py, pulseR * 3);
-                grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-                grad.addColorStop(0.25, 'rgba(160, 255, 100, 0.7)');
-                grad.addColorStop(0.6, 'rgba(57, 255, 20, 0.25)');
-                grad.addColorStop(1, 'rgba(57, 255, 20, 0)');
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                ctx.arc(px, py, pulseR * 3, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            const muzzleR = 26 + Math.sin(now * 25) * 5;
-            const mg = ctx.createRadialGradient(startX, startY, 0, startX, startY, muzzleR * 2);
-            mg.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
-            mg.addColorStop(0.25, `rgba(160, 255, 100, ${0.75 * flicker})`);
-            mg.addColorStop(0.6, `rgba(57, 255, 20, ${0.35 * flicker})`);
-            mg.addColorStop(1, 'rgba(57, 255, 20, 0)');
-            ctx.fillStyle = mg;
-            ctx.beginPath();
-            ctx.arc(startX, startY, muzzleR * 2, 0, Math.PI * 2);
-            ctx.fill();
-
             const impactR = 65 + Math.sin(now * 15) * 7;
             const ig = ctx.createRadialGradient(endX, endY, 0, endX, endY, impactR);
             ig.addColorStop(0, `rgba(255, 255, 255, ${0.95 * flicker})`);
-            ig.addColorStop(0.12, `rgba(200, 255, 160, ${0.85 * flicker})`);
             ig.addColorStop(0.35, `rgba(80, 255, 40, ${0.4 * flicker})`);
-            ig.addColorStop(0.7, `rgba(57, 255, 20, ${0.12 * flicker})`);
             ig.addColorStop(1, 'rgba(57, 255, 20, 0)');
             ctx.fillStyle = ig;
-            ctx.beginPath();
-            ctx.arc(endX, endY, impactR, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = `rgba(255, 255, 255, ${0.95 * flicker})`;
-            ctx.beginPath();
-            ctx.arc(endX, endY, 4 + Math.sin(now * 40) * 1.5, 0, Math.PI * 2);
-            ctx.fill();
-
-            for (let r = 0; r < 2; r++) {
-                const phase = ((now * 0.85 + r * 0.5) % 1);
-                const rr = 14 + phase * 52;
-                const a = (1 - phase) * 0.7 * flicker;
-                ctx.strokeStyle = `rgba(140, 255, 90, ${a})`;
-                ctx.lineWidth = 2.4 * (1 - phase) + 0.5;
-                ctx.beginPath();
-                ctx.arc(endX, endY, rr, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            for (let s = 0; s < 2; s++) {
-                const ang = Math.random() * Math.PI * 2;
-                const spd = 2 + Math.random() * 5;
-                impactSparks.push({
-                    x: endX, y: endY,
-                    vx: Math.cos(ang) * spd,
-                    vy: Math.sin(ang) * spd,
-                    life: 1,
-                    decay: 0.025 + Math.random() * 0.03,
-                    size: 1 + Math.random() * 2,
-                    hue: Math.random() < 0.7 ? 110 : 60
-                });
-            }
+            ctx.beginPath(); ctx.arc(endX, endY, impactR, 0, Math.PI * 2); ctx.fill();
         }
 
         function drawScatteredShip(ship) {
             ctx.save();
             ctx.translate(ship.x, ship.y);
             ctx.rotate(ship.angle);
-
             const size = ship.size;
-
             if (ship.type === 'scout') {
                 ctx.fillStyle = 'rgba(148, 163, 184, 0.35)';
                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
@@ -1752,9 +2028,7 @@
                 ctx.lineTo(-size, -size * 1.1);
                 ctx.lineTo(-size * 0.5, 0);
                 ctx.lineTo(-size, size * 1.1);
-                ctx.closePath();
-                ctx.fill();
-                ctx.stroke();
+                ctx.closePath(); ctx.fill(); ctx.stroke();
             } else if (ship.type === 'fighter') {
                 ctx.fillStyle = 'rgba(148, 163, 184, 0.28)';
                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
@@ -1764,9 +2038,7 @@
                 ctx.lineTo(-size, -size * 1.2);
                 ctx.lineTo(-size * 0.4, 0);
                 ctx.lineTo(-size, size * 1.2);
-                ctx.closePath();
-                ctx.fill();
-                ctx.stroke();
+                ctx.closePath(); ctx.fill(); ctx.stroke();
             } else {
                 ctx.fillStyle = 'rgba(71, 85, 105, 0.45)';
                 ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
@@ -1778,34 +2050,18 @@
                 ctx.lineTo(-size * 2.6, 0);
                 ctx.lineTo(-size * 2, size * 1.1);
                 ctx.lineTo(size * 1.6, size * 1.4);
-                ctx.closePath();
-                ctx.fill();
-                ctx.stroke();
-
-                ctx.fillStyle = 'rgba(217, 70, 239, 0.5)';
-                ctx.beginPath();
-                ctx.arc(0, 0, size * 0.5, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.closePath(); ctx.fill(); ctx.stroke();
             }
-
             ctx.restore();
         }
 
         let sections = [];
         let activeSectionIndex = 0;
-
         function rebuildNavigationFramework() {
             dotNav.innerHTML = '';
             const activePanelId = currentActiveMode === 'dev' ? 'devEcosystem' : 'gamingEcosystem';
-
-            if (currentActiveMode === 'dev') {
-                dotNav.className = 'scroll-indicator dev-mode-indicator';
-            } else {
-                dotNav.className = 'scroll-indicator gaming-mode-indicator';
-            }
-
+            dotNav.className = currentActiveMode === 'dev' ? 'scroll-indicator dev-mode-indicator' : 'scroll-indicator gaming-mode-indicator';
             sections = Array.from(document.querySelectorAll(`#${activePanelId} .fullscreen-section`));
-
             sections.forEach((sec, idx) => {
                 const dot = document.createElement('div');
                 dot.className = `dot ${idx === 0 ? 'active-dot' : ''}`;
@@ -1820,15 +2076,12 @@
             window.scrollTo(0, 0);
             updateActiveIndicators();
         }
-
         function updateActiveIndicators() {
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach((d, i) => {
+            document.querySelectorAll('.dot').forEach((d, i) => {
                 if (i === activeSectionIndex) d.classList.add('active-dot');
                 else d.classList.remove('active-dot');
             });
         }
-
         window.addEventListener('scroll', () => {
             const scrollPos = window.scrollY + (window.innerHeight / 2);
             sections.forEach((sec, idx) => {
@@ -1840,7 +2093,6 @@
                 }
             });
         });
-
         modeToggle.addEventListener('click', () => {
             if (currentActiveMode === 'dev') {
                 currentActiveMode = 'gaming';
@@ -1859,34 +2111,24 @@
             }
             rebuildNavigationFramework();
         });
-
         rebuildNavigationFramework();
 
         (function initTypewriter() {
             const roleEl = document.getElementById('typedRole');
-            if (!roleEl) return;
-
             const phrases = [
                 { text: 'python software developer', color: 'var(--matrix-green)', shadow: '0 0 20px rgba(57, 255, 20, 0.6)' },
                 { text: 'gamer', color: '#d946ef', shadow: '0 0 20px rgba(217, 70, 239, 0.7)' },
                 { text: 'hardware tinkerer', color: '#dc2626', shadow: '0 0 20px rgba(220, 38, 38, 0.7)' }
             ];
-
             let phraseIndex = 0, charIndex = 0, deleting = false;
-
             function tick() {
                 const current = phrases[phraseIndex];
                 roleEl.style.color = current.color;
                 roleEl.style.textShadow = current.shadow;
-
                 if (!deleting) {
                     charIndex++;
                     roleEl.textContent = current.text.slice(0, charIndex);
-                    if (charIndex === current.text.length) {
-                        deleting = true;
-                        setTimeout(tick, 1600);
-                        return;
-                    }
+                    if (charIndex === current.text.length) { deleting = true; setTimeout(tick, 1600); return; }
                     setTimeout(tick, 70 + Math.random() * 40);
                 } else {
                     charIndex--;
@@ -1894,20 +2136,16 @@
                     if (charIndex === 0) {
                         deleting = false;
                         phraseIndex = (phraseIndex + 1) % phrases.length;
-                        setTimeout(tick, 400);
-                        return;
+                        setTimeout(tick, 400); return;
                     }
                     setTimeout(tick, 40 + Math.random() * 20);
                 }
             }
             tick();
         })();
-
         runGraphicsExecutionLoop();
 
-        // ==========================================================
-        // HELLO WORLD SAMPLES (20 LANGUAGES)
-        // ==========================================================
+        // ==================== HELLO WORLD DATA ====================
         const HELLO_SAMPLES = [
             { lang: 'python', code: 'print("Hello, World!")' },
             { lang: 'javascript', code: 'console.log("Hello, World!");' },
@@ -1931,362 +2169,1220 @@
             { lang: 'binary', code: '01001000 01100101 01101100 01101100 01101111\n00101100 00100000 01010111 01101111 01110010\n01101100 01100100 00100001' }
         ];
 
-        (function populateHelloGrid() {
-            const grid = document.getElementById('helloGrid');
-            if (!grid) return;
-            HELLO_SAMPLES.forEach(sample => {
-                const row = document.createElement('div');
-                row.className = 'hello-row';
-                const langEl = document.createElement('div');
-                langEl.className = 'hello-lang';
-                langEl.textContent = sample.lang;
-                const codeEl = document.createElement('div');
-                codeEl.className = 'hello-code';
-                codeEl.textContent = sample.code;
-                row.appendChild(langEl);
-                row.appendChild(codeEl);
-                grid.appendChild(row);
-            });
-        })();
+        const FAIL_MESSAGES = [
+            "hey did you just make it up? 🤨",
+            "try again while eating a sandwich 🥪 — you might nail it on the second bite",
+            "jus' see the source code if you don't know 🤷",
+            "well your confidence is 100% but ours is -∞% 📉",
+            "skill issue (respectfully) 🧠",
+            "bold of you to assume that's a command 💀",
+            "even Clippy wouldn't approve this 📎",
+            "error: brain.exe stopped responding — please restart neuron",
+            "the compiler laughed, then cried, then filed a complaint 🥲",
+            "you just crashed our quantum possibility engine 🌌",
+            "404: that command was never born 🔍",
+            "have you tried turning your brain off and on again? 🔄",
+            "my neural network just had a stroke reading that 🧠💥",
+            "even the garbage collector refused to touch that 🗑️",
+            "the command is hiding behind you — turn around 👀",
+            "you wrote it with your elbows, didn't you? 🦾",
+            "that's a feature, not a bug — wait no it's just wrong 🐛",
+            "the terminal denies all knowledge of that 🤐",
+            "my source says no ❌",
+            "the computer says no 🖥️",
+            "this is not the command you're looking for 🧙",
+            "loading answer............ error 404 📡",
+            "even Stack Overflow has no answer for this 🤯",
+            "you have been ratioed by the compiler 🐦",
+            "the code monkeys are laughing at you 🐒",
+            "your command has been sent to /dev/null for further review 📮",
+            "the terminal is not angry, just disappointed 😐"
+        ];
 
-        // ==========================================================
-        // COMMAND LINE + EASTER EGGS
-        // ==========================================================
-        const cmdToggleBtn = document.getElementById('cmdToggleBtn');
-        const cmdlineOverlay = document.getElementById('cmdlineOverlay');
-        const cmdlineClose = document.getElementById('cmdlineClose');
-        const cmdlineBufferEl = document.getElementById('cmdlineBuffer');
-        const cmdlineHistory = document.getElementById('cmdlineHistory');
-
-        const devTerminalOverlay = document.getElementById('devTerminalOverlay');
-        const devTerminalCloseBtn = document.getElementById('devTerminalClose');
-
-        const effectIddqd = document.getElementById('effectIddqd');
-        const effectAbacabb = document.getElementById('effectAbacabb');
-        const effectRosebud = document.getElementById('effectRosebud');
-        const effectRocketman = document.getElementById('effectRocketman');
-
-        const abacabbCountdown = document.getElementById('abacabbCountdown');
-        const abacabbBoom = document.getElementById('abacabbBoom');
-        const rocketmanCountdown = document.getElementById('rocketmanCountdown');
-
-        let cmdTokens = [];
-        const KONAMI_SEQ = ['↑','↑','↓','↓','←','→','←','→','b','a'];
-
-        let effectTimers = [];
-
-        function clearEffectTimers() {
-            effectTimers.forEach(t => clearTimeout(t));
-            effectTimers = [];
+        // ==================== ANIMATION UTILITIES ====================
+        function shakeScreen(overlay, duration = 400) {
+            overlay.classList.add('shake');
+            setTimeout(() => overlay.classList.remove('shake'), duration);
         }
 
-        function updateCmdDisplay() {
-            if (cmdlineBufferEl) {
-                cmdlineBufferEl.textContent = cmdTokens.join('');
+        function spawnBloodDrips(overlay, count = 10) {
+            for (let i = 0; i < count; i++) {
+                const drip = document.createElement('div');
+                drip.className = 'blood-drip';
+                drip.style.left = (Math.random() * 100) + '%';
+                drip.style.animationDelay = (Math.random() * 1.2) + 's';
+                drip.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+                overlay.appendChild(drip);
             }
         }
 
-        function escapeHtml(s) {
-            return String(s)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+        function spawnCoins(overlay, count = 20) {
+            for (let i = 0; i < count; i++) {
+                const coin = document.createElement('div');
+                coin.className = 'coin';
+                coin.style.left = (Math.random() * 100) + '%';
+                coin.style.animationDelay = (Math.random() * 2) + 's';
+                coin.style.animationDuration = (2.5 + Math.random() * 1.5) + 's';
+                overlay.appendChild(coin);
+            }
         }
 
-        function addCmdHistory(cmdArr, output, isOk) {
+        function spawnCashRain(overlay, count = 12) {
+            const symbols = ['$', '💵', '💎', '💰'];
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.className = 'cash-rain';
+                el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                el.style.left = (Math.random() * 100) + '%';
+                el.style.color = Math.random() < 0.5 ? '#ffd700' : '#22c55e';
+                el.style.animationDelay = (Math.random() * 1.5) + 's';
+                el.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+                overlay.appendChild(el);
+            }
+        }
+
+        function animateCounter(el, from, to, duration, formatter) {
+            const start = performance.now();
+            function step(now) {
+                const elapsed = now - start;
+                const t = Math.min(1, elapsed / duration);
+                const eased = 1 - Math.pow(1 - t, 3);
+                const value = from + (to - from) * eased;
+                el.textContent = formatter(value);
+                if (t < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        function typeText(el, text, speed = 50, onDone) {
+            let i = 0;
+            el.textContent = '';
+            function step() {
+                if (i < text.length) {
+                    el.textContent += text[i++];
+                    setTimeout(step, speed);
+                } else if (onDone) onDone();
+            }
+            step();
+        }
+
+        // ==================== EFFECTS ====================
+        const EFFECTS = {
+            iddqd: {
+                theme: 'doom',
+                credits: 'DOOM · 1993 · the original FPS god-mode cheat',
+                html: `
+                    <div class="effect-title">DOOMGUY IS HERE</div>
+                    <div class="effect-sub">RUN FOR YOUR LIVES!!!!!!</div>
+                    <div class="effect-quote">"Rip and tear, until it is done."</div>
+                `,
+                onOpen: (overlay) => {
+                    // Immediate screen shake
+                    setTimeout(() => shakeScreen(overlay, 600), 100);
+                    // Blood drips from top
+                    spawnBloodDrips(overlay, 12);
+                    // Crosshair follows mouse
+                    const crosshair = document.createElement('div');
+                    crosshair.className = 'crosshair';
+                    overlay.appendChild(crosshair);
+                    const moveHandler = (e) => {
+                        crosshair.style.left = e.clientX + 'px';
+                        crosshair.style.top = e.clientY + 'px';
+                    };
+                    const initialPos = { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 };
+                    moveHandler(initialPos);
+                    document.addEventListener('mousemove', moveHandler);
+                    overlay.dataset.cleanup = 'crosshair';
+                    overlay._cleanupCrosshair = () => document.removeEventListener('mousemove', moveHandler);
+                    // Repeated shakes
+                    let shakeCount = 0;
+                    const shakeInterval = setInterval(() => {
+                        if (shakeCount++ > 4) { clearInterval(shakeInterval); return; }
+                        shakeScreen(overlay, 300);
+                    }, 900);
+                    overlay._cleanupShake = () => clearInterval(shakeInterval);
+                }
+            },
+            idkfa: {
+                theme: 'arsenal',
+                credits: 'DOOM · 1993 · full arsenal + all keys',
+                duration: 7000,
+                html: `
+                    <div class="effect-title">FULL ARSENAL</div>
+                    <div class="effect-sub">WEAPONS LOCKED & LOADED</div>
+                    <div class="effect-quote">"When in doubt, use the biggest gun."</div>
+                    <div class="stage-log" id="arsenalLog" style="color:#ffcc00;"></div>
+                `,
+                onOpen: (overlay) => {
+                    const log = overlay.querySelector('#arsenalLog');
+                    const weapons = [
+                        { icon: '🔪', name: 'Chainsaw', ammo: '∞' },
+                        { icon: '🔫', name: 'Pistol', ammo: '200' },
+                        { icon: '💥', name: 'Shotgun', ammo: '50' },
+                        { icon: '🎯', name: 'Chaingun', ammo: '200' },
+                        { icon: '🚀', name: 'Rocket Launcher', ammo: '50' },
+                        { icon: '⚡', name: 'BFG9000', ammo: '40' }
+                    ];
+                    weapons.forEach((w, i) => {
+                        setTimeout(() => {
+                            const line = document.createElement('div');
+                            line.className = 'stage-log-line';
+                            line.innerHTML = `${w.icon} ${w.name} ${'·'.repeat(15 - w.name.length)} ${w.ammo}`;
+                            log.appendChild(line);
+                            requestAnimationFrame(() => line.classList.add('visible'));
+                        }, 200 + i * 350);
+                    });
+                    setTimeout(() => shakeScreen(overlay, 500), 2400);
+                }
+            },
+            idclip: {
+                theme: 'doom',
+                credits: 'DOOM · 1993 · no-clip / pass through walls',
+                duration: 5000,
+                html: `
+                    <div class="effect-title">NO-CLIP MODE</div>
+                    <div class="effect-sub">WALLS ARE FOR MORTALS</div>
+                    <div class="effect-quote">"Reality is a suggestion."</div>
+                `,
+                onOpen: (overlay) => {
+                    // Fade the whole overlay slightly
+                    overlay.style.opacity = '0.6';
+                    setTimeout(() => overlay.style.opacity = '1', 200);
+                    setTimeout(() => overlay.style.opacity = '0.6', 600);
+                    setTimeout(() => overlay.style.opacity = '1', 900);
+                    setTimeout(() => shakeScreen(overlay, 400), 1200);
+                }
+            },
+            konami: {
+                theme: 'konami',
+                credits: 'Gradius · 1986 · popularized by Contra (1988)',
+                html: `
+                    <div class="effect-title">KONAMI CODE</div>
+                    <div class="effect-sub">↑ ↑ ↓ ↓ ← → ← → B A</div>
+                    <div class="konami-keys" id="konamiKeys">
+                        <div class="konami-key" data-i="0">↑</div>
+                        <div class="konami-key" data-i="1">↑</div>
+                        <div class="konami-key" data-i="2">↓</div>
+                        <div class="konami-key" data-i="3">↓</div>
+                        <div class="konami-key" data-i="4">←</div>
+                        <div class="konami-key" data-i="5">→</div>
+                        <div class="konami-key" data-i="6">←</div>
+                        <div class="konami-key" data-i="7">→</div>
+                        <div class="konami-key" data-i="8">B</div>
+                        <div class="konami-key" data-i="9">A</div>
+                    </div>
+                    <div class="konami-counter" id="konamiCounter">0 LIVES</div>
+                    <div class="lives-pips" id="livesPips"></div>
+                    <div class="effect-quote">"The legendary cheat that started them all."</div>
+                `,
+                onOpen: (overlay) => {
+                    const keys = overlay.querySelectorAll('.konami-key');
+                    const counter = overlay.querySelector('#konamiCounter');
+                    const pipsContainer = overlay.querySelector('#livesPips');
+                    // Sequence: highlight each key
+                    keys.forEach((k, i) => {
+                        setTimeout(() => {
+                            k.classList.add('active');
+                            // Small tick
+                            if (i === keys.length - 1) {
+                                setTimeout(() => {
+                                    // Count up lives
+                                    let currentLives = 0;
+                                    animateCounter(counter, 0, 30, 1500, (v) => Math.round(v) + ' LIVES');
+                                    // Add 30 life pips
+                                    for (let j = 0; j < 30; j++) {
+                                        const pip = document.createElement('div');
+                                        pip.className = 'life-pip';
+                                        pipsContainer.appendChild(pip);
+                                        setTimeout(() => pip.classList.add('pop'), 1200 + j * 50);
+                                    }
+                                }, 400);
+                            }
+                        }, i * 260);
+                    });
+                    setTimeout(() => shakeScreen(overlay, 400), 3200);
+                }
+            },
+            abacabb: {
+                theme: 'mk',
+                credits: 'Mortal Kombat · 1992 · blood code (Genesis)',
+                duration: 7000,
+                html: `
+                    <div class="effect-title" id="mkTitle">ALL SET</div>
+                    <div class="effect-sub" id="mkSub">POWER MODE · GOD COMBO</div>
+                    <div class="effect-quote" id="mkQuote">"FIGHT!"</div>
+                    <div class="effect-sub effect-sub-small" id="mkCountdown" style="font-size:2.5rem;margin-top:20px;">3...</div>
+                `,
+                onOpen: (overlay) => {
+                    spawnBloodDrips(overlay, 15);
+                    const cd = overlay.querySelector('#mkCountdown');
+                    const title = overlay.querySelector('#mkTitle');
+                    const sub = overlay.querySelector('#mkSub');
+                    setTimeout(() => cd.textContent = '2...', 800);
+                    setTimeout(() => cd.textContent = '1...', 1600);
+                    setTimeout(() => {
+                        cd.textContent = 'BOOM!! 💥';
+                        cd.style.color = '#ffcc00';
+                        cd.style.fontSize = '3.5rem';
+                        shakeScreen(overlay, 800);
+                    }, 2400);
+                    setTimeout(() => {
+                        title.textContent = 'FLAWLESS VICTORY';
+                        sub.textContent = 'GOD COMBO ACHIEVED';
+                        cd.style.display = 'none';
+                    }, 3400);
+                }
+            },
+            rosebud: {
+                theme: 'money',
+                credits: 'The Sims · 2000 · instant ∞ simoleons',
+                duration: 7000,
+                html: `
+                    <div class="effect-title">ACCOUNT BALANCE</div>
+                    <div class="effect-sub" id="rosebudAmount">$0</div>
+                    <div class="effect-quote">"Money can't buy happiness — but it can buy The Sims."</div>
+                `,
+                onOpen: (overlay) => {
+                    spawnCoins(overlay, 25);
+                    spawnCashRain(overlay, 15);
+                    const amountEl = overlay.querySelector('#rosebudAmount');
+                    // Rise through the big numbers
+                    animateCounter(amountEl, 0, 1000, 900, (v) => '$' + Math.round(v).toLocaleString());
+                    setTimeout(() => {
+                        animateCounter(amountEl, 1000, 1000000, 900, (v) => '$' + Math.round(v).toLocaleString());
+                    }, 1000);
+                    setTimeout(() => {
+                        animateCounter(amountEl, 1000000, 1000000000, 900, (v) => '$' + Math.round(v).toLocaleString());
+                    }, 2000);
+                    setTimeout(() => {
+                        amountEl.textContent = '$∞,∞,∞,∞,∞';
+                        amountEl.style.animation = 'goldShimmer 1.5s ease-in-out infinite';
+                    }, 3200);
+                }
+            },
+            motherlode: {
+                theme: 'sims',
+                credits: 'The Sims · 2004 · +50,000 simoleons',
+                duration: 6000,
+                html: `
+                    <div class="effect-title">MOTHERLODE</div>
+                    <div class="effect-sub">💎 +§50,000 💎</div>
+                    <div class="counter-display" id="motherlodeCount">§0</div>
+                    <div class="effect-quote">"Time to redecorate the entire house."</div>
+                `,
+                onOpen: (overlay) => {
+                    spawnCoins(overlay, 18);
+                    const counter = overlay.querySelector('#motherlodeCount');
+                    animateCounter(counter, 0, 50000, 2200, (v) => '§' + Math.round(v).toLocaleString());
+                    setTimeout(() => shakeScreen(overlay, 400), 2300);
+                }
+            },
+            thereisnocowlevel: {
+                theme: 'diablo',
+                credits: 'Diablo · 1996 · secret cow level trigger',
+                duration: 8000,
+                html: `
+                    <div class="effect-title" id="cowTitle">THERE IS NO COW LEVEL</div>
+                    <div class="effect-sub" id="cowSub">...OR IS THERE?</div>
+                    <div class="effect-quote">"Moo. Moo. Moo."</div>
+                `,
+                onOpen: (overlay) => {
+                    // Cows marching across
+                    for (let i = 0; i < 4; i++) {
+                        const cow = document.createElement('div');
+                        cow.className = 'cow';
+                        cow.textContent = '🐄';
+                        cow.style.bottom = (10 + Math.random() * 20) + '%';
+                        cow.style.animationDelay = (i * 1.5) + 's';
+                        cow.style.animationDuration = (7 + Math.random() * 3) + 's';
+                        overlay.appendChild(cow);
+                    }
+                    const title = overlay.querySelector('#cowTitle');
+                    const sub = overlay.querySelector('#cowSub');
+                    setTimeout(() => {
+                        title.textContent = 'THERE IS A COW LEVEL';
+                        title.style.color = '#cc0000';
+                        shakeScreen(overlay, 500);
+                    }, 4000);
+                }
+            },
+            whosyourdaddy: {
+                theme: 'warcraft',
+                credits: 'Warcraft III · 2002 · god mode',
+                duration: 6000,
+                html: `
+                    <div class="effect-title">WHO'S YOUR DADDY</div>
+                    <div class="effect-sub">GOD MODE ACTIVATED</div>
+                    <div class="effect-quote" style="margin-top:80px;">"For the Alliance!"</div>
+                `,
+                onOpen: (overlay) => {
+                    // Character figure
+                    const char = document.createElement('div');
+                    char.className = 'character-figure';
+                    char.textContent = '🧙';
+                    overlay.appendChild(char);
+                    // Crown drops
+                    const crown = document.createElement('div');
+                    crown.className = 'crown-drop';
+                    crown.textContent = '👑';
+                    overlay.appendChild(crown);
+                    // Lightning bolts
+                    const boltPositions = [
+                        { x: '20%', y: '15%', delay: '0.3s' },
+                        { x: '75%', y: '20%', delay: '0.8s' },
+                        { x: '50%', y: '10%', delay: '1.3s' },
+                        { x: '30%', y: '25%', delay: '1.8s' },
+                        { x: '70%', y: '30%', delay: '2.3s' }
+                    ];
+                    boltPositions.forEach(b => {
+                        const bolt = document.createElement('div');
+                        bolt.className = 'lightning-bolt';
+                        bolt.textContent = '⚡';
+                        bolt.style.left = b.x;
+                        bolt.style.top = b.y;
+                        bolt.style.animationDelay = b.delay;
+                        overlay.appendChild(bolt);
+                    });
+                    setTimeout(() => shakeScreen(overlay, 500), 1300);
+                }
+            },
+            greedisgood: {
+                theme: 'warcraft',
+                credits: 'Warcraft III · 2002 · +500 gold and lumber',
+                duration: 6000,
+                html: `
+                    <div class="effect-title">GREED IS GOOD</div>
+                    <div class="counter-row" id="goldRow">
+                        <span class="counter-row-icon">🪙</span>
+                        <span>GOLD</span>
+                        <span class="counter-row-num" id="goldCounter">0</span>
+                    </div>
+                    <div class="counter-row" id="lumberRow">
+                        <span class="counter-row-icon">🪵</span>
+                        <span>LUMBER</span>
+                        <span class="counter-row-num" id="lumberCounter">0</span>
+                    </div>
+                    <div class="effect-quote">"Build orders just got a lot easier."</div>
+                `,
+                onOpen: (overlay) => {
+                    const goldRow = overlay.querySelector('#goldRow');
+                    const lumberRow = overlay.querySelector('#lumberRow');
+                    const goldCounter = overlay.querySelector('#goldCounter');
+                    const lumberCounter = overlay.querySelector('#lumberCounter');
+                    setTimeout(() => {
+                        goldRow.classList.add('visible');
+                        animateCounter(goldCounter, 0, 500, 1200, (v) => '+' + Math.round(v));
+                    }, 200);
+                    setTimeout(() => {
+                        lumberRow.classList.add('visible');
+                        animateCounter(lumberCounter, 0, 500, 1200, (v) => '+' + Math.round(v));
+                    }, 700);
+                }
+            },
+            poweroverwhelming: {
+                theme: 'starcraft',
+                credits: 'StarCraft · 1998 · invincibility',
+                duration: 6000,
+                html: `
+                    <div class="effect-title">POWER OVERWHELMING</div>
+                    <div class="effect-sub">INVINCIBILITY ENGAGED</div>
+                    <div class="power-bar">
+                        <div class="power-bar-fill" id="powerFill"></div>
+                    </div>
+                    <div class="counter-display" id="powerLabel" style="font-size:1.2rem;color:#00b0ff;">CHARGING...</div>
+                    <div class="effect-quote">"They will never see it coming."</div>
+                `,
+                onOpen: (overlay) => {
+                    // Shield rings expanding
+                    const ring1 = document.createElement('div');
+                    ring1.className = 'shield-ring';
+                    overlay.appendChild(ring1);
+                    const ring2 = document.createElement('div');
+                    ring2.className = 'shield-ring delayed';
+                    overlay.appendChild(ring2);
+                    const ring3 = document.createElement('div');
+                    ring3.className = 'shield-ring';
+                    ring3.style.animationDelay = '1s';
+                    overlay.appendChild(ring3);
+                    // Power bar
+                    const fill = overlay.querySelector('#powerFill');
+                    const label = overlay.querySelector('#powerLabel');
+                    setTimeout(() => fill.style.width = '100%', 100);
+                    setTimeout(() => {
+                        label.textContent = 'INVINCIBLE ✦';
+                        label.style.color = '#00e5ff';
+                        shakeScreen(overlay, 400);
+                    }, 1600);
+                }
+            },
+            showmethemoney: {
+                theme: 'starcraft',
+                credits: 'StarCraft · 1998 · +10,000 minerals & gas',
+                duration: 6000,
+                html: `
+                    <div class="effect-title">SHOW ME THE MONEY</div>
+                    <div class="effect-sub">💼 +10,000 MINERALS · +10,000 GAS</div>
+                    <div class="counter-display" id="smtmCounter">0</div>
+                    <div class="effect-quote">"Just one more command center."</div>
+                `,
+                onOpen: (overlay) => {
+                    const counter = overlay.querySelector('#smtmCounter');
+                    // Burst of money symbols from center
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    for (let i = 0; i < 20; i++) {
+                        const m = document.createElement('div');
+                        m.className = 'money-burst';
+                        m.textContent = ['$', '💵', '💎', '⛏️'][Math.floor(Math.random() * 4)];
+                        m.style.left = centerX + 'px';
+                        m.style.top = centerY + 'px';
+                        m.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+                        m.style.color = ['#22c55e', '#00b0ff', '#ffd700'][Math.floor(Math.random() * 3)];
+                        const angle = Math.random() * Math.PI * 2;
+                        const dist = 200 + Math.random() * 300;
+                        m.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+                        m.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+                        m.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+                        m.style.animationDelay = (Math.random() * 0.3) + 's';
+                        overlay.appendChild(m);
+                    }
+                    animateCounter(counter, 0, 20000, 2000, (v) => Math.round(v).toLocaleString());
+                }
+            },
+            iseedeadpeople: {
+                theme: 'starcraft',
+                credits: 'Warcraft III · 2002 · reveal entire map',
+                duration: 5000,
+                html: `
+                    <div class="effect-title">I SEE DEAD PEOPLE</div>
+                    <div class="effect-sub">MAP REVEALED</div>
+                    <div class="map-grid" id="mapGrid"></div>
+                    <div class="effect-quote">"Nowhere to hide."</div>
+                `,
+                onOpen: (overlay) => {
+                    // Fog clears
+                    const fog = document.createElement('div');
+                    fog.className = 'fog-layer';
+                    overlay.appendChild(fog);
+                    // Map tiles reveal one by one
+                    const grid = overlay.querySelector('#mapGrid');
+                    for (let i = 0; i < 64; i++) {
+                        const tile = document.createElement('div');
+                        tile.className = 'map-tile';
+                        grid.appendChild(tile);
+                        setTimeout(() => tile.classList.add('visible'), 500 + i * 40);
+                    }
+                }
+            },
+            xyzzy: {
+                theme: 'magic',
+                credits: 'Colossal Cave Adventure · 1977 · the first magic word in gaming',
+                duration: 6500,
+                html: `
+                    <div class="effect-title">XYZZY</div>
+                    <div class="typewriter-text" id="xyzzyText"></div>
+                    <div class="effect-quote" id="xyzzyQuote" style="opacity:0;transition:opacity 0.6s;">"...or DID it? ✨"</div>
+                `,
+                onOpen: (overlay) => {
+                    const text = overlay.querySelector('#xyzzyText');
+                    const quote = overlay.querySelector('#xyzzyQuote');
+                    typeText(text, 'Nothing happens.', 90, () => {
+                        setTimeout(() => {
+                            text.style.color = '#ffffff';
+                            text.style.textShadow = '0 0 30px #ff00ff, 0 0 60px #ff00ff';
+                            shakeScreen(overlay, 500);
+                            quote.style.opacity = '1';
+                            setTimeout(() => {
+                                text.style.color = '#ff00ff';
+                                text.textContent = '...or DID it?';
+                            }, 800);
+                        }, 1200);
+                    });
+                }
+            },
+            rocketman: {
+                theme: 'gtasa',
+                credits: 'GTA: San Andreas · 2004 · jetpack cheat',
+                duration: 7000,
+                html: `
+                    <div class="effect-title">STILL PLAYIN' SAN ANDREAS</div>
+                    <div class="effect-sub">WHATEVER LETS FLY</div>
+                    <div style="margin:40px 0;position:relative;">
+                        <div class="rocket-character" id="rocketChar">
+                            🧑‍🚀
+                            <div class="jet-flames">🔥🔥🔥</div>
+                        </div>
+                    </div>
+                    <div class="effect-quote">"Ah shit, here we go again."</div>
+                `,
+                onOpen: (overlay) => {
+                    // Speed lines
+                    for (let i = 0; i < 20; i++) {
+                        const line = document.createElement('div');
+                        line.className = 'speed-line';
+                        line.style.left = (Math.random() * 100) + '%';
+                        line.style.animationDelay = (Math.random() * 0.5) + 's';
+                        line.style.animationDuration = (0.6 + Math.random() * 0.6) + 's';
+                        overlay.appendChild(line);
+                    }
+                    setTimeout(() => shakeScreen(overlay, 500), 1000);
+                }
+            },
+            coffee: {
+                theme: 'teapot',
+                credits: 'RFC 2324 · 1998 · HTCPCP — Hyper Text Coffee Pot Control Protocol',
+                duration: 7000,
+                html: `
+                    <div class="effect-title">HTTP 418</div>
+                    <div class="effect-sub">I'M A TEAPOT</div>
+                    <div class="teapot-container" style="font-size:clamp(4rem,14vw,7rem);margin:20px 0;">🫖</div>
+                    <div class="effect-quote">"Any attempt to brew coffee with a teapot should result in error 418."</div>
+                `,
+                onOpen: (overlay) => {
+                    const container = overlay.querySelector('.teapot-container');
+                    for (let i = 0; i < 5; i++) {
+                        const steam = document.createElement('div');
+                        steam.className = 'steam';
+                        steam.textContent = '💨';
+                        steam.style.left = (30 + i * 12) + '%';
+                        steam.style.top = '-10px';
+                        steam.style.animationDelay = (i * 0.4) + 's';
+                        container.appendChild(steam);
+                    }
+                }
+            },
+            '42': {
+                theme: 'enlightenment',
+                credits: "Douglas Adams · 1979 · The Hitchhiker's Guide to the Galaxy",
+                duration: 9000,
+                html: `
+                    <div class="effect-title" style="font-size:clamp(4rem,15vw,10rem);line-height:1;">42</div>
+                    <div class="effect-quote" style="font-size:0.9rem;margin-top:10px;">"The Answer to the Great Question of Life, the Universe, and Everything."</div>
+                    <div class="stage-log" id="enlightenLog" style="color:#ddaaff;margin-top:20px;"></div>
+                `,
+                onOpen: (overlay) => {
+                    const log = overlay.querySelector('#enlightenLog');
+                    const lines = [
+                        '> importing the ultimate truth of life...',
+                        '> OK [100%]',
+                        '> NEW* update',
+                        '> enlightenment_status = 0',
+                        '> updated to enlightenment_status = 1',
+                        '> WARNING: reality may now appear less confusing',
+                        '> have a nice day, entity'
+                    ];
+                    lines.forEach((line, i) => {
+                        setTimeout(() => {
+                            const div = document.createElement('div');
+                            div.className = 'stage-log-line';
+                            div.textContent = line;
+                            log.appendChild(div);
+                            requestAnimationFrame(() => div.classList.add('visible'));
+                            if (i === 4) shakeScreen(overlay, 400);
+                        }, 500 + i * 500);
+                    });
+                }
+            },
+            sandwich: {
+                theme: 'sandwich',
+                credits: 'xkcd #149 · 2007 · "sudo make me a sandwich"',
+                duration: 9500,
+                html: `
+                    <div class="effect-title">SUDO MAKE ME A SANDWICH</div>
+                    <div class="sandwich-stack" id="sandwichStack">
+                        <div class="sandwich-layer bread-bottom" data-i="5"></div>
+                        <div class="sandwich-layer tomato" data-i="4"></div>
+                        <div class="sandwich-layer cheese" data-i="3"></div>
+                        <div class="sandwich-layer lettuce" data-i="2"></div>
+                        <div class="sandwich-layer bread" data-i="1"></div>
+                    </div>
+                    <div class="wheel-stamp" id="wheelStamp">✓ sandwich wheel built · foods/sandwich.1.0.1_none_any.whl</div>
+                `,
+                onOpen: (overlay) => {
+                    // Binary fragments fly in then fade
+                    for (let i = 0; i < 15; i++) {
+                        const bin = document.createElement('div');
+                        bin.className = 'sandwich-binary-fly';
+                        bin.textContent = '01';
+                        bin.style.left = (Math.random() * 100) + '%';
+                        bin.style.top = (Math.random() * 100) + '%';
+                        const tx = (Math.random() - 0.5) * 200;
+                        const ty = (Math.random() - 0.5) * 200;
+                        bin.style.setProperty('--tx', tx + 'px');
+                        bin.style.setProperty('--ty', ty + 'px');
+                        bin.style.animationDelay = (Math.random() * 0.8) + 's';
+                        overlay.appendChild(bin);
+                    }
+                    // Stack the sandwich layers
+                    const layers = overlay.querySelectorAll('.sandwich-layer');
+                    layers.forEach((layer, i) => {
+                        setTimeout(() => layer.classList.add('visible'), 1200 + i * 300);
+                    });
+                    // Show wheel stamp
+                    setTimeout(() => {
+                        const stamp = overlay.querySelector('#wheelStamp');
+                        stamp.classList.add('visible');
+                        shakeScreen(overlay, 300);
+                    }, 3200);
+                }
+            },
+            itworksonmymachine: {
+                theme: 'woimm',
+                credits: 'programmer culture · circa forever · the eternal developer excuse',
+                duration: 8000,
+                html: `
+                    <div class="effect-title">IT WORKS ON MY MACHINE</div>
+                    <div class="woimm-split">
+                        <div class="woimm-panel origin" id="woimmA">
+                            <div class="woimm-panel-title">ORIGIN MACHINE</div>
+                            <div class="woimm-panel-emoji">💻</div>
+                            <div class="woimm-panel-status">✓ WORKS!</div>
+                            <div style="font-family:'Fira Code',monospace;font-size:0.72rem;color:#22c55e;">$ ./app --run</div>
+                        </div>
+                        <div class="woimm-arrow" id="woimmArrow">➡️</div>
+                        <div class="woimm-panel other" id="woimmB">
+                            <div class="woimm-panel-title">OTHER MACHINE</div>
+                            <div class="woimm-panel-emoji">🖥️</div>
+                            <div class="woimm-panel-status">✗ ERROR 404</div>
+                            <div style="font-family:'Fira Code',monospace;font-size:0.72rem;color:#ef4444;">$ ./app --run</div>
+                        </div>
+                    </div>
+                    <div class="effect-quote">"It worked on MY machine, I swear!"</div>
+                `,
+                onOpen: (overlay) => {
+                    const a = overlay.querySelector('#woimmA');
+                    const arrow = overlay.querySelector('#woimmArrow');
+                    const b = overlay.querySelector('#woimmB');
+                    setTimeout(() => a.classList.add('visible'), 300);
+                    setTimeout(() => arrow.classList.add('visible'), 1100);
+                    setTimeout(() => {
+                        b.classList.add('visible');
+                        // Error digits fly
+                        for (let i = 0; i < 6; i++) {
+                            const digit = document.createElement('div');
+                            digit.className = 'error-digits';
+                            digit.textContent = '404';
+                            const rect = b.getBoundingClientRect();
+                            digit.style.left = (rect.left + rect.width / 2) + 'px';
+                            digit.style.top = (rect.top + rect.height / 2) + 'px';
+                            const tx = (Math.random() - 0.5) * 200;
+                            const ty = -100 - Math.random() * 150;
+                            digit.style.setProperty('--tx', tx + 'px');
+                            digit.style.setProperty('--ty', ty + 'px');
+                            digit.style.animationDelay = (i * 0.1) + 's';
+                            overlay.appendChild(digit);
+                        }
+                    }, 1900);
+                }
+            },
+            hello_world_human: {
+                theme: 'hello-human',
+                credits: 'Hello World · the universal first program · across 10 human languages',
+                duration: 9000,
+                html: `
+                    <div class="effect-title">HELLO, WORLD</div>
+                    <div class="hello-human-grid" id="helloHumanGrid"></div>
+                `,
+                onOpen: (overlay) => {
+                    const grid = overlay.querySelector('#helloHumanGrid');
+                    const langs = [
+                        { lang: 'spanish', text: '¡Hola, Mundo!' },
+                        { lang: 'french', text: 'Bonjour, le Monde!' },
+                        { lang: 'german', text: 'Hallo, Welt!' },
+                        { lang: 'japanese', text: 'こんにちは世界！' },
+                        { lang: 'chinese', text: '你好，世界！' },
+                        { lang: 'hindi', text: 'हैलो, वर्ल्ड!' },
+                        { lang: 'arabic', text: 'مرحبا بالعالم!' },
+                        { lang: 'russian', text: 'Привет, мир!' },
+                        { lang: 'korean', text: '안녕, 세상!' },
+                        { lang: 'italian', text: 'Ciao, Mondo!' }
+                    ];
+                    langs.forEach((l, i) => {
+                        const card = document.createElement('div');
+                        card.className = 'hello-human-card';
+                        card.innerHTML = `<div class="hello-human-lang">${l.lang}</div><div class="hello-human-text">${l.text}</div>`;
+                        grid.appendChild(card);
+                        setTimeout(() => card.classList.add('visible'), 300 + i * 250);
+                    });
+                }
+            }
+        };
+
+        let currentEffect = null;
+
+        function closeAllEffects() {
+            document.querySelectorAll('.effect-overlay.active').forEach(el => {
+                if (el._cleanupCrosshair) el._cleanupCrosshair();
+                if (el._cleanupShake) el._cleanupShake();
+                el.classList.remove('active');
+                setTimeout(() => {
+                    if (el.parentNode) el.parentNode.removeChild(el);
+                }, 320);
+            });
+            currentEffect = null;
+        }
+
+        function triggerEffect(name) {
+            const config = EFFECTS[name];
+            if (!config) return;
+            closeAllEffects();
+
+            const overlay = document.createElement('div');
+            overlay.className = `effect-overlay theme-${config.theme}`;
+            overlay.innerHTML = `
+                <div class="effect-content">${config.html}</div>
+                <div class="effect-credits">// ${config.credits}</div>
+            `;
+            document.body.appendChild(overlay);
+            requestAnimationFrame(() => overlay.classList.add('active'));
+            currentEffect = overlay;
+
+            const close = () => {
+                if (overlay._cleanupCrosshair) overlay._cleanupCrosshair();
+                if (overlay._cleanupShake) overlay._cleanupShake();
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+                }, 320);
+                document.removeEventListener('keydown', escHandler);
+                if (currentEffect === overlay) currentEffect = null;
+            };
+
+            const escHandler = (e) => {
+                if (e.key === 'Escape') close();
+            };
+
+            overlay.addEventListener('click', close);
+            document.addEventListener('keydown', escHandler);
+
+            if (config.duration) setTimeout(close, config.duration);
+            if (config.onOpen) config.onOpen(overlay);
+        }
+
+        // ==================== ZEN OF PYTHON ====================
+        const ZEN_LINES = [
+            'Beautiful is better than ugly.',
+            'Explicit is better than implicit.',
+            'Simple is better than complex.',
+            'Complex is better than complicated.',
+            'Flat is better than nested.',
+            'Sparse is better than dense.',
+            'Readability counts.',
+            "Special cases aren't special enough to break the rules.",
+            'Although practicality beats purity.',
+            'Errors should never pass silently.',
+            'Unless explicitly silenced.',
+            'In the face of ambiguity, refuse the temptation to guess.',
+            "There should be one-- and preferably only one --obvious way to do it.",
+            "Although that way may not be obvious at first unless you're Dutch.",
+            'Now is better than never.',
+            'Although never is often better than *right* now.',
+            "If the implementation is hard to explain, it's a bad idea.",
+            'If the implementation is easy to explain, it may be a good idea.',
+            "Namespaces are one honking great idea -- let's do more of those!"
+        ];
+
+        function openZenOfPython() {
+            closeAllEffects();
+            const overlay = document.createElement('div');
+            overlay.className = 'effect-overlay theme-zen';
+            overlay.innerHTML = `
+                <div class="zen-window">
+                    <div class="zen-tab-bar">
+                        <div class="zen-tab">
+                            <span class="zen-tab-dot"></span>
+                            zen-of-python.txt
+                        </div>
+                        <button class="zen-window-close" id="zenClose">×</button>
+                    </div>
+                    <div class="zen-body">
+                        <div class="zen-header">The Zen of Python, by Tim Peters</div>
+                        ${ZEN_LINES.map(l => `<div class="zen-line">${l.replace(/</g, '&lt;')}</div>`).join('')}
+                        <div class="zen-footer">// PEP 20 · 2004 · type "import this" in Python to reveal</div>
+                    </div>
+                </div>
+                <div class="effect-credits">// Tim Peters · 2004 · PEP 20 — the Zen of Python</div>
+            `;
+            document.body.appendChild(overlay);
+            requestAnimationFrame(() => overlay.classList.add('active'));
+            currentEffect = overlay;
+            // Reveal lines one at a time
+            const lines = overlay.querySelectorAll('.zen-line');
+            lines.forEach((line, i) => {
+                setTimeout(() => line.classList.add('visible'), 300 + i * 180);
+            });
+            const close = () => {
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+                }, 320);
+                document.removeEventListener('keydown', escHandler);
+                if (currentEffect === overlay) currentEffect = null;
+            };
+            const escHandler = (e) => { if (e.key === 'Escape') close(); };
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+            document.addEventListener('keydown', escHandler);
+            const closeBtn = overlay.querySelector('#zenClose');
+            if (closeBtn) closeBtn.addEventListener('click', (e) => { e.stopPropagation(); close(); });
+        }
+
+        // ==================== DINO GAME ====================
+        let dinoCleanup = null;
+        function startDinoGame() {
+            if (dinoCleanup) dinoCleanup();
+            const overlay = document.createElement('div');
+            overlay.className = 'dino-overlay';
+            overlay.innerHTML = `
+                <canvas id="dinoCanvas"></canvas>
+                <div class="dino-hud">
+                    <div class="dino-score-wrap">
+                        <div class="dino-score" id="dinoScore">00000</div>
+                        <div class="dino-speed" id="dinoSpeed">SPEED: 5.0</div>
+                    </div>
+                    <button class="dino-exit" id="dinoExit">EXIT</button>
+                </div>
+                <div class="dino-credit">// Chrome · 2014 · the T-Rex game when the internet dies</div>
+                <div class="dino-gameover" id="dinoGameOver">
+                    <div class="dino-gameover-title">GAME OVER</div>
+                    <div class="dino-gameover-sub">TAP OR PRESS SPACE TO RESTART</div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            requestAnimationFrame(() => overlay.classList.add('active'));
+
+            const dcanvas = document.getElementById('dinoCanvas');
+            const dctx = dcanvas.getContext('2d');
+            const scoreEl = document.getElementById('dinoScore');
+            const speedEl = document.getElementById('dinoSpeed');
+            const gameOverEl = document.getElementById('dinoGameOver');
+
+            function resize() {
+                dcanvas.width = window.innerWidth;
+                dcanvas.height = window.innerHeight;
+                state.groundY = dcanvas.height - 100;
+                if (state.dino.grounded) state.dino.y = state.groundY - state.dino.h;
+            }
+
+            const state = {
+                running: true, score: 0, speed: 5, spawnTimer: 55,
+                dino: { x: 80, y: 0, w: 44, h: 48, vy: 0, grounded: true },
+                obstacles: [], groundY: 0, gravity: 0.75, jumpForce: -14,
+                obstaclesPassed: 0
+            };
+            resize();
+            state.dino.y = state.groundY - state.dino.h;
+
+            function resetGame() {
+                state.running = true;
+                state.score = 0;
+                state.speed = 5;
+                state.spawnTimer = 55;
+                state.obstacles = [];
+                state.obstaclesPassed = 0;
+                state.dino.y = state.groundY - state.dino.h;
+                state.dino.vy = 0;
+                state.dino.grounded = true;
+                gameOverEl.style.display = 'none';
+                scoreEl.textContent = '00000';
+                speedEl.textContent = 'SPEED: 5.0';
+            }
+
+            function jump() {
+                if (!state.running) { resetGame(); return; }
+                if (state.dino.grounded) {
+                    state.dino.vy = state.jumpForce;
+                    state.dino.grounded = false;
+                }
+            }
+
+            function update() {
+                if (!state.running) return;
+                state.dino.vy += state.gravity;
+                state.dino.y += state.dino.vy;
+                if (state.dino.y >= state.groundY - state.dino.h) {
+                    state.dino.y = state.groundY - state.dino.h;
+                    state.dino.vy = 0;
+                    state.dino.grounded = true;
+                }
+                state.speed = Math.min(20, 5 + state.obstaclesPassed * 0.22);
+                speedEl.textContent = 'SPEED: ' + state.speed.toFixed(1);
+                state.spawnTimer--;
+                if (state.spawnTimer <= 0) {
+                    const h = 30 + Math.random() * 30;
+                    state.obstacles.push({ x: dcanvas.width, w: 22 + Math.random() * 18, h, y: state.groundY - h, type: 'cactus' });
+                    if (state.score > 150 && Math.random() < 0.3) {
+                        state.obstacles.push({ x: dcanvas.width + 60, w: 36, h: 26, y: state.groundY - 85 - Math.random() * 50, type: 'bird', flap: 0 });
+                    }
+                    if (state.score > 400 && Math.random() < 0.35) {
+                        const h2 = 30 + Math.random() * 30;
+                        state.obstacles.push({ x: dcanvas.width + 110, w: 22 + Math.random() * 18, h: h2, y: state.groundY - h2, type: 'cactus' });
+                    }
+                    if (state.score > 800 && Math.random() < 0.25) {
+                        const h3 = 30 + Math.random() * 30;
+                        state.obstacles.push({ x: dcanvas.width + 170, w: 22 + Math.random() * 18, h: h3, y: state.groundY - h3, type: 'cactus' });
+                    }
+                    const minSpawn = Math.max(28, 65 - state.obstaclesPassed * 0.35);
+                    state.spawnTimer = minSpawn + Math.random() * 35;
+                }
+                for (let i = state.obstacles.length - 1; i >= 0; i--) {
+                    const o = state.obstacles[i];
+                    o.x -= state.speed;
+                    if (o.type === 'bird') o.flap = (o.flap + 1) % 20;
+                    if (o.x + o.w < 0) {
+                        state.obstacles.splice(i, 1);
+                        state.score += 10;
+                        state.obstaclesPassed += 1;
+                        scoreEl.textContent = String(state.score).padStart(5, '0');
+                    }
+                }
+                const d = state.dino;
+                for (const o of state.obstacles) {
+                    if (d.x + d.w - 8 > o.x + 4 && d.x + 8 < o.x + o.w - 4 && d.y + d.h > o.y + 4 && d.y < o.y + o.h - 4) {
+                        state.running = false;
+                        gameOverEl.style.display = 'flex';
+                        break;
+                    }
+                }
+            }
+
+            function draw() {
+                dctx.fillStyle = '#f7f7f7';
+                dctx.fillRect(0, 0, dcanvas.width, dcanvas.height);
+                dctx.strokeStyle = '#535353';
+                dctx.lineWidth = 2;
+                dctx.beginPath();
+                dctx.moveTo(0, state.groundY);
+                dctx.lineTo(dcanvas.width, state.groundY);
+                dctx.stroke();
+                dctx.fillStyle = '#535353';
+                dctx.fillRect(state.dino.x, state.dino.y, state.dino.w, state.dino.h);
+                dctx.fillStyle = '#f7f7f7';
+                dctx.fillRect(state.dino.x + state.dino.w - 14, state.dino.y + 12, 6, 6);
+                for (const o of state.obstacles) {
+                    if (o.type === 'bird') {
+                        dctx.fillStyle = '#535353';
+                        const wingY = o.flap < 10 ? o.y + 4 : o.y + 10;
+                        dctx.fillRect(o.x + 8, o.y + 8, 20, 10);
+                        dctx.beginPath();
+                        dctx.moveTo(o.x + 10, o.y + 10);
+                        dctx.lineTo(o.x + 4, wingY);
+                        dctx.lineTo(o.x + 14, o.y + 12);
+                        dctx.fill();
+                        dctx.beginPath();
+                        dctx.moveTo(o.x + 26, o.y + 10);
+                        dctx.lineTo(o.x + 32, wingY);
+                        dctx.lineTo(o.x + 22, o.y + 12);
+                        dctx.fill();
+                    } else {
+                        dctx.fillStyle = '#535353';
+                        dctx.fillRect(o.x, o.y, o.w, o.h);
+                        dctx.fillRect(o.x - 4, o.y + 8, 4, 10);
+                        dctx.fillRect(o.x + o.w, o.y + 12, 4, 8);
+                    }
+                }
+            }
+
+            let rafId = null;
+            function loop() { update(); draw(); rafId = requestAnimationFrame(loop); }
+            function cleanup() {
+                if (rafId) cancelAnimationFrame(rafId);
+                window.removeEventListener('resize', resize);
+                document.removeEventListener('keydown', keyHandler);
+                overlay.classList.remove('active');
+                setTimeout(() => { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 320);
+                document.body.style.overflow = '';
+                dinoCleanup = null;
+            }
+            function tapHandler(e) {
+                if (e.target.id === 'dinoExit') return;
+                e.preventDefault();
+                jump();
+            }
+            function keyHandler(e) {
+                if (e.key === ' ' || e.key === 'ArrowUp') { e.preventDefault(); jump(); }
+                if (e.key === 'Escape') cleanup();
+            }
+            overlay.addEventListener('click', tapHandler);
+            overlay.addEventListener('touchstart', tapHandler, { passive: false });
+            document.addEventListener('keydown', keyHandler);
+            window.addEventListener('resize', resize);
+            document.getElementById('dinoExit').addEventListener('click', (e) => { e.stopPropagation(); cleanup(); });
+            document.body.style.overflow = 'hidden';
+            dinoCleanup = cleanup;
+            loop();
+        }
+
+        // ==================== COMMAND LINE ====================
+        const cmdToggleBtn = document.getElementById('cmdToggleBtn');
+        const cmdlineOverlay = document.getElementById('cmdlineOverlay');
+        const cmdlineClose = document.getElementById('cmdlineClose');
+        const cmdInput = document.getElementById('cmdlineInput');
+        const cmdlineHistory = document.getElementById('cmdlineHistory');
+        const KONAMI_STR = '↑↑↓↓←→←→ba';
+
+        function escapeHtml(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function addCmdHistory(cmdStr, output, isOk) {
             const div = document.createElement('div');
             div.className = 'cmdline-history-item';
-            const cmdText = cmdArr.join('') || '(empty)';
+            const outClass = isOk === 'fail' ? 'cmdline-history-out fail' : 'cmdline-history-out' + (isOk ? ' ok' : '');
             div.innerHTML =
-                '<span class="cmdline-history-cmd">' + escapeHtml(cmdText) + '</span>' +
-                '<span class="cmdline-history-out' + (isOk ? ' ok' : '') + '">' + escapeHtml(output) + '</span>';
+                '<span class="cmdline-history-cmd">' + escapeHtml(cmdStr) + '</span>' +
+                '<span class="' + outClass + '">' + escapeHtml(output) + '</span>';
             cmdlineHistory.appendChild(div);
             const body = cmdlineOverlay.querySelector('.cmdline-body');
             if (body) body.scrollTop = body.scrollHeight;
         }
 
         function openCmdLine() {
+            closeAllEffects();
             cmdlineOverlay.classList.add('active');
-            cmdTokens = [];
-            updateCmdDisplay();
+            cmdInput.value = '';
+            setTimeout(() => {
+                try { cmdInput.focus({ preventScroll: true }); } catch (e) { cmdInput.focus(); }
+            }, 150);
         }
-
         function closeCmdLine() {
             cmdlineOverlay.classList.remove('active');
-            cmdTokens = [];
+            cmdInput.value = '';
+            try { cmdInput.blur(); } catch (e) {}
         }
 
-        function openDevTerminal() {
-            devTerminalOverlay.classList.add('active');
-        }
-        function closeDevTerminal() {
-            devTerminalOverlay.classList.remove('active');
-        }
+        const effectMap = {
+            'iddqd': 'iddqd', 'idkfa': 'idkfa', 'idclip': 'idclip',
+            'abacabb': 'abacabb', 'rosebud': 'rosebud', 'motherlode': 'motherlode',
+            'thereisnocowlevel': 'thereisnocowlevel', 'whosyourdaddy': 'whosyourdaddy',
+            'greedisgood': 'greedisgood', 'poweroverwhelming': 'poweroverwhelming',
+            'showmethemoney': 'showmethemoney', 'iseedeadpeople': 'iseedeadpeople',
+            'xyzzy': 'xyzzy', 'rocketman': 'rocketman',
+            'coffee': 'coffee', '418': 'coffee', '42': '42',
+            'sudo make me a sandwich': 'sandwich',
+            'sudo make me sandwich': 'sandwich',
+            'make me a sandwich': 'sandwich',
+            'it works on my machine': 'itworksonmymachine',
+            'itworksonmymachine': 'itworksonmymachine',
+            'hello_world': 'hello_world_human',
+            'helloworld': 'hello_world_human'
+        };
 
-        function closeAllEffects() {
-            clearEffectTimers();
-            effectIddqd.classList.remove('active');
-            effectAbacabb.classList.remove('active');
-            effectRosebud.classList.remove('active');
-            effectRocketman.classList.remove('active');
-            abacabbCountdown.style.display = 'block';
-            abacabbBoom.style.display = 'none';
-            rocketmanCountdown.textContent = 'IN 3...';
-        }
-
-        // ---- Effect triggers ----
-        function triggerIddqd() {
-            closeAllEffects();
-            effectIddqd.classList.add('active');
-        }
-
-        function triggerAbacabb() {
-            closeAllEffects();
-            effectAbacabb.classList.add('active');
-            abacabbCountdown.style.display = 'block';
-            abacabbBoom.style.display = 'none';
-            abacabbCountdown.textContent = '3...';
-
-            effectTimers.push(setTimeout(() => { abacabbCountdown.textContent = '2...'; }, 800));
-            effectTimers.push(setTimeout(() => { abacabbCountdown.textContent = '1...'; }, 1600));
-            effectTimers.push(setTimeout(() => {
-                abacabbCountdown.style.display = 'none';
-                abacabbBoom.style.display = 'block';
-            }, 2400));
-            effectTimers.push(setTimeout(() => {
-                effectAbacabb.classList.remove('active');
-            }, 6500));
-        }
-
-        function triggerRosebud() {
-            closeAllEffects();
-            effectRosebud.classList.add('active');
-            effectTimers.push(setTimeout(() => {
-                effectRosebud.classList.remove('active');
-            }, 6000));
-        }
-
-        function triggerRocketman() {
-            closeAllEffects();
-            effectRocketman.classList.add('active');
-            rocketmanCountdown.textContent = 'IN 3...';
-
-            effectTimers.push(setTimeout(() => { rocketmanCountdown.textContent = 'IN 2...'; }, 800));
-            effectTimers.push(setTimeout(() => { rocketmanCountdown.textContent = 'IN 1...'; }, 1600));
-            effectTimers.push(setTimeout(() => {
-                rocketmanCountdown.textContent = '✈ LIFT OFF ✈';
-            }, 2400));
-            effectTimers.push(setTimeout(() => {
-                effectRocketman.classList.remove('active');
-            }, 6000));
-        }
-
-        // ---- Command submission ----
         function submitCmd() {
-            if (cmdTokens.length === 0) return;
+            const raw = cmdInput.value;
+            const rawTrim = raw.trim();
+            const lower = rawTrim.toLowerCase();
+            if (!lower) return;
 
-            const joinedLower = cmdTokens.join('').toLowerCase();
-
-            // ---- git → hello world terminal ----
-            if (joinedLower === 'git') {
-                addCmdHistory(cmdTokens, '> opening hello_world.sh...', true);
-                cmdTokens = [];
-                updateCmdDisplay();
-                setTimeout(() => {
-                    closeCmdLine();
-                    openDevTerminal();
-                }, 400);
+            if (rawTrim === KONAMI_STR || lower === KONAMI_STR) {
+                addCmdHistory(rawTrim, '> konami sequence accepted', true);
+                cmdInput.value = '';
+                setTimeout(() => { closeCmdLine(); triggerEffect('konami'); }, 400);
                 return;
             }
-
-            // ---- iddqd → DOOM mode ----
-            if (joinedLower === 'iddqd') {
-                addCmdHistory(cmdTokens, '> initiating DOOM protocol...', true);
-                cmdTokens = [];
-                updateCmdDisplay();
-                setTimeout(() => {
-                    closeCmdLine();
-                    triggerIddqd();
-                }, 300);
+            if (lower === 'import this') {
+                addCmdHistory(rawTrim, '> opening the zen of python...', true);
+                cmdInput.value = '';
+                setTimeout(() => { closeCmdLine(); openZenOfPython(); }, 350);
                 return;
             }
-
-            // ---- abacabb → Mortal Kombat god combo ----
-            if (joinedLower === 'abacabb') {
-                addCmdHistory(cmdTokens, '> arming god combo...', true);
-                cmdTokens = [];
-                updateCmdDisplay();
-                setTimeout(() => {
-                    closeCmdLine();
-                    triggerAbacabb();
-                }, 300);
+            if (lower === 'git') {
+                addCmdHistory(rawTrim, '> opening hello_world.sh...', true);
+                cmdInput.value = '';
+                setTimeout(() => { closeCmdLine(); openDevTerminal(); }, 400);
                 return;
             }
-
-            // ---- rosebud → money mode ----
-            if (joinedLower === 'rosebud') {
-                addCmdHistory(cmdTokens, '> crediting account...', true);
-                cmdTokens = [];
-                updateCmdDisplay();
-                setTimeout(() => {
-                    closeCmdLine();
-                    triggerRosebud();
-                }, 300);
+            if (lower === 'wifidragon') {
+                addCmdHistory(rawTrim, '> loading T-Rex runner...', true);
+                cmdInput.value = '';
+                setTimeout(() => { closeCmdLine(); startDinoGame(); }, 300);
                 return;
             }
-
-            // ---- rocketman → San Andreas flight ----
-            if (joinedLower === 'rocketman') {
-                addCmdHistory(cmdTokens, '> preparing jetpack...', true);
-                cmdTokens = [];
-                updateCmdDisplay();
-                setTimeout(() => {
-                    closeCmdLine();
-                    triggerRocketman();
-                }, 300);
-                return;
-            }
-
-            // ---- Konami sequence ----
-            if (cmdTokens.length === KONAMI_SEQ.length) {
-                let matches = true;
-                for (let i = 0; i < KONAMI_SEQ.length; i++) {
-                    if (cmdTokens[i].toLowerCase() !== KONAMI_SEQ[i].toLowerCase()) {
-                        matches = false;
-                        break;
-                    }
-                }
-                if (matches) {
-                    addCmdHistory(cmdTokens, '> konami sequence accepted. decoding...', true);
-                    cmdTokens = [];
-                    updateCmdDisplay();
-                    setTimeout(() => {
-                        closeCmdLine();
-                        triggerIddqd(); // fallback to iddqd style — or replace with a dedicated konami effect if desired
-                    }, 400);
-                    return;
-                }
-            }
-
-            // ---- clear ----
-            if (joinedLower === 'clear') {
+            if (lower === 'clear') {
                 cmdlineHistory.innerHTML = '';
-                cmdTokens = [];
-                updateCmdDisplay();
+                cmdInput.value = '';
                 return;
             }
-
-            // ---- unknown ----
-            addCmdHistory(cmdTokens, 'command not found: ' + (joinedLower || '(empty)'), false);
-            cmdTokens = [];
-            updateCmdDisplay();
+            if (effectMap[lower]) {
+                addCmdHistory(rawTrim, '> executing ' + lower + '...', true);
+                cmdInput.value = '';
+                setTimeout(() => { closeCmdLine(); triggerEffect(effectMap[lower]); }, 300);
+                return;
+            }
+            const failMsg = FAIL_MESSAGES[Math.floor(Math.random() * FAIL_MESSAGES.length)];
+            addCmdHistory(rawTrim, failMsg, 'fail');
+            cmdInput.value = '';
         }
 
-        // ---- Wiring ----
+        // Dev terminal for `git`
+        let devTerminalOverlay = document.getElementById('devTerminalOverlay');
+        if (!devTerminalOverlay) {
+            devTerminalOverlay = document.createElement('div');
+            devTerminalOverlay.className = 'terminal-overlay';
+            devTerminalOverlay.id = 'devTerminalOverlay';
+            devTerminalOverlay.innerHTML = `
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <div class="terminal-title">hello_world.sh — bash</div>
+                        <button class="terminal-close" id="devTerminalClose">×</button>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-prompt-line"><span class="prompt-user">user@heuravox</span>:~$ ./hello_world.sh</div>
+                        <div class="hello-grid" id="helloGrid"></div>
+                        <div class="terminal-outro">// 20 languages. one message. press ESC or click outside to close.</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(devTerminalOverlay);
+
+            const grid = devTerminalOverlay.querySelector('#helloGrid');
+            HELLO_SAMPLES.forEach(sample => {
+                const row = document.createElement('div');
+                row.className = 'hello-row';
+                row.innerHTML = `<div class="hello-lang">${sample.lang}</div><div class="hello-code">${escapeHtml(sample.code)}</div>`;
+                grid.appendChild(row);
+            });
+
+            const closeBtn = devTerminalOverlay.querySelector('#devTerminalClose');
+            closeBtn.addEventListener('click', (e) => { e.stopPropagation(); devTerminalOverlay.classList.remove('active'); });
+            devTerminalOverlay.addEventListener('click', (e) => {
+                if (e.target === devTerminalOverlay) devTerminalOverlay.classList.remove('active');
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && devTerminalOverlay.classList.contains('active')) {
+                    e.preventDefault();
+                    devTerminalOverlay.classList.remove('active');
+                }
+            });
+        }
+
+        function openDevTerminal() { devTerminalOverlay.classList.add('active'); }
+
         cmdToggleBtn.addEventListener('click', () => {
-            if (cmdlineOverlay.classList.contains('active')) {
-                closeCmdLine();
-            } else {
-                openCmdLine();
-            }
+            if (cmdlineOverlay.classList.contains('active')) closeCmdLine();
+            else openCmdLine();
         });
-
         cmdlineClose.addEventListener('click', closeCmdLine);
-        cmdlineOverlay.addEventListener('click', (e) => {
-            if (e.target === cmdlineOverlay) closeCmdLine();
+        cmdlineOverlay.addEventListener('click', (e) => { if (e.target === cmdlineOverlay) closeCmdLine(); });
+
+        cmdInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') { e.preventDefault(); closeCmdLine(); return; }
+            if (e.key === 'Enter') { e.preventDefault(); submitCmd(); return; }
+            if (e.key === 'ArrowUp') { e.preventDefault(); cmdInput.value += '↑'; return; }
+            if (e.key === 'ArrowDown') { e.preventDefault(); cmdInput.value += '↓'; return; }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); cmdInput.value += '←'; return; }
+            if (e.key === 'ArrowRight') { e.preventDefault(); cmdInput.value += '→'; return; }
         });
-
-        devTerminalCloseBtn.addEventListener('click', closeDevTerminal);
-        devTerminalOverlay.addEventListener('click', (e) => {
-            if (e.target === devTerminalOverlay) closeDevTerminal();
-        });
-
-        // Effect dismiss handlers
-        [effectIddqd, effectAbacabb, effectRosebud, effectRocketman].forEach(el => {
-            el.addEventListener('click', closeAllEffects);
-        });
-
-        // ---- Key handling ----
-        document.addEventListener('keydown', (e) => {
-            // Any effect open → ESC closes
-            if (effectIddqd.classList.contains('active') ||
-                effectAbacabb.classList.contains('active') ||
-                effectRosebud.classList.contains('active') ||
-                effectRocketman.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    e.preventDefault();
-                    closeAllEffects();
-                }
-                return;
-            }
-
-            // Dev terminal open → ESC closes
-            if (devTerminalOverlay.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    e.preventDefault();
-                    closeDevTerminal();
-                }
-                return;
-            }
-
-            // Command line open → capture input
-            if (cmdlineOverlay.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    e.preventDefault();
-                    closeCmdLine();
-                    return;
-                }
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    submitCmd();
-                    return;
-                }
-                if (e.key === 'Backspace') {
-                    e.preventDefault();
-                    cmdTokens.pop();
-                    updateCmdDisplay();
-                    return;
-                }
-                if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    cmdTokens.push('↑');
-                    updateCmdDisplay();
-                    return;
-                }
-                if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    cmdTokens.push('↓');
-                    updateCmdDisplay();
-                    return;
-                }
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    cmdTokens.push('←');
-                    updateCmdDisplay();
-                    return;
-                }
-                if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    cmdTokens.push('→');
-                    updateCmdDisplay();
-                    return;
-                }
-                if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-                    e.preventDefault();
-                    cmdTokens.push(e.key);
-                    updateCmdDisplay();
-                    return;
-                }
-                return;
-            }
-
-            // Ignore typing in form fields
-            const activeEl = document.activeElement;
-            if (activeEl && (activeEl.tagName === 'INPUT' ||
-                activeEl.tagName === 'TEXTAREA' ||
-                activeEl.isContentEditable)) {
-                return;
-            }
+        document.querySelectorAll('.vkey').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                cmdInput.value += btn.dataset.key;
+                try { cmdInput.focus({ preventScroll: true }); } catch (err) {}
+            });
         });
     </script>
 </body>
